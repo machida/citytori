@@ -1,13 +1,52 @@
-<div id="<%= dom_id word_chain_walk %>" class="mx-auto max-w-2xl py-1">
-  <%= link_to word_chain_walk, class: "block rounded-md border border-gray-200 p-4" do %>
-    <p class="text-sm">
-      <%= l word_chain_walk.finished_at, format: :short %>
-    </p>
+<% latest_step = word_chain_walk.word_chain_walk_steps.max_by(&:id) %>
 
-    <div class="mt-2 text-center">
-      <p class="text-base font-bold">
-        「<%= word_chain_walk.start_char %>」からはじまった散歩
+<div id="<%= dom_id word_chain_walk %>">
+  <%= link_to word_chain_walk, class: "home-recent-card" do %>
+    <% if latest_step %>
+      <%= image_tag latest_step.image,
+                    alt: "「#{word_chain_walk.start_char}」から始めた散歩の写真",
+                    class: "home-recent-image" %>
+    <% else %>
+      <div
+        class="home-recent-image home-recent-no-image"
+        role="img"
+        aria-label="写真はありません"
+      >
+        No Image
+      </div>
+    <% end %>
+
+    <div class="home-recent-card-body">
+      <p class="home-recent-word">
+        「<%= word_chain_walk.start_char %>」から始めた散歩
       </p>
     </div>
+
+    <dl class="home-recent-stats">
+      <div>
+        <dt class="sr-only">日付</dt>
+
+        <dd>
+          <%= word_chain_walk.finished_at.month %>月
+          <%= word_chain_walk.finished_at.day %>日
+        </dd>
+      </div>
+
+      <div>
+        <dt class="sr-only"><%= latest_step ? "つないだ数" : "記録数" %></dt>
+
+        <dd>
+          <%= latest_step ? "#{word_chain_walk.word_chain_walk_steps.size}個つないだ" : "記録 0件" %>
+        </dd>
+      </div>
+
+      <div>
+        <dt class="sr-only">所要時間</dt>
+
+        <dd>
+          <%= formatted_elapsed_time_compact(word_chain_walk.elapsed_seconds) %>
+        </dd>
+      </div>
+    </dl>
   <% end %>
 </div>

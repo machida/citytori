@@ -1,26 +1,23 @@
 <div data-controller="walk-start">
-  <div class="mx-auto max-w-2xl px-4">
-    <div class="rounded-xl border border-gray-200 p-4 sm:p-6 md:p-8">
-      <div class="text-center">
-        <div class="mx-auto max-w-56 md:max-w-64">
-          <%= image_tag "citytori-start.png", class: "w-full" %>
-        </div>
+  <div class="home-primary">
+    <section
+      class="home-content home-start-card"
+      aria-labelledby="start-walk-title"
+    >
+      <p class="home-eyebrow">今日の散歩</p>
 
-        <h2 class="mt-6 text-2xl font-bold sm:text-3xl">
-          しりとり散歩を始めよう
-        </h2>
+      <h1 id="start-walk-title">しりとり散歩をはじめよう</h1>
 
-        <p class="mt-3 text-sm sm:text-base">
-          街を歩いて、言葉を見つけてみよう！
-        </p>
+      <p class="home-start-description">
+        街で見つけたものを、写真とことばでつないでいこう。
+      </p>
 
-        <%= button_tag "始める", type: "button", class: "rounded-md bg-blue-600 px-10 py-3 text-lg text-white", data: { action: "walk-start#open"} %>
+      <%= button_tag "しりとり散歩をはじめる", type: "button", class: "home-primary-cta", data: { action: "walk-start#open"} %>
 
-        <p class="mt-4 text-sm text-slate-600">
-          ※「始める」を押すと位置情報を利用できるか確認します
-        </p>
-      </div>
-    </div>
+      <p class="home-location-note">
+        「しりとり散歩をはじめる」を押すと、位置情報を利用できるか確認します
+      </p>
+    </section>
   </div>
 
   <%= render "word_chain_walks/start_modal" %>

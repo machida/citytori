@@ -1,7 +1,9 @@
 <% content_for :title, "Citytori" %>
 
 <% if current_user %>
-  <%= render "logged_in" %>
+  <%= render "logged_in",
+             active_word_chain_walk: @active_word_chain_walk,
+             finished_word_chain_walks: @finished_word_chain_walks %>
 <% else %>
   <%= render "logged_out" %>
 <% end %>
