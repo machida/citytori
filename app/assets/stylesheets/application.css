@@ -463,6 +463,238 @@ main:has(.home-page) {
   text-align: center;
 }
 
+/* Walk index */
+body:has(.walk-index-page) {
+  background: #fcf9ef;
+}
+
+main:has(.walk-index-page) {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding-inline: 0;
+}
+
+.walk-index-page {
+  width: 100%;
+  padding: 40px 16px 64px;
+  background: #fcf9ef;
+}
+
+.walk-index-content {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.walk-index-title,
+.walk-index-heading,
+.walk-index-card-title {
+  color: #204d49;
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-weight: 900;
+}
+
+.walk-index-title {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  line-height: 1.2;
+}
+
+.walk-index-section,
+.walk-index-empty {
+  margin-top: 40px;
+}
+
+.walk-index-heading {
+  margin: 0;
+  font-size: 1.375rem;
+  line-height: 1.35;
+}
+
+.walk-index-heading-icon {
+  margin-right: 0.35em;
+  font-size: 0.8em;
+  vertical-align: 0.04em;
+}
+
+.walk-index-heading-icon-active {
+  color: #f16b36;
+}
+
+.walk-index-heading-icon-finished {
+  color: #5795a3;
+}
+
+.walk-index-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.walk-index-card {
+  display: grid;
+  grid-template-columns: minmax(122px, 40%) minmax(0, 1fr);
+  width: 100%;
+  min-height: 152px;
+  overflow: hidden;
+  border: 1px solid #c9dbd7;
+  border-radius: 12px;
+  background: #fff;
+  color: #303b3c;
+  text-decoration: none;
+}
+
+.walk-index-card:hover {
+  border-color: #88a485;
+}
+
+.walk-index-card:focus-visible {
+  outline: 3px solid #f16b36;
+  outline-offset: 3px;
+}
+
+.walk-index-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 152px;
+  object-fit: cover;
+}
+
+.walk-index-no-image {
+  display: grid;
+  place-items: center;
+  background: #e8f4f5;
+  color: #567169;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.walk-index-card-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px 16px 16px;
+}
+
+.walk-index-status {
+  align-self: flex-end;
+  margin-bottom: 8px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.walk-index-status-active {
+  background: #f16b36;
+  color: #fff;
+}
+
+.walk-index-status-finished {
+  background: #e2efdf;
+  color: #204d49;
+}
+
+.walk-index-card-title {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+}
+
+.walk-index-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-top: 12px;
+  color: #52645f;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.walk-index-card-meta > div:not(:last-child)::after {
+  margin-left: 10px;
+  color: #a9b9b5;
+  content: "・";
+}
+
+.walk-index-resume {
+  margin: auto 0 0;
+  padding-top: 10px;
+  color: #c34b20;
+  font-size: 0.8125rem;
+  font-weight: 800;
+}
+
+.walk-index-empty {
+  padding: 24px;
+  border: 1px solid #c9dbd7;
+  border-radius: 12px;
+  background: #fff;
+  color: #52645f;
+}
+
+.walk-index-empty > p {
+  margin: 12px 0 0;
+  font-size: 0.9375rem;
+}
+
+.walk-index-start-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #cc491c;
+  color: #fff;
+  font-weight: 800;
+}
+
+.walk-index-start-button:hover {
+  background: #a93d1a;
+}
+
+@media (min-width: 640px) {
+  .walk-index-page {
+    padding: 56px 32px 80px;
+  }
+
+  .walk-index-section,
+  .walk-index-empty {
+    margin-top: 48px;
+  }
+
+  .walk-index-card {
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 176px;
+  }
+
+  .walk-index-card-image {
+    min-height: 176px;
+  }
+
+  .walk-index-card-content {
+    padding: 20px 22px;
+  }
+
+  .walk-index-card-title {
+    font-size: 1.25rem;
+  }
+
+  .walk-index-card-meta {
+    font-size: 0.8125rem;
+  }
+
+  .walk-index-start-button {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
 .home-page :is(a, button):focus-visible {
   outline: 3px solid #204d49;
   outline-offset: 4px;
