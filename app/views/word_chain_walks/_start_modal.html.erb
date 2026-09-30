@@ -20,40 +20,25 @@
         位置情報について
       </h2>
 
-      <div data-walk-start-target="loadingStatus">
-        <div
-          class="
-            mt-6 flex items-center justify-center gap-2 rounded-md border
-            border-amber-300 bg-amber-100 px-4 py-4 text-amber-700
-          "
-        >
-          <i class="fa-solid fa-spinner fa-spin"></i>
-          <p>位置情報を取得しています…</p>
-        </div>
+      <div data-walk-start-target="loadingStatus" class="mt-6">
+        <%= render "shared/status_notice",
+                   variant: :processing,
+                   title: "位置情報を取得しています…",
+                   message: "散歩の記録に場所を添えられます" %>
       </div>
 
-      <div data-walk-start-target="successStatus" hidden>
-        <div
-          class="
-            mt-6 flex items-center justify-center gap-2 rounded-md border
-            border-green-300 bg-green-100 px-4 py-4 text-green-700
-          "
-        >
-          <i class="fa-solid fa-circle-check"></i>
-          <p>位置情報を取得できました</p>
-        </div>
+      <div data-walk-start-target="successStatus" class="mt-6" hidden>
+        <%= render "shared/status_notice",
+                   variant: :success,
+                   title: "位置情報を取得できました",
+                   message: "見つけた場所も一緒に記録できます" %>
       </div>
 
-      <div data-walk-start-target="failedStatus" hidden>
-        <div
-          class="
-            mt-6 flex items-center justify-center gap-2 rounded-md border
-            border-gray-300 bg-gray-100 px-4 py-4 text-gray-700
-          "
-        >
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <p>位置情報を取得できませんでした</p>
-        </div>
+      <div data-walk-start-target="failedStatus" class="mt-6" hidden>
+        <%= render "shared/status_notice",
+                   variant: :muted_failure,
+                   title: "位置情報を取得できませんでした",
+                   message: "位置情報なしでこのまま散歩を始められます" %>
       </div>
 
       <div class="mt-6 space-y-4 text-sm text-gray-700">

@@ -22,51 +22,24 @@
     <%= form.hidden_field :longitude, data: { geolocation_target: "longitude" } %>
 
     <div data-geolocation-target="loadingStatus">
-      <div
-        class="
-          flex items-center gap-2 rounded-md border border-amber-300
-          bg-amber-100 px-4 py-3 text-sm text-amber-700
-        "
-      >
-        <i class="fa-solid fa-spinner fa-spin"></i>
-        <p class="font-semibold">位置情報を確認しています…</p>
-      </div>
+      <%= render "shared/status_notice",
+                 variant: :processing,
+                 title: "位置情報を確認しています…",
+                 message: "見つけた場所も一緒に記録します" %>
     </div>
 
     <div data-geolocation-target="successStatus" hidden>
-      <div
-        class="
-          rounded-md border border-green-300 bg-green-100 px-4 py-3 text-sm
-          text-green-700
-        "
-      >
-        <div class="flex items-start gap-2">
-          <i class="fa-solid fa-circle-check mt-1"></i>
-
-          <div>
-            <p class="font-semibold">位置情報を取得できました</p>
-            <p>見つけた場所も一緒に記録します</p>
-          </div>
-        </div>
-      </div>
+      <%= render "shared/status_notice",
+                 variant: :success,
+                 title: "位置情報を取得できました",
+                 message: "見つけた場所も一緒に記録します" %>
     </div>
 
     <div data-geolocation-target="failedStatus" hidden>
-      <div
-        class="
-          rounded-md border border-gray-300 bg-gray-100 px-4 py-3 text-sm
-          text-gray-700
-        "
-      >
-        <div class="flex items-start gap-2">
-          <i class="fa-solid fa-circle-exclamation"></i>
-
-          <div>
-            <p class="font-semibold">位置情報を取得できませんでした</p>
-            <p>位置情報なしで登録されます</p>
-          </div>
-        </div>
-      </div>
+      <%= render "shared/status_notice",
+                 variant: :muted_failure,
+                 title: "位置情報を取得できませんでした",
+                 message: "位置情報なしでこのまま記録できます" %>
     </div>
 
     <div class="mt-2 text-center">
@@ -76,6 +49,9 @@
     </div>
   </div>
 </div>
+
+<% word_errors = word_chain_walk_step.errors.full_messages_for(:word) %>
+<% word_error_id = "word_chain_walk_step_word_error" %>
 
 <div class="my-5 text-left">
   <div class="flex items-baseline gap-2">
@@ -87,12 +63,23 @@
                       class: [
                         "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
                         {
-                          "border-gray-400 focus:outline-[#204D49]": word_chain_walk_step.errors[:word].none?,
-                          "border-red-400 focus:outline-red-600": word_chain_walk_step.errors[:word].any?
+                          "border-gray-400 focus:outline-[#204D49]": word_errors.empty?,
+                          "border-[#B5473C] focus:outline-[#B5473C]": word_errors.any?
                         }
                       ],
-                      data: { form_target: "word" }, placeholder: "こーひーしょっぷ" %>
+                      data: { form_target: "word" },
+                      placeholder: "こーひーしょっぷ",
+                      aria: (word_errors.any? ? { invalid: true, describedby: word_error_id } : {}) %>
+
+  <% if word_errors.any? %>
+    <p id="<%= word_error_id %>" class="mt-2 text-sm text-[#B5473C]">
+      <%= word_errors.join("、") %>
+    </p>
+  <% end %>
 </div>
+
+<% memo_errors = word_chain_walk_step.errors.full_messages_for(:memo) %>
+<% memo_error_id = "word_chain_walk_step_memo_error" %>
 
 <div class="my-5 text-left">
   <%= form.label :memo, "メモ" %>
@@ -102,10 +89,17 @@
                       class: [
                         "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
                         {
-                          "border-gray-400 focus:outline-[#204D49]": word_chain_walk_step.errors[:memo].none?,
-                          "border-red-400 focus:outline-red-600": word_chain_walk_step.errors[:memo].any?
+                          "border-gray-400 focus:outline-[#204D49]": memo_errors.empty?,
+                          "border-[#B5473C] focus:outline-[#B5473C]": memo_errors.any?
                         }
-                      ] %>
+                      ],
+                      aria: (memo_errors.any? ? { invalid: true, describedby: memo_error_id } : {}) %>
+
+  <% if memo_errors.any? %>
+    <p id="<%= memo_error_id %>" class="mt-2 text-sm text-[#B5473C]">
+      <%= memo_errors.join("、") %>
+    </p>
+  <% end %>
 </div>
 
 <div class="inline">
