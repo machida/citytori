@@ -1,28 +1,19 @@
-<section id="word_chain_walk_target" class="mt-8 text-center">
-  <h2 class="text-xl font-bold text-slate-900">
+<section id="word_chain_walk_target" class="walk-target-section">
+  <h2 class="walk-target-heading">
     街の中で見つけよう！
   </h2>
 
-  <div class="relative mx-auto mt-5 h-56 w-full max-w-lg">
-    <div class="absolute inset-x-0 bottom-0 flex justify-center">
-      <%= image_tag "citytori-street-line.png", class: "w-full max-w-md opacity-90" %>
-    </div>
+  <div class="walk-target-visual">
+    <%= image_tag "new_citytori-street-line-step.png",
+                  class: "walk-target-street-image",
+                  alt: "街灯や木、建物が並ぶ街並み" %>
 
-    <div
-      class="
-        absolute left-1/2 top-1/2 z-10 flex h-36 w-36
-        -translate-x-1/2 -translate-y-1/2
-        items-center justify-center rounded-2xl
-        border border-slate-300 bg-white
-      "
-    >
-      <span class="text-6xl font-bold text-slate-900">
-        <%= word_chain_walk.target_char %>
-      </span>
+    <div class="walk-target-char-card">
+      <span class="walk-target-char"><%= word_chain_walk.target_char %></span>
     </div>
   </div>
 
-  <p class="mt-3 text-lg leading-relaxed text-slate-800">
+  <p class="walk-target-copy">
     に続く言葉を
     <br>
     街の中から見つけましょう

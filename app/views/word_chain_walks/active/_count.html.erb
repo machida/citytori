@@ -1,9 +1,7 @@
-<section id="steps_count" class="text-center">
+<section id="steps_count" class="active-walk-count">
   <% if word_chain_walk_steps.any? %>
-    <p class="inline-block rounded-full border border-slate-200 px-5 py-2 text-sm">
-      現在
-      <span class="text-xl font-bold text-blue-600"><%= word_chain_walk_steps.size %></span>
-      個つながっています
+    <p class="active-walk-count-label">
+      現在 <span><%= word_chain_walk_steps.size %></span> 個つながっています
     </p>
   <% end %>
 </section>
