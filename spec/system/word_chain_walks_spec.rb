@@ -54,7 +54,7 @@ RSpec.describe 'WordChainWalks', type: :system do
     fill_in '見つけた言葉', with: 'りんご'
     fill_in 'メモ', with: 'メモ'
 
-    click_button '登録する'
+    click_button '記録する'
 
     within '#latest_step' do
       expect(page).to have_content('りんご')
@@ -86,7 +86,7 @@ RSpec.describe 'WordChainWalks', type: :system do
       make_visible: true
     )
 
-    click_button '登録する'
+    click_button '記録する'
 
     within 'dialog[data-modal-target="modal"][open]' do
       expect(page).to have_content("Word can't be blank")
@@ -130,7 +130,7 @@ RSpec.describe 'WordChainWalks', type: :system do
       make_visible: true
     )
 
-    click_button '登録する'
+    click_button '記録する'
 
     within 'dialog[data-modal-target="modal"][open]' do
       expect(page).to have_css('#error_explanation')
@@ -238,7 +238,7 @@ RSpec.describe 'WordChainWalks', type: :system do
     fill_in '見つけた言葉', with: 'りんーー'
 
     accept_confirm('しりとり散歩をおしまいにしますか？') do
-      click_button '登録する'
+      click_button '記録する'
     end
 
     expect(page).to have_content('しりとり散歩が完了しました')
@@ -264,11 +264,11 @@ RSpec.describe 'WordChainWalks', type: :system do
     fill_in '見つけた言葉', with: 'りんーー'
 
     dismiss_confirm('しりとり散歩をおしまいにしますか？') do
-      click_button '登録する'
+      click_button '記録する'
     end
 
     within 'dialog[data-modal-target="modal"][open]' do
-      expect(page).to have_content('「り」から始まる言葉')
+      expect(page).to have_content('から始まることば')
     end
 
     expect(word_chain_walk.reload.finished?).to be false
