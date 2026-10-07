@@ -188,7 +188,7 @@ body:has(.landing-page) > footer {
 }
 
 body:has(.home-page) {
-  background: #fffdf8;
+  background: #fcf9ef;
 }
 
 main:has(.home-page) {
