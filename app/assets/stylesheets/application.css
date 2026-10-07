@@ -221,7 +221,6 @@ main:has(.home-page) {
   background: #fff;
 }
 
-.home-eyebrow,
 .home-meta-label {
   color: #52766e;
   font-size: 0.8125rem;
@@ -229,8 +228,19 @@ main:has(.home-page) {
   letter-spacing: 0.08em;
 }
 
+.home-eyebrow {
+  margin: 0;
+  color: #204d49;
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-size: clamp(1.5rem, 6vw, 2.25rem);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
 .home-target {
-  margin-top: 20px;
+  margin-top: 16px;
   padding: 18px 20px;
   border-radius: 14px;
   background: #e8f4f5;
@@ -721,11 +731,27 @@ main:has(.walk-index-page) {
 }
 
 /* Active walk */
+body:has(.active-walk-page) {
+  background: #fcf9ef;
+}
+
+main:has(.active-walk-page) {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding: 8px;
+  background: #fcf9ef;
+}
+
 .active-walk-page {
   width: 100%;
-  max-width: 672px;
-  margin: 0 auto;
+  max-width: 768px;
+  margin: 0 auto 24px;
   padding: 24px 16px 48px;
+  border: 1px solid rgb(32 77 73 / 0.08);
+  border-radius: 12px;
+  background: #fff;
   color: #303b3c;
 }
 
@@ -935,6 +961,18 @@ main:has(.walk-index-page) {
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  main:has(.active-walk-page) {
+    padding: 24px;
+  }
+
+  .active-walk-page {
+    margin-bottom: 56px;
+    padding: 32px 48px 56px;
+    border-radius: 20px;
+  }
 }
 
 @media (min-width: 640px) {
