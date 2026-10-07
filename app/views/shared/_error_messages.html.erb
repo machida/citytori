@@ -10,12 +10,12 @@
         aria-hidden="true"
       ></i>
 
-      <div>
-        <h2 class="text-sm font-semibold text-[#B5473C]">
+      <div class="min-w-0 flex-1 text-left">
+        <h2 class="text-left text-sm font-semibold text-[#B5473C]">
           <%= object.errors.count %>件のエラーがあります
         </h2>
 
-        <ul class="mt-2 list-disc pl-5 text-sm text-[#303B3C]">
+        <ul class="mt-2 list-none p-0 text-left text-sm text-[#303B3C]">
           <% object.errors.each do |error| %>
             <li><%= error.full_message %></li>
           <% end %>
