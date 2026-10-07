@@ -10,12 +10,12 @@
  */
 
 /* Keep the landing page palette scoped to the logged-out home. */
-@font-face {
-  font-family: "Zen Maru Gothic";
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/l/font?kit=o-0XIpIxzW5b-RxT-6A8jWAtCp-caW9CPIKnFil8XdMh1Kz7aKG-o37RKtZhLuLNLTI5FRoNj5fLCwVB-DAMExwOCf_3hQzNcytYMEhYK32JyBbw&skey=3db8f523dc3784e7&v=v19") format("truetype");
+:root {
+  --font-japanese-sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+
+body {
+  font-family: var(--font-japanese-sans);
 }
 
 body:has(.landing-page) {
@@ -44,8 +44,8 @@ main:has(.landing-page) {
 
 .landing-title,
 .landing-section-title {
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
-  font-weight: 900;
+  font-family: var(--font-japanese-sans);
+  font-weight: 700;
 }
 
 .landing-title {
@@ -231,9 +231,9 @@ main:has(.home-page) {
 .home-eyebrow {
   margin: 0;
   color: #204d49;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-family: var(--font-japanese-sans);
   font-size: clamp(1.5rem, 6vw, 2.25rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.02em;
   text-align: center;
@@ -255,7 +255,7 @@ main:has(.home-page) {
 .home-target-char {
   margin-top: -2px;
   color: #204d49;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-family: var(--font-japanese-sans);
   font-size: clamp(4rem, 20vw, 5.5rem);
   font-weight: 900;
   line-height: 1;
@@ -289,8 +289,8 @@ main:has(.home-page) {
 .home-recent-word {
   margin-top: 4px;
   color: #204d49;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
-  font-weight: 900;
+  font-family: var(--font-japanese-sans);
+  font-weight: 700;
 }
 
 .home-latest-word {
@@ -364,9 +364,9 @@ main:has(.home-page) {
 
 .home-start-card h1 {
   margin-top: 10px;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-family: var(--font-japanese-sans);
   font-size: clamp(1.75rem, 7.5vw, 2.5rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.35;
 }
 
@@ -391,9 +391,9 @@ main:has(.home-page) {
 
 .home-recent-title {
   color: #204d49;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-family: var(--font-japanese-sans);
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .home-recent-grid {
@@ -502,8 +502,8 @@ main:has(.walk-index-page) {
 .walk-index-heading,
 .walk-index-card-title {
   color: #204d49;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
-  font-weight: 900;
+  font-family: var(--font-japanese-sans);
+  font-weight: 700;
 }
 
 .walk-index-title {
@@ -677,9 +677,9 @@ main:has(.walk-index-page) {
 
 .walk-target-heading {
   margin: 0;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-family: var(--font-japanese-sans);
   font-size: 1.25rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .walk-target-visual {
@@ -717,7 +717,7 @@ main:has(.walk-index-page) {
 
 .walk-target-char {
   color: #204d49;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-family: var(--font-japanese-sans);
   font-size: 5rem;
   font-weight: 900;
   line-height: 1;
@@ -765,9 +765,9 @@ main:has(.active-walk-page) {
 .active-walk-title {
   margin: 20px 0 0;
   color: #204d49;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-family: var(--font-japanese-sans);
   font-size: clamp(2rem, 8vw, 2.75rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.2;
   text-align: center;
 }
@@ -790,7 +790,7 @@ main:has(.active-walk-page) {
   margin-inline: 2px;
   color: #204d49;
   font-size: 1.25rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .active-walk-allowed-chars {
@@ -869,9 +869,9 @@ main:has(.active-walk-page) {
 .active-walk-latest-heading {
   margin: 0;
   color: #204d49;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-family: var(--font-japanese-sans);
   font-size: 1.25rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .active-walk-latest-heading i {
