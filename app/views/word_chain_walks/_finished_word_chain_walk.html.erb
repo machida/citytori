@@ -4,7 +4,7 @@
   <%= link_to word_chain_walk, class: "home-recent-card" do %>
     <% if latest_step %>
       <%= image_tag latest_step.image,
-                    alt: "「#{word_chain_walk.start_char}」から始めた散歩の写真",
+                    alt: "「#{word_chain_walk.start_char}」から始まった散歩の写真",
                     class: "home-recent-image" %>
     <% else %>
       <div
@@ -18,7 +18,7 @@
 
     <div class="home-recent-card-body">
       <p class="home-recent-word">
-        「<%= word_chain_walk.start_char %>」から始めた散歩
+        「<%= word_chain_walk.start_char %>」から始まった散歩
       </p>
     </div>
 
@@ -33,10 +33,10 @@
       </div>
 
       <div>
-        <dt class="sr-only"><%= latest_step ? "つないだ数" : "記録数" %></dt>
+        <dt class="sr-only">つないだことばの数</dt>
 
         <dd>
-          <%= latest_step ? "#{word_chain_walk.word_chain_walk_steps.size}個つないだ" : "記録 0件" %>
+          つないだことばの数 <%= word_chain_walk.word_chain_walk_steps.size %>個
         </dd>
       </div>
 

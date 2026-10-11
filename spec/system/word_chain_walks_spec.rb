@@ -51,7 +51,7 @@ RSpec.describe 'WordChainWalks', type: :system do
       'dialog[data-modal-target="modal"][open]'
     )
 
-    fill_in '見つけた言葉', with: 'りんご'
+    fill_in '見つけたことば', with: 'りんご'
     fill_in 'メモ', with: 'メモ'
 
     click_button '記録する'
@@ -67,7 +67,7 @@ RSpec.describe 'WordChainWalks', type: :system do
 
     expect(page).to have_css(
       '#steps_count',
-      text: '現在 1 個つながっています'
+      text: 'つないだことばの数 1個'
     )
 
     expect(page).to have_no_css(
@@ -103,7 +103,7 @@ RSpec.describe 'WordChainWalks', type: :system do
       make_visible: true
     )
 
-    fill_in '見つけた言葉', with: 'りんご'
+    fill_in '見つけたことば', with: 'りんご'
     fill_in 'メモ', with: 'メモ'
 
     click_button 'キャンセル'
@@ -115,7 +115,7 @@ RSpec.describe 'WordChainWalks', type: :system do
     )
 
     within 'dialog[data-modal-target="modal"][open]' do
-      expect(find_field('見つけた言葉').value).to be_blank
+      expect(find_field('見つけたことば').value).to be_blank
       expect(find_field('メモ').value).to be_blank
     end
   end
@@ -235,7 +235,7 @@ RSpec.describe 'WordChainWalks', type: :system do
       'dialog[data-modal-target="modal"][open]'
     )
 
-    fill_in '見つけた言葉', with: 'りんーー'
+    fill_in '見つけたことば', with: 'りんーー'
 
     accept_confirm('しりとり散歩をおしまいにしますか？') do
       click_button '記録する'
@@ -261,7 +261,7 @@ RSpec.describe 'WordChainWalks', type: :system do
       'dialog[data-modal-target="modal"][open]'
     )
 
-    fill_in '見つけた言葉', with: 'りんーー'
+    fill_in '見つけたことば', with: 'りんーー'
 
     dismiss_confirm('しりとり散歩をおしまいにしますか？') do
       click_button '記録する'

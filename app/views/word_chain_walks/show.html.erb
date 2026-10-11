@@ -1,4 +1,4 @@
-<% content_for :title, "散歩中の画面" %>
+<% content_for :title, "しりとり散歩" %>
 
 <% if @word_chain_walk.finished? %>
   <%= render "word_chain_walks/finished", word_chain_walk: @word_chain_walk, word_chain_walk_steps: @word_chain_walk_steps, locations: @locations %>
