@@ -33,7 +33,7 @@ RSpec.describe 'FinishedWalks', type: :system do
 
     visit word_chain_walk_path(word_chain_walk)
 
-    expect(page).to have_content('タイムライン')
+    expect(page).to have_content('記録')
     expect(page).to have_content('りんご')
 
     click_link '地図'
