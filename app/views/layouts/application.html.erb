@@ -2,7 +2,11 @@
 
 <html>
   <head>
-    <title><%= content_for(:title) || "Citytori" %></title>
+    <% page_title = content_for?(:title) ? yield(:title) : "Citytori" %>
+    <% page_description = content_for?(:meta_description) ? yield(:meta_description) : "Citytoriは街で見つけたものを、写真とことばでつないでいく散歩サービスです。" %>
+
+    <title><%= page_title == "Citytori" ? page_title : "#{page_title} | Citytori" %></title>
+    <meta name="description" content="<%= page_description %>">
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
