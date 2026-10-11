@@ -994,18 +994,24 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-end-button:focus-visible {
-  outline: 3px solid #f16b36;
-  outline-offset: 3px;
+  outline: 2px solid #204d49;
+  outline-offset: 2px;
 }
 
 .active-walk-end-button {
   border: 0;
   background: transparent;
-  color: #667773;
+  color: #52645f;
   font-size: 0.875rem;
+  font-weight: 500;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
   cursor: pointer;
+  transition: color 150ms;
+}
+
+.active-walk-end-button:hover {
+  color: #204d49;
 }
 
 body:has(.walk-step-detail-page) {
