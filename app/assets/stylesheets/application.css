@@ -83,7 +83,7 @@ main:has(.landing-page) {
   border-radius: 16px;
   background-color: #f16b36;
   color: #fff;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   letter-spacing: 0.035em;
   cursor: pointer;
@@ -210,7 +210,7 @@ main:has(.completion-page) {
   border-radius: 14px;
   background: #f16b36;
   color: #fff;
-  font-size: 1rem;
+  font-size: 19px;
   font-weight: 700;
   transition: background-color 150ms;
 }
@@ -393,7 +393,7 @@ main:has(.home-page) {
   border-radius: 14px;
   background: #f16b36;
   color: #fff;
-  font-size: 1rem;
+  font-size: 19px;
   font-weight: 700;
   letter-spacing: 0.04em;
   cursor: pointer;
@@ -708,6 +708,7 @@ main:has(.walk-index-page) {
   border-radius: 8px;
   background: #f16b36;
   color: #fff;
+  font-size: 19px;
   font-weight: 800;
 }
 
@@ -886,7 +887,7 @@ main:has(.active-walk-page) {
   border-radius: 14px;
   background: #f16b36;
   color: #fff;
-  font-size: 1.125rem;
+  font-size: 19px;
   font-weight: 800;
   cursor: pointer;
 }
