@@ -1,5 +1,4 @@
-<% content_for :title, "しりとり散歩の地図" %>
-<% content_for :meta_description, "Citytoriで記録したしりとり散歩の位置情報を地図で振り返れます。" %>
+<% set_meta_tags title: "しりとり散歩の地図", description: "Citytoriで記録したしりとり散歩の位置情報を地図で振り返れます。" %>
 
 <div class="mx-auto w-full max-w-3xl px-4 py-6 sm:px-6">
   <%= render "word_chain_walks/finished/summary", word_chain_walk: @word_chain_walk, word_chain_walk_steps: @word_chain_walk_steps %>
