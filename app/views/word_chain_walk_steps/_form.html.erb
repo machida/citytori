@@ -2,112 +2,119 @@
   <%= render "shared/error_messages", object: form.object %>
 </div>
 
-<div>
-  <div class="my-5">
-    <div
-      data-previews-target="preview"
-      class="hidden mb-5 overflow-hidden rounded-md bg-gray-100"
+<div class="mt-4 sm:mt-5">
+  <div
+    data-previews-target="preview"
+    class="hidden overflow-hidden rounded-xl border border-[#204D49]/10 bg-[#FCF9EF]"
+  >
+    <img
+      data-previews-target="image"
+      class="block max-h-80 w-full object-contain sm:max-h-[26rem]"
+      alt="選択した写真のプレビュー"
     >
-      <img
-        data-previews-target="image"
-        class="block max-h-72 w-full object-contain"
-      >
-    </div>
   </div>
 </div>
 
-<div class="my-5 text-left">
+<div class="mt-5 text-left">
   <div>
     <%= form.hidden_field :latitude, data: { geolocation_target: "latitude" } %>
     <%= form.hidden_field :longitude, data: { geolocation_target: "longitude" } %>
 
     <div data-geolocation-target="loadingStatus">
-      <div
-        class="
-          flex items-center gap-2 rounded-md border border-amber-300
-          bg-amber-100 px-4 py-3 text-sm text-amber-700
-        "
-      >
-        <i class="fa-solid fa-spinner fa-spin"></i>
-        <p class="font-semibold">位置情報を確認しています…</p>
-      </div>
+      <%= render "shared/status_notice",
+                 variant: :processing,
+                 title: "位置情報を確認しています…",
+                 message: "見つけた場所も一緒に記録します" %>
     </div>
 
     <div data-geolocation-target="successStatus" hidden>
-      <div
-        class="
-          rounded-md border border-green-300 bg-green-100 px-4 py-3 text-sm
-          text-green-700
-        "
-      >
-        <div class="flex items-start gap-2">
-          <i class="fa-solid fa-circle-check mt-1"></i>
-
-          <div>
-            <p class="font-semibold">位置情報を取得できました</p>
-            <p>見つけた場所も一緒に記録します</p>
-          </div>
-        </div>
-      </div>
+      <%= render "shared/status_notice",
+                 variant: :success,
+                 title: "位置情報を取得できました",
+                 message: "見つけた場所も一緒に記録します" %>
     </div>
 
     <div data-geolocation-target="failedStatus" hidden>
-      <div
-        class="
-          rounded-md border border-gray-300 bg-gray-100 px-4 py-3 text-sm
-          text-gray-700
-        "
-      >
-        <div class="flex items-start gap-2">
-          <i class="fa-solid fa-circle-exclamation"></i>
-
-          <div>
-            <p class="font-semibold">位置情報を取得できませんでした</p>
-            <p>位置情報なしで登録されます</p>
-          </div>
-        </div>
-      </div>
+      <%= render "shared/status_notice",
+                 variant: :muted_failure,
+                 title: "位置情報を取得できませんでした",
+                 message: "位置情報なしでこのまま記録できます" %>
     </div>
 
     <div class="mt-2 text-center">
-      <%= link_to "位置情報の設定方法を見る",
-                  "#",
-                  class: "text-sm text-blue-600 underline" %>
+      <p class="text-xs leading-relaxed text-[#52645F]">
+        位置情報を利用するには、ブラウザまたは端末の設定で位置情報の利用を許可してください。
+      </p>
     </div>
   </div>
 </div>
 
-<div class="my-5 text-left">
+<% word_errors = word_chain_walk_step.errors.full_messages_for(:word) %>
+<% word_error_id = "word_chain_walk_step_word_error" %>
+
+<div class="mt-6 text-left">
   <div class="flex items-baseline gap-2">
-    <%= form.label :word, "見つけた言葉" %>
-    <span class="text-xs text-gray-600"> ※ ひらがなとのばし棒(ー)のみ入力できます </span>
+    <%= form.label :word, "見つけたことば", class: "text-base font-bold text-[#204D49]" %>
+    <span class="rounded-full bg-[#FCEDEA] px-2 py-0.5 text-xs font-semibold text-[#CC491C]">必須</span>
   </div>
+
+  <p class="mt-1 text-xs text-[#52645F]">ひらがなとのばし棒（ー）のみ入力できます</p>
 
   <%= form.text_field :word,
                       class: [
-                        "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                        "mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-base text-[#303B3C] placeholder:text-[#7A8B87] focus:outline-none focus:ring-2",
                         {
-                          "border-gray-400 focus:outline-blue-600": word_chain_walk_step.errors[:word].none?,
-                          "border-red-400 focus:outline-red-600": word_chain_walk_step.errors[:word].any?
+                          "border-[#B7D5D7] focus:border-[#204D49] focus:ring-[#204D49]/20": word_errors.empty?,
+                          "border-[#B5473C] focus:border-[#B5473C] focus:ring-[#B5473C]/20": word_errors.any?
                         }
                       ],
-                      data: { form_target: "word" }, placeholder: "こーひーしょっぷ" %>
+                      data: { form_target: "word" },
+                      placeholder: "こーひーしょっぷ",
+                      aria: (word_errors.any? ? { invalid: true, describedby: word_error_id } : {}) %>
+
+  <% if word_errors.any? %>
+    <p id="<%= word_error_id %>" class="mt-2 text-sm text-[#B5473C]">
+      <%= word_errors.join("、") %>
+    </p>
+  <% end %>
 </div>
 
-<div class="my-5 text-left">
-  <%= form.label :memo, "メモ" %>
+<% memo_errors = word_chain_walk_step.errors.full_messages_for(:memo) %>
+<% memo_error_id = "word_chain_walk_step_memo_error" %>
+
+<div class="mt-6 text-left">
+  <div class="flex items-baseline gap-2">
+    <%= form.label :memo, "メモ", class: "text-base font-bold text-[#204D49]" %>
+    <span class="rounded-full bg-[#F2F5F3] px-2 py-0.5 text-xs font-semibold text-[#52645F]">任意</span>
+  </div>
 
   <%= form.text_area :memo,
                       rows: 4,
                       class: [
-                        "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                        "mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-base text-[#303B3C] placeholder:text-[#7A8B87] focus:outline-none focus:ring-2",
                         {
-                          "border-gray-400 focus:outline-blue-600": word_chain_walk_step.errors[:memo].none?,
-                          "border-red-400 focus:outline-red-600": word_chain_walk_step.errors[:memo].any?
+                          "border-[#B7D5D7] focus:border-[#204D49] focus:ring-[#204D49]/20": memo_errors.empty?,
+                          "border-[#B5473C] focus:border-[#B5473C] focus:ring-[#B5473C]/20": memo_errors.any?
                         }
-                      ] %>
+                      ],
+                      placeholder: "気になったことをひとこと",
+                      aria: (memo_errors.any? ? { invalid: true, describedby: memo_error_id } : {}) %>
+
+  <% if memo_errors.any? %>
+    <p id="<%= memo_error_id %>" class="mt-2 text-sm text-[#B5473C]">
+      <%= memo_errors.join("、") %>
+    </p>
+  <% end %>
 </div>
 
-<div class="inline">
-  <%= form.submit "登録する", class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+<div class="mt-7 flex flex-col gap-3 sm:flex-row">
+  <%= form.submit "写真とことばを記録する", class: "min-h-12 flex-1 cursor-pointer rounded-xl bg-[#F16B36] px-4 py-3 text-[19px] font-bold text-white hover:bg-[#CC491C] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49]" %>
+
+  <button
+    type="button"
+    data-action="modal#close"
+    class="min-h-12 flex-1 rounded-xl border border-[#204D49] bg-white px-4 py-3 text-base font-semibold text-[#204D49] hover:bg-[#E8F4F5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49]"
+  >
+    キャンセル
+  </button>
 </div>

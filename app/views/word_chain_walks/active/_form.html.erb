@@ -1,4 +1,4 @@
-<section class="mt-8 text-center">
+<section class="active-walk-photo-section">
   <%= form_with(
     model: [word_chain_walk, word_chain_walk_step],
     data: {
@@ -17,16 +17,16 @@
     <button
       type="button"
       data-action="previews#openFileSelector"
-      class="
-        inline-flex items-center justify-center
-        rounded-xl bg-blue-600 px-10 py-3
-        text-lg font-bold text-white
-        hover:bg-blue-500
-      "
+      class="active-walk-photo-button"
     >
-      <i class="fa-regular fa-camera mr-2"></i>
+      <i class="fa-regular fa-camera" aria-hidden="true"></i>
       写真を撮る
     </button>
+
+    <p class="mt-2 text-center text-xs leading-relaxed text-[#52645F]">
+      カメラを使いたい場合は、スマートフォンをご利用ください。<br>
+      スマートフォンでは「写真を撮る」を押すとカメラが起動します。
+    </p>
 
     <%= form.file_field :image,
       accept: "image/jpeg, image/png",

@@ -1,5 +1,10 @@
-<div id="word_chain_walk_modal_target" class="mb-4 rounded-md p-3">
-  <p class="text-sm">
-    「<%= word_chain_walk.target_char %>」から始まる言葉
-  </p>
+<div id="word_chain_walk_modal_target" class="mb-4 flex justify-center sm:mb-5">
+  <div class="flex items-center gap-3 text-[#204D49] sm:gap-4">
+    <span class="grid size-16 place-items-center rounded-full bg-[#FFF3DF] text-4xl font-bold leading-none text-[#F16B36] sm:size-20 sm:text-5xl">
+      <%= word_chain_walk.target_char %>
+    </span>
+    <p class="text-xl font-bold tracking-tight sm:text-2xl">
+      から始まることば
+    </p>
+  </div>
 </div>

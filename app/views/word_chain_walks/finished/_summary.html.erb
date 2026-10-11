@@ -1,68 +1,30 @@
 <div>
-  <%= link_to root_path, class: "inline-flex items-center text-sm text-slate-500 hover:text-slate-700" do %>
-    <span>＜ ホームへ戻る</span>
-  <% end %>
-
-  <h1
-    class="
-      mt-2 text-center text-xl font-bold leading-tight text-slate-900
-      sm:text-4xl
-    "
-  >
-    <%= @word_chain_walk.start_char %>から始まったしりとり散歩
+  <h1 class="text-center">
+    <span class="inline-flex max-w-full items-center justify-center gap-3 text-left sm:gap-4">
+      <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#FFF3DF] text-2xl font-bold leading-none text-[#F16B36] sm:h-16 sm:w-16 sm:text-4xl">
+        <%= word_chain_walk.start_char %>
+      </span>
+      <span class="min-w-0 text-2xl font-bold leading-tight tracking-[0.02em] text-[#204D49] sm:text-4xl">
+        から始まったしりとり散歩
+      </span>
+    </span>
   </h1>
 
-  <div class="grid grid-cols-2 gap-3 py-6 sm:gap-4">
-    <div
-      class="
-        flex items-center gap-3 rounded-xl border border-slate-200 bg-white
-        px-4 py-3
-      "
-    >
-      <div class="flex h-9 w-9 shrink-0 items-center justify-center text-slate-700">
-        <i class="fa-regular fa-clock text-lg" aria-hidden="true"></i>
-      </div>
-
-      <div class="min-w-0">
-        <p class="text-xs font-medium text-slate-600 sm:text-sm">
-          かかった時間
-        </p>
-
-        <p
-          class="
-            mt-1 text-base font-semibold leading-tight text-slate-900
-            sm:text-xl
-          "
-        >
-          <%= formatted_elapsed_time(word_chain_walk.elapsed_seconds) %>
-        </p>
-      </div>
+  <dl class="mt-6 grid overflow-hidden rounded-2xl border border-[#C9E4E5] bg-[#E8F4F5] text-center min-[420px]:grid-cols-2 min-[420px]:divide-x min-[420px]:divide-[#C9DBD7]">
+    <div class="px-5 py-5 min-[420px]:px-6">
+      <dt class="flex items-center justify-center gap-2 text-sm font-medium text-[#204D49]">
+        <i class="fa-regular fa-comment" aria-hidden="true"></i>
+        <span>つないだことばの数</span>
+      </dt>
+      <dd class="mt-2 text-2xl font-bold leading-none text-[#204D49] sm:text-3xl"><%= word_chain_walk_steps.size %>回</dd>
     </div>
 
-    <div
-      class="
-        flex items-center gap-3 rounded-xl border border-slate-200 bg-white
-        px-4 py-3
-      "
-    >
-      <div class="flex h-9 w-9 shrink-0 items-center justify-center text-slate-700">
-        <i class="fa-solid fa-person-walking text-lg" aria-hidden="true"></i>
-      </div>
-
-      <div class="min-w-0">
-        <p class="text-xs font-medium text-slate-600 sm:text-sm">
-          つなげた文字の数
-        </p>
-
-        <p
-          class="
-            mt-1 text-base font-semibold leading-tight text-slate-900
-            sm:text-xl
-          "
-        >
-          <%= word_chain_walk_steps.size %>回
-        </p>
-      </div>
+    <div class="border-t border-[#C9DBD7] px-5 py-5 min-[420px]:border-t-0 min-[420px]:px-6">
+      <dt class="flex items-center justify-center gap-2 text-sm font-medium text-[#204D49]">
+        <i class="fa-regular fa-clock" aria-hidden="true"></i>
+        <span>かかった時間</span>
+      </dt>
+      <dd class="mt-2 text-xl font-bold leading-tight text-[#204D49] sm:text-2xl"><%= formatted_elapsed_time(word_chain_walk.elapsed_seconds) %></dd>
     </div>
-  </div>
+  </dl>
 </div>

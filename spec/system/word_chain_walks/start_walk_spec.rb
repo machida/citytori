@@ -30,7 +30,7 @@ RSpec.describe 'StartWalk', type: :system do
     begin
       set_browser_geolocation(35.6586, 139.7454)
 
-      click_button '始める'
+      click_button 'しりとり散歩をはじめる'
 
       within 'dialog[data-walk-start-target="modal"][open]' do
         expect(page).to have_content('位置情報を取得できました')
@@ -52,7 +52,7 @@ RSpec.describe 'StartWalk', type: :system do
     begin
       set_failure_browser_geolocation
 
-      click_button '始める'
+      click_button 'しりとり散歩をはじめる'
 
       within 'dialog[data-walk-start-target="modal"][open]' do
         expect(page).to have_content('位置情報を取得できませんでした')

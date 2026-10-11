@@ -1,82 +1,65 @@
 <dialog
   data-walk-start-target="modal"
-  class="
-    fixed inset-0 size-auto max-h-none max-w-none bg-transparent p-0
-    backdrop:bg-black/70
-  "
+  aria-labelledby="walk-start-modal-title"
+  class="fixed inset-0 size-auto max-h-none max-w-none bg-transparent p-0 backdrop:bg-[#303B3C]/60"
 >
   <div class="flex min-h-full items-center justify-center p-4">
-    <div class="relative w-full max-w-lg rounded-lg bg-white p-6 shadow-xl">
+    <div class="relative w-full max-w-lg rounded-2xl border border-[#204D49]/10 bg-white p-6 shadow-sm sm:p-8">
       <button
         type="button"
         data-action="walk-start#close"
         aria-label="閉じる"
-        class="absolute right-4 top-4 text-xl text-gray-500"
+        class="absolute right-4 top-4 grid size-9 place-items-center rounded-full text-2xl leading-none text-[#52645F] hover:bg-[#E8F4F5] hover:text-[#204D49] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49]"
       >
         ×
       </button>
 
-      <h2 class="text-center text-xl font-bold">
+      <h2 id="walk-start-modal-title" class="pr-8 text-center text-2xl font-bold tracking-tight text-[#204D49]">
         位置情報について
       </h2>
 
-      <div data-walk-start-target="loadingStatus">
-        <div
-          class="
-            mt-6 flex items-center justify-center gap-2 rounded-md border
-            border-amber-300 bg-amber-100 px-4 py-4 text-amber-700
-          "
-        >
-          <i class="fa-solid fa-spinner fa-spin"></i>
-          <p>位置情報を取得しています…</p>
-        </div>
+      <div data-walk-start-target="loadingStatus" class="mt-6">
+        <%= render "shared/status_notice",
+                   variant: :processing,
+                   title: "位置情報を取得しています…",
+                   message: "散歩の記録に場所を添えられます" %>
       </div>
 
-      <div data-walk-start-target="successStatus" hidden>
-        <div
-          class="
-            mt-6 flex items-center justify-center gap-2 rounded-md border
-            border-green-300 bg-green-100 px-4 py-4 text-green-700
-          "
-        >
-          <i class="fa-solid fa-circle-check"></i>
-          <p>位置情報を取得できました</p>
-        </div>
+      <div data-walk-start-target="successStatus" class="mt-6" hidden>
+        <%= render "shared/status_notice",
+                   variant: :success,
+                   title: "位置情報を取得できました",
+                   message: "見つけた場所も一緒に記録できます" %>
       </div>
 
-      <div data-walk-start-target="failedStatus" hidden>
-        <div
-          class="
-            mt-6 flex items-center justify-center gap-2 rounded-md border
-            border-gray-300 bg-gray-100 px-4 py-4 text-gray-700
-          "
-        >
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <p>位置情報を取得できませんでした</p>
-        </div>
+      <div data-walk-start-target="failedStatus" class="mt-6" hidden>
+        <%= render "shared/status_notice",
+                   variant: :muted_failure,
+                   title: "位置情報を取得できませんでした",
+                   message: "位置情報なしでこのまま散歩を始められます" %>
       </div>
 
-      <div class="mt-6 space-y-4 text-sm text-gray-700">
-        <p class="flex gap-2">
-          <i class="fa-solid fa-check"></i>
-          <span>見つけた言葉と写真を登録するときに、位置情報も一緒に保存します</span>
+      <div class="mt-6 space-y-3 text-sm leading-relaxed text-[#303B3C]">
+        <p class="flex items-start gap-3">
+          <i class="fa-solid fa-check mt-1 text-xs text-[#315D55]" aria-hidden="true"></i>
+          <span>見つけたことばと写真を記録するときに、位置情報も一緒に記録します</span>
         </p>
 
-        <p class="flex gap-2">
-          <i class="fa-solid fa-check"></i>
-          <span>位置情報を取得しなくても、言葉と写真は登録できます</span>
+        <p class="flex items-start gap-3">
+          <i class="fa-solid fa-check mt-1 text-xs text-[#315D55]" aria-hidden="true"></i>
+          <span>位置情報を取得しなくても、ことばと写真は記録できます</span>
         </p>
 
-        <p class="flex gap-2">
-          <i class="fa-solid fa-check"></i>
+        <p class="flex items-start gap-3">
+          <i class="fa-solid fa-check mt-1 text-xs text-[#315D55]" aria-hidden="true"></i>
           <span>位置情報の許可は、途中でもブラウザの設定から変更できます</span>
         </p>
       </div>
 
       <div class="mt-5 text-center">
-        <%= link_to "位置情報の設定方法を見る",
-                    "#",
-                    class: "text-sm text-blue-600 underline" %>
+        <p class="text-xs leading-relaxed text-[#52645F]">
+          位置情報を利用するには、ブラウザまたは端末の設定で位置情報の利用を許可してください。
+        </p>
       </div>
 
       <%= button_to "散歩を始める",
@@ -84,9 +67,9 @@
                     method: :post,
                     disabled: true,
                     data: { walk_start_target: "startButton" },
-                    class: "mt-5 w-full rounded-md bg-blue-600 px-4 py-3 text-lg text-white disabled:cursor-not-allowed disabled:bg-gray-400" %>
+                    class: "mt-6 w-full rounded-xl bg-[#F16B36] px-4 py-3 text-[19px] font-bold text-white hover:bg-[#CC491C] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49] disabled:cursor-not-allowed disabled:bg-[#A8B5B1]" %>
 
-      <p class="mt-4 text-xs text-gray-500">
+      <p class="mt-4 text-xs leading-relaxed text-[#52645F]">
         ※位置情報の設定を変更した場合は、このモーダルを一度閉じてもう一度「始める」を押してください。
       </p>
     </div>

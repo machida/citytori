@@ -8,4 +8,13 @@ RSpec.describe "Home", type: :request do
       expect(response).to have_http_status(:ok)
     end
   end
+
+  describe "GET /how-to-play" do
+    it "遊び方ページを表示する" do
+      get how_to_play_path
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include("Citytoriの遊び方")
+    end
+  end
 end

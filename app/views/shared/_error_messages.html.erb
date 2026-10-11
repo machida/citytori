@@ -1,16 +1,26 @@
 <% if object.present? && object.errors.any? %>
   <div
     id="error_explanation"
-    class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3"
+    class="mt-3 rounded-xl border border-[#B5473C] bg-[#FCEDEA] px-4 py-3"
+    role="alert"
   >
-    <h2>
-      <%= object.errors.count %>件のエラーがあります
-    </h2>
+    <div class="flex items-start gap-3">
+      <i
+        class="fa-solid fa-circle-exclamation mt-0.5 text-base text-[#B5473C]"
+        aria-hidden="true"
+      ></i>
 
-    <ul class="list-disc ml-6">
-      <% object.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
+      <div class="min-w-0 flex-1 text-left">
+        <h2 class="text-left text-sm font-semibold text-[#B5473C]">
+          <%= object.errors.count %>件のエラーがあります
+        </h2>
+
+        <ul class="mt-2 list-none p-0 text-left text-sm text-[#303B3C]">
+          <% object.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 <% end %>

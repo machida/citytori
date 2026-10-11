@@ -131,10 +131,10 @@ RSpec.describe 'Images', type: :system do
       'dialog[data-modal-target="modal"][open]'
     )
 
-    fill_in '見つけた言葉', with: 'りんご'
+    fill_in '見つけたことば', with: 'りんご'
     fill_in 'メモ', with: 'メモ'
 
-    click_button '登録する'
+    click_button '記録する'
     expect(page).to have_content('りんご')
 
     saved_size = word_chain_walk.reload.latest_step.image.blob.byte_size
