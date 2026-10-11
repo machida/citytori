@@ -64,14 +64,6 @@ main:has(.landing-page) {
   letter-spacing: 0.015em;
 }
 
-.landing-subtitle {
-  margin-top: 10px;
-  padding-inline: 12px;
-  font-size: clamp(18px, 4.8vw, 28px);
-  font-weight: 800;
-  line-height: 1.5;
-}
-
 .landing-hero-image {
   display: block;
   width: calc(100% - 32px);
@@ -176,13 +168,6 @@ body:has(.landing-page) > footer {
 .landing-page :is(a, button):focus-visible {
   outline: 3px solid #204d49;
   outline-offset: 4px;
-}
-
-.landing-copy-accent {
-  background-image: linear-gradient(#f16b36, #f16b36);
-  background-position: center 88%;
-  background-repeat: no-repeat;
-  background-size: 88% 0.22em;
 }
 
 body:has(.home-page) {
