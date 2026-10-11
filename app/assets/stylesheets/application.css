@@ -1057,6 +1057,52 @@ main:has(.how-to-play-page) {
   background: #fff;
 }
 
+body:has(.legal-page) {
+  background: #fcf9ef;
+}
+
+main:has(.legal-page) {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding: 8px;
+  background: #fcf9ef;
+}
+
+.legal-page {
+  width: 100%;
+  max-width: 896px;
+  margin: 0 auto 24px;
+}
+
+.legal-sheet {
+  padding: 36px 20px 48px;
+  border: 1px solid rgb(32 77 73 / 0.08);
+  border-radius: 12px;
+  background: #fff;
+  color: #303b3c;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+.legal-sheet h2 {
+  color: #204d49;
+}
+
+.legal-sheet a {
+  color: #204d49;
+}
+
+.legal-sheet a:hover {
+  color: #315d55;
+}
+
+.legal-sheet a:focus-visible {
+  outline: 2px solid #204d49;
+  outline-offset: 3px;
+}
+
 main:has(.walk-step-detail-page) {
   display: block;
   width: 100%;
@@ -1098,6 +1144,10 @@ main:has(.walk-step-detail-page) {
     padding: 24px;
   }
 
+  main:has(.legal-page) {
+    padding: 24px;
+  }
+
   .walk-step-detail-page {
     margin-bottom: 56px;
   }
@@ -1112,6 +1162,15 @@ main:has(.walk-step-detail-page) {
   }
 
   .how-to-play-sheet {
+    padding: 48px 64px 64px;
+    border-radius: 20px;
+  }
+
+  .legal-page {
+    margin-bottom: 56px;
+  }
+
+  .legal-sheet {
     padding: 48px 64px 64px;
     border-radius: 20px;
   }
