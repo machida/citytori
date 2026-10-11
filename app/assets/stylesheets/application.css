@@ -1031,6 +1031,32 @@ body:has(.walk-step-detail-page) {
   background: #fcf9ef;
 }
 
+body:has(.how-to-play-page) {
+  background: #fcf9ef;
+}
+
+main:has(.how-to-play-page) {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding: 8px;
+  background: #fcf9ef;
+}
+
+.how-to-play-page {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto 24px;
+}
+
+.how-to-play-sheet {
+  padding: 36px 20px 48px;
+  border: 1px solid rgb(32 77 73 / 0.08);
+  border-radius: 12px;
+  background: #fff;
+}
+
 main:has(.walk-step-detail-page) {
   display: block;
   width: 100%;
@@ -1068,12 +1094,25 @@ main:has(.walk-step-detail-page) {
     padding: 24px;
   }
 
+  main:has(.how-to-play-page) {
+    padding: 24px;
+  }
+
   .walk-step-detail-page {
     margin-bottom: 56px;
   }
 
   .walk-step-detail-sheet {
     padding: 32px 48px 56px;
+    border-radius: 20px;
+  }
+
+  .how-to-play-page {
+    margin-bottom: 56px;
+  }
+
+  .how-to-play-sheet {
+    padding: 48px 64px 64px;
     border-radius: 20px;
   }
 }

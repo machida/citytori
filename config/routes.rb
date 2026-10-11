@@ -31,4 +31,6 @@ Rails.application.routes.draw do
   get "terms", to: "home#terms"
 
   get "privacy", to: "home#privacy"
+
+  get "how-to-play", to: "home#how_to_play"
 end
