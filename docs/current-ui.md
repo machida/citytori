@@ -21,7 +21,6 @@
 | 個別記録詳細 | `GET /word_chain_walks/:word_chain_walk_id/word_chain_walk_steps/:id` |
 | 利用規約 | `GET /terms` |
 | プライバシーポリシー | `GET /privacy` |
-| ユーザー詳細 | `GET /users/:id` |
 
 ## 各画面
 
@@ -138,15 +137,6 @@
 - **主なview / partial**: `home/terms.html.erb`、`home/privacy.html.erb`
 - **目的**: 利用条件、Google認証、写真・位置情報の取扱い、安全上の注意を伝える
 - **主な操作**: フッターまたはログイン前トップから移動する
-- **主な状態**: なし
-- **関連Stimulus / JavaScript**: なし
-
-### ユーザー詳細
-
-- **route**: `GET /users/:id`
-- **主なview / partial**: `users/show.html.erb`、`users/_user.html.erb`
-- **目的**: 現在のユーザー名とメールアドレスを表示する
-- **主な操作**: なし
 - **主な状態**: なし
 - **関連Stimulus / JavaScript**: なし
 
