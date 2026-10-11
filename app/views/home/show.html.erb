@@ -1,5 +1,5 @@
 <% if current_user %>
-  <% set_meta_tags title: "しりとり散歩", description: "Citytoriで、しりとり散歩の進行状況やこれまでの記録を確認できます。" %>
+  <% set_meta_tags title: "しりとり散歩", description: "Citytoriで、しりとり散歩の進行状況やこれまでの記録を確認できます。", noindex: true %>
   <%= render "logged_in",
              active_word_chain_walk: @active_word_chain_walk,
              finished_word_chain_walks: @finished_word_chain_walks %>

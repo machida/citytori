@@ -1,4 +1,4 @@
-<% set_meta_tags title: "散歩一覧", description: "Citytoriで記録したしりとり散歩の一覧です。進行中の散歩と完了した散歩を確認できます。" %>
+<% set_meta_tags title: "散歩一覧", description: "Citytoriで記録したしりとり散歩の一覧です。進行中の散歩と完了した散歩を確認できます。", noindex: true %>
 
 <% finished_word_chain_walks, active_word_chain_walks = @word_chain_walks.partition(&:finished?) %>
 

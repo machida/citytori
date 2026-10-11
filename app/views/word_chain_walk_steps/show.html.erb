@@ -3,7 +3,7 @@
     <%= render "word_chain_walks/finished/map_card", word_chain_walk_step: @word_chain_walk_step %>
   <% end %>
 <% else %>
-  <% set_meta_tags title: "記録の詳細", description: "Citytoriで記録した「#{@word_chain_walk_step.word}」の写真、メモ、位置情報を確認できます。" %>
+  <% set_meta_tags title: "記録の詳細", description: "Citytoriで記録した「#{@word_chain_walk_step.word}」の写真、メモ、位置情報を確認できます。", noindex: true %>
   <div class="walk-step-detail-page">
     <article class="walk-step-detail-sheet">
       <div class="mb-5 sm:mb-6">
