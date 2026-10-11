@@ -7,7 +7,7 @@
   <div class="walk-step-detail-page">
     <article class="walk-step-detail-sheet">
       <div class="mb-5 sm:mb-6">
-        <%= link_to word_chain_walk_path(@word_chain_walk), class: "inline-flex items-center gap-1 text-sm font-medium text-[#315D55] underline underline-offset-4 hover:text-[#204D49] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49]" do %>
+        <%= link_to word_chain_walk_path(@word_chain_walk), class: "inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#204D49] bg-transparent px-4 py-2 text-sm font-medium text-[#204D49] transition-colors hover:bg-[#E8F4F5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49]" do %>
           <span aria-hidden="true">←</span>
           <span>しりとり散歩に戻る</span>
         <% end %>
