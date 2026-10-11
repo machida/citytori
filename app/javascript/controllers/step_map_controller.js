@@ -31,8 +31,8 @@ export default class extends Controller {
             class="
               relative z-10
               flex h-12 w-12 items-center justify-center
-              rounded-full border-2 border-slate-700
-              bg-white text-xl font-bold text-slate-800
+              rounded-full border-2 border-[#204D49]
+              bg-white text-xl font-bold text-[#204D49]
               shadow-sm
             "
           >
@@ -44,7 +44,7 @@ export default class extends Controller {
               absolute -bottom-1 left-1/2 z-20
               h-3 w-3
               -translate-x-1/2 rotate-45
-              border-b-2 border-r-2 border-slate-700
+              border-b-2 border-r-2 border-[#204D49]
               bg-white
             "
           ></div>
