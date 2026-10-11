@@ -4,7 +4,7 @@ module ApplicationHelper
       site: "Citytori",
       reverse: true,
       separator: " | ",
-      description: "Citytoriは街で見つけたものを、写真とことばでつないでいく散歩サービスです。",
+      description: "Citytoriは街で見つけたものからしりとりをつなぎ、写真とことばを記録して振り返る散歩サービスです。",
       canonical: "#{request.base_url}#{request.path}",
       icon: [
         { href: image_url("favicon.ico"), type: "image/x-icon", sizes: "any" },
