@@ -19,7 +19,7 @@ body {
 }
 
 body:has(.landing-page) {
-  background-color: #ffffff;
+  background-color: #fcf9ef;
 }
 
 main:has(.landing-page) {
@@ -30,16 +30,25 @@ main:has(.landing-page) {
 }
 
 .landing-hero {
-  background-color: #ffffff;
+  background-color: #fcf9ef;
   padding-inline: max(24px, calc((100% - 960px) / 2));
+}
+
+.landing-top-logo {
+  display: block;
+  width: min(88%, 640px);
+  height: auto;
+  margin: 0 auto 24px;
 }
 
 .landing-hero-sheet {
   max-width: 720px;
   margin-inline: auto;
-  padding-top: 22px;
+  padding-top: 28px;
+  border: 1px solid rgb(32 77 73 / 0.08);
+  border-radius: 20px;
   overflow: hidden;
-  background: #fcf9ef;
+  background: #fff;
 }
 
 .landing-title,
@@ -65,10 +74,11 @@ main:has(.landing-page) {
 
 .landing-hero-image {
   display: block;
-  width: 100%;
+  width: calc(100% - 32px);
+  max-width: calc(100% - 32px);
   height: auto;
-  margin-top: -4px;
-  mix-blend-mode: multiply;
+  margin: 16px auto 0;
+  object-fit: contain;
 }
 
 .landing-cta {
@@ -100,8 +110,17 @@ main:has(.landing-page) {
 
 .landing-about {
   padding: 28px 24px;
-  border-radius: 18px;
+  border: 1px solid #c9e4e5;
+  border-radius: 20px;
   background-color: #e8f4f5;
+}
+
+.landing-how-to-card {
+  margin-top: 36px;
+  padding: 28px 20px;
+  border: 1px solid rgb(32 77 73 / 0.08);
+  border-radius: 20px;
+  background: #fff;
 }
 
 .landing-section-title {
@@ -146,11 +165,16 @@ main:has(.landing-page) {
 
 @media (min-width: 768px) {
   .landing-hero-sheet {
-    padding-top: 32px;
+    padding-top: 40px;
   }
 
   .landing-about {
     padding: 36px 40px;
+  }
+
+  .landing-how-to-card {
+    margin-top: 48px;
+    padding: 40px;
   }
 
   .landing-steps {

@@ -34,7 +34,9 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
+    <% unless controller_name == "home" && action_name == "show" && !logged_in? %>
+      <%= render "layouts/header" %>
+    <% end %>
 
     <div id="flash_messages" class="flex justify-center px-5">
       <%= render "shared/flash_messages" %>

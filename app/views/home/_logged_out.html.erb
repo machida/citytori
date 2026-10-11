@@ -4,6 +4,8 @@
     aria-labelledby="landing-title"
   >
     <div class="landing-hero-sheet">
+      <%= image_tag "top-logo.png", alt: "Citytori", class: "landing-top-logo" %>
+
       <h1 id="landing-title" class="landing-title">
         <span class="block">しりとりしながら、</span>
         <span class="block">街を歩こう。</span>
@@ -14,39 +16,39 @@
       </p>
 
       <%= image_tag "new/new-top-image.png", alt: "街の看板にとまる鳥を、スマートフォン越しに見つけるイラスト", width: 1672, height: 941, class: "landing-hero-image" %>
-    </div>
 
-    <div class="mx-auto mt-6 max-w-xl text-base leading-8 text-[#303B3C]">
-      <p>看板、お店、道ばたの草花。</p>
+      <div class="mx-auto mt-6 max-w-xl px-5 text-base leading-8 text-[#303B3C]">
+        <p>看板、お店、道ばたの草花。</p>
 
-      <p>
-        <span class="inline-block">街で見つけたものを、</span><span class="inline-block">しりとりでつないでみませんか。</span>
-      </p>
+        <p>
+          <span class="inline-block">街で見つけたものを、</span><span class="inline-block">しりとりでつないでみませんか。</span>
+        </p>
 
-      <p>
-        <span class="inline-block">写真とことばで残せば、</span><span class="inline-block">今日の散歩が</span><span class="inline-block">自分だけのアルバムに。</span>
-      </p>
-    </div>
+        <p>
+          <span class="inline-block">写真とことばで残せば、</span><span class="inline-block">今日の散歩が</span><span class="inline-block">自分だけのアルバムに。</span>
+        </p>
+      </div>
 
-    <div class="mx-auto mt-6 max-w-xl">
-      <%= button_to "しりとり散歩をはじめる", "/auth/google_oauth2", method: :post, data: { turbo: false }, class: "landing-cta" %>
+      <div class="mx-auto mt-6 max-w-xl px-5 pb-7">
+        <%= button_to "しりとり散歩をはじめる", "/auth/google_oauth2", method: :post, data: { turbo: false }, class: "landing-cta" %>
 
-      <p class="mt-3 text-sm leading-6 text-[#303B3C]">
-        Googleアカウントでログインして利用します
-      </p>
+        <p class="mt-3 text-sm leading-6 text-[#303B3C]">
+          Googleアカウントでログインして利用します
+        </p>
 
-      <p class="mt-3 text-xs leading-6 text-[#303B3C]">
-        <%= link_to "利用規約", terms_path, class: "underline underline-offset-4 hover:text-[#204D49]" %>
-        ・
-        <%= link_to "プライバシーポリシー", privacy_path, class: "underline underline-offset-4 hover:text-[#204D49]" %>
-        <br>
-        に同意した上でログインしてください
-      </p>
+        <p class="mt-3 text-xs leading-6 text-[#303B3C]">
+          <%= link_to "利用規約", terms_path, class: "underline underline-offset-4 hover:text-[#204D49]" %>
+          ・
+          <%= link_to "プライバシーポリシー", privacy_path, class: "underline underline-offset-4 hover:text-[#204D49]" %>
+          <br>
+          に同意した上でログインしてください
+        </p>
+      </div>
     </div>
   </section>
 
   <div class="landing-details pb-14 sm:pb-20">
-    <section class="landing-about" aria-labelledby="landing-about">
+    <section class="landing-about mx-auto max-w-2xl" aria-labelledby="landing-about">
       <div class="mx-auto max-w-2xl">
         <h2 id="landing-about" class="landing-section-title">
           しりとり散歩とは？
@@ -58,13 +60,13 @@
       </div>
     </section>
 
-    <section class="pt-9 sm:pt-12" aria-labelledby="landing-how-to">
+    <section class="landing-how-to-card mx-auto max-w-2xl" aria-labelledby="landing-how-to">
       <h2 id="landing-how-to" class="landing-section-title landing-rule-title">
         Citytoriの使い方
       </h2>
 
-      <ol class="landing-steps mt-8">
-        <li class="landing-step">
+      <ol class="mt-8 divide-y divide-[#204D49]/10 border-y border-[#204D49]/10">
+        <li class="grid grid-cols-[3.5rem_1fr] gap-3 py-7 sm:grid-cols-[5rem_1fr] sm:gap-6">
           <span class="landing-step-number" aria-hidden="true"> 01 </span>
 
           <div>
@@ -76,7 +78,7 @@
           </div>
         </li>
 
-        <li class="landing-step">
+        <li class="grid grid-cols-[3.5rem_1fr] gap-3 py-7 sm:grid-cols-[5rem_1fr] sm:gap-6">
           <span class="landing-step-number" aria-hidden="true"> 02 </span>
 
           <div>
@@ -88,7 +90,7 @@
           </div>
         </li>
 
-        <li class="landing-step">
+        <li class="grid grid-cols-[3.5rem_1fr] gap-3 py-7 sm:grid-cols-[5rem_1fr] sm:gap-6">
           <span class="landing-step-number" aria-hidden="true"> 03 </span>
 
           <div>
