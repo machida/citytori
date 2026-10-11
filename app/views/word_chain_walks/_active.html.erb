@@ -3,8 +3,6 @@
     <%= render "shared/error_messages", object: word_chain_walk_step %>
   </div>
 
-  <%= link_to "< ホームへ戻る", root_path, class: "active-walk-back-link" %>
-
   <h1 class="active-walk-title">
     しりとり散歩中
   </h1>
@@ -16,7 +14,7 @@
 
     <section class="active-walk-latest-section">
       <h2 class="active-walk-latest-heading">
-        <i class="fa-regular fa-clock"></i>
+        <i class="fa-regular fa-clock" aria-hidden="true"></i>
         直前の記録
       </h2>
 

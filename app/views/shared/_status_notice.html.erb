@@ -1,20 +1,19 @@
-<% styles = case variant.to_sym
-            when :processing
-              {
-                classes: "border-[#E8D9A5] bg-[#FFF8E6] text-[#204D49]",
-                icon: "fa-solid fa-spinner fa-spin"
-              }
-            when :success
-              {
-                classes: "border-[#C9E4E5] bg-[#E8F4F5] text-[#204D49]",
-                icon: "fa-solid fa-check"
-              }
-            when :muted_failure
-              {
-                classes: "border-[#C9DBD7] bg-[#F2F5F3] text-[#52645F]",
-                icon: "fa-solid fa-circle-exclamation"
-              }
-            end %>
+<% styles = {
+  processing: {
+    classes: "border-[#E8D9A5] bg-[#FFF8E6] text-[#204D49]",
+    icon: "fa-solid fa-spinner fa-spin"
+  },
+  success: {
+    classes: "border-[#C9E4E5] bg-[#E8F4F5] text-[#204D49]",
+    icon: "fa-solid fa-check"
+  },
+  muted_failure: {
+    classes: "border-[#C9DBD7] bg-[#F2F5F3] text-[#52645F]",
+    icon: "fa-solid fa-circle-exclamation"
+  }
+}.fetch(variant&.to_sym) do
+  raise ArgumentError, "Unsupported status notice variant: #{variant.inspect}"
+end %>
 
 <div
   class="flex items-start gap-3 rounded-xl border px-4 py-3 <%= styles[:classes] %>"

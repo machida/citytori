@@ -54,7 +54,7 @@
     </section>
 
     <section class="mt-7 sm:mt-9" aria-labelledby="word-chain-heading">
-      <h2 id="word-chain-heading" class="border-l-2 border-[#F16B36] pl-3 text-base font-bold text-[#204D49]">
+      <h2 id="word-chain-heading" class="border-l-2 border-[#F16B36] pl-3 text-lg font-bold text-[#204D49]">
         今回のしりとり
       </h2>
 
@@ -85,7 +85,7 @@
     </section>
 
     <section class="mt-7 sm:mt-9" aria-labelledby="walk-photos-heading">
-      <h2 id="walk-photos-heading" class="border-l-2 border-[#F16B36] pl-3 text-base font-bold text-[#204D49]">
+      <h2 id="walk-photos-heading" class="border-l-2 border-[#F16B36] pl-3 text-lg font-bold text-[#204D49]">
         散歩の写真
       </h2>
 
@@ -93,9 +93,13 @@
 
       <% if word_chain_walk_steps_images.any? %>
         <% walk_photos = word_chain_walk_steps_images.sample(3) %>
-        <% photo_grid_columns = { 1 => "grid-cols-1 max-w-md", 2 => "grid-cols-2", 3 => "grid-cols-3" }.fetch(walk_photos.size) %>
+        <% photo_grid_class = {
+          1 => "completion-photo-grid--one",
+          2 => "completion-photo-grid--two",
+          3 => "completion-photo-grid--three"
+        }.fetch(walk_photos.size) %>
 
-        <div class="mx-auto mt-3 grid <%= photo_grid_columns %> gap-3 sm:gap-4">
+        <div class="completion-photo-grid <%= photo_grid_class %>">
           <% walk_photos.each do |word_chain_walk_step| %>
             <%= image_tag word_chain_walk_step.image,
                           alt: "「#{word_chain_walk_step.word}」の写真",

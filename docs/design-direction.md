@@ -26,23 +26,37 @@
 
 ## 配色
 
-以下は現在の候補色と役割です。実際の画面を確認しながら変更する可能性があり、主要CTAや状態色などの詳細な役割は未確定です。
+### Base Colors
 
-| 色 | 候補 | 現在想定する役割 |
-| --- | --- | --- |
-| White / Warm White | `#FFFFFF` / `#FCF9EF` | 基本背景、ヒーロー内の生成りの面 |
-| Deep Green | `#204D49` | 見出し、ロゴ、線画、UIを引き締める色 |
-| Charcoal | `#303B3C` | 本文 |
-| Orange | `#F16B36` | 主要CTA、番号、短い下線などの主アクセント |
-| Pale Aqua | `#E8F4F5` | 説明のまとまりをつくる補助背景 |
-| Leaf Green | `#88A485` | 街路樹や草花など、イラスト内の自然要素 |
-| Mustard | `#E8B23F` | イラスト内の小さな遊び色。必要な場面だけ使う |
+- Warm White: `#FCF9EF`
+- White: `#FFFFFF`
+- Deep Green: `#204D49`
+- Orange: `#F16B36`
+- Pale Aqua: `#E8F4F5`
+- Cream / Character Background: `#FFF3DF`
+- Charcoal: `#303B3C`
+- Muted Gray Green / Border: `#C9DBD7`
+
+### Illustration Accent Colors
+
+- Leaf Green: `#88A485` — 街路樹や草花など、イラスト内の自然要素
+- Mustard: `#E8B23F` — イラスト内の小さな遊び色。必要な場面だけ使う
 
 - 白を基本に、生成り、水色、オレンジを面ごとに切り替えて画面にリズムをつくる
 - オレンジは主要操作と注目させたい一点に使い、同時に多くのUIへ広げない
 - ターコイズやピンクなどのポップな色は、必要になったときにイラストや企画的な表現へ限定して検討する
-- 色の意味が曖昧にならないよう、状態を示す色は別途確認する
 - 実装前に、文字・操作UIのコントラストを確認する
+
+### Semantic Colors
+
+ブランドカラーと状態色は役割を分ける。
+
+- Success: 成功メッセージ専用
+- Error: エラー表示専用
+- Destructive: 削除など破壊的操作専用
+- Warning: 必要な場合のみ使用
+
+削除やエラーをOrangeなどのブランドカラーへ無理に統一しない。状態色は、意味が伝わることを優先する。
 
 ## イラストとモチーフ
 
@@ -70,6 +84,16 @@
 - ヒーローではコピー、補足コピー、キービジュアルの間隔を詰め、ひとつのグラフィックとして見せる
 - 写真やことばを主役にできる余白を確保する
 - 装飾やイラストによって情報の優先順位を下げない
+
+### Typography Scale
+
+- Caption / annotation: 12〜13px
+- Body / form value: 16px
+- Card title / recorded word: 18〜20px
+- Section heading: 20〜24px
+- Page title: mobile 30〜32px / desktop 36〜40px
+
+画面構造によって例外は認めるが、同じ役割では大きく差をつけない。
 
 ## 参考画像
 
