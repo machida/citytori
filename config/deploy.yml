@@ -98,8 +98,6 @@ builder:
 # Use a different ssh user than root
 ssh:
   user: ubuntu
-  key_data:
-    - SSH_PRIVATE_KEY
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
