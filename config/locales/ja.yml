@@ -19,4 +19,5 @@ ja:
 
   time:
     formats:
+      recorded_at: "%Y年%-m月%-d日 %H:%M"
       time_only: "%H:%M"
