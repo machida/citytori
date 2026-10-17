@@ -21,3 +21,4 @@ ja:
     formats:
       recorded_at: "%Y年%-m月%-d日 %H:%M"
       time_only: "%H:%M"
+      walk_date: "%-m月%-d日"
