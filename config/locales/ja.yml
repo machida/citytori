@@ -16,3 +16,7 @@ ja:
         image: 写真
         latitude: 緯度
         longitude: 経度
+
+  time:
+    formats:
+      time_only: "%H:%M"
