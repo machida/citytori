@@ -89,7 +89,7 @@ RSpec.describe 'WordChainWalks', type: :system do
     click_button '記録する'
 
     within 'dialog[data-modal-target="modal"][open]' do
-      expect(page).to have_content("Word can't be blank")
+      expect(page).to have_content("見つけたことばを入力してください")
     end
   end
 
