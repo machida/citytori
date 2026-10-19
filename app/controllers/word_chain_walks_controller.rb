@@ -21,9 +21,11 @@ class WordChainWalksController < ApplicationController
       return
     end
 
-    @locations = @word_chain_walk_steps.filter_map do |step|
+    @locations = @word_chain_walk_steps.reverse_each.with_index(1).filter_map do |step, number|
       next unless step.latitude.present? && step.longitude.present?
       {
+        number: number,
+        word: step.word,
         latitude: step.latitude,
         longitude: step.longitude,
         image: url_for(step.image),
