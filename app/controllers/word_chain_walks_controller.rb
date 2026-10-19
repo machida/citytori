@@ -14,7 +14,7 @@ class WordChainWalksController < ApplicationController
   def map
     @word_chain_walk = current_user.word_chain_walks.finished.find(params[:id])
 
-    @word_chain_walk_steps = @word_chain_walk.word_chain_walk_steps.order(id: :desc)
+    @word_chain_walk_steps = @word_chain_walk.word_chain_walk_steps.with_attached_image.order(id: :desc)
 
     if @word_chain_walk_steps.none? { |step| step.latitude.present? && step.longitude.present? }
       redirect_to @word_chain_walk, alert: "位置情報が記録されていないため、地図を表示できません"
@@ -26,7 +26,7 @@ class WordChainWalksController < ApplicationController
       {
         latitude: step.latitude,
         longitude: step.longitude,
-        image: url_for(step.image),
+        image: url_for(step.image.variant(resize_to_fill: [ 112, 112 ])),
         id: step.id,
         url: word_chain_walk_word_chain_walk_step_path(@word_chain_walk, step)
       }
