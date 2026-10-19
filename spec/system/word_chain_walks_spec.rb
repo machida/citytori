@@ -237,7 +237,7 @@ RSpec.describe 'WordChainWalks', type: :system do
 
     fill_in '見つけたことば', with: 'りんーー'
 
-    accept_confirm('しりとり散歩をおしまいにしますか？') do
+    accept_confirm('「ん」で終わることばです。この記録を保存して、散歩をおしまいにしますか？') do
       click_button '記録する'
     end
 
@@ -263,7 +263,7 @@ RSpec.describe 'WordChainWalks', type: :system do
 
     fill_in '見つけたことば', with: 'りんーー'
 
-    dismiss_confirm('しりとり散歩をおしまいにしますか？') do
+    dismiss_confirm('「ん」で終わることばです。この記録を保存して、散歩をおしまいにしますか？') do
       click_button '記録する'
     end
 

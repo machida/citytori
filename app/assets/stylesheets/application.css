@@ -36,7 +36,7 @@ main:has(.landing-page) {
 
 .landing-top-logo {
   display: block;
-  width: min(88%, 640px);
+  width: min(65%, 280px);
   height: auto;
   margin: 0 auto 24px;
 }
@@ -59,17 +59,16 @@ main:has(.landing-page) {
 
 .landing-title {
   padding-inline: 12px;
-  font-size: clamp(28px, 7vw, 56px);
+  font-size: clamp(28px, 6vw, 44px);
   line-height: 1.25;
   letter-spacing: 0.015em;
 }
 
 .landing-hero-image {
   display: block;
-  width: calc(100% - 32px);
-  max-width: calc(100% - 32px);
+  width: min(90%, 480px);
   height: auto;
-  margin: 16px auto 0;
+  margin: 24px auto 0;
   object-fit: contain;
 }
 
@@ -81,7 +80,7 @@ main:has(.landing-page) {
   justify-content: center;
   padding: 16px 20px;
   border-radius: 16px;
-  background-color: #f16b36;
+  background-color: #b9471d;
   color: #fff;
   font-size: 19px;
   font-weight: 700;
@@ -137,7 +136,7 @@ main:has(.landing-page) {
 }
 
 .landing-step-number {
-  color: #f16b36;
+  color: #b9471d;
   font-size: 30px;
   font-weight: 700;
   line-height: 1.2;
@@ -208,7 +207,7 @@ main:has(.completion-page) {
   justify-content: center;
   padding: 12px 24px;
   border-radius: 14px;
-  background: #f16b36;
+  background: #b9471d;
   color: #fff;
   font-size: 19px;
   font-weight: 700;
@@ -391,7 +390,7 @@ main:has(.home-page) {
   padding: 14px 20px;
   border: 0;
   border-radius: 14px;
-  background: #f16b36;
+  background: #b9471d;
   color: #fff;
   font-size: 19px;
   font-weight: 700;
@@ -507,7 +506,7 @@ main:has(.home-page) {
 }
 
 .home-more-link {
-  color: #f16b36;
+  color: #b9471d;
   font-size: 0.9375rem;
   font-weight: 700;
   text-decoration: underline;
@@ -578,7 +577,7 @@ main:has(.walk-index-page) {
 }
 
 .walk-index-heading-icon-active {
-  color: #f16b36;
+  color: #b9471d;
 }
 
 .walk-index-heading-icon-finished {
@@ -608,7 +607,7 @@ main:has(.walk-index-page) {
 }
 
 .walk-index-card:focus-visible {
-  outline: 3px solid #f16b36;
+  outline: 3px solid #b9471d;
   outline-offset: 3px;
 }
 
@@ -652,7 +651,7 @@ main:has(.walk-index-page) {
 }
 
 .walk-index-status-active {
-  background: #f16b36;
+  background: #b9471d;
   color: #fff;
 }
 
@@ -682,7 +681,7 @@ main:has(.walk-index-page) {
 .walk-index-resume {
   margin: auto 0 0;
   padding-top: 10px;
-  color: #f16b36;
+  color: #b9471d;
   font-size: 0.8125rem;
   font-weight: 800;
 }
@@ -706,7 +705,7 @@ main:has(.walk-index-page) {
   padding: 13px 16px;
   border: 0;
   border-radius: 8px;
-  background: #f16b36;
+  background: #b9471d;
   color: #fff;
   font-size: 19px;
   font-weight: 800;
@@ -835,28 +834,11 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-allowed-chars {
-  display: flex;
-  max-width: 560px;
-  align-items: center;
-  gap: 12px;
-  margin: 14px auto 0;
-  padding: 14px 16px;
-  border: 1px solid #c9e4e5;
-  border-radius: 14px;
-  background: #e8f4f5;
-  color: #303b3c;
-  text-align: left;
-}
-
-.active-walk-allowed-icon {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 auto;
-  place-items: center;
-  border-radius: 50%;
-  background: #204d49;
-  color: #fff;
+  max-width: 440px;
+  margin: 12px auto 0;
+  padding: 0 8px;
+  color: #52645f;
+  text-align: center;
 }
 
 .active-walk-allowed-chars p {
@@ -885,7 +867,7 @@ main:has(.active-walk-page) {
   padding: 14px 24px;
   border: 0;
   border-radius: 14px;
-  background: #f16b36;
+  background: #b9471d;
   color: #fff;
   font-size: 19px;
   font-weight: 800;
@@ -957,6 +939,10 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-latest-cancel {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px;
   color: #667773;
   font-size: 0.75rem;
   text-decoration: underline;
@@ -1233,3 +1219,27 @@ main:has(.walk-step-detail-page) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* Examples use the same photo, word and memo hierarchy as a saved record. */
+.walk-example-grid { display: grid; gap: 16px; margin-top: 24px; }
+.walk-example-card { overflow: hidden; border: 1px solid #c9dbd7; border-radius: 12px; background: #fff; }
+.walk-example-photo { width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; }
+.walk-example-photo--left { object-position: left; }
+.walk-example-photo--center { object-position: center; }
+.walk-example-photo--right { object-position: right; }
+@media (min-width: 640px) {
+  .walk-example-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+:where(a, button, input, textarea):focus-visible {
+  outline: 3px solid #204d49;
+  outline-offset: 3px;
+}
+:where(button, input, textarea) { font: inherit; }
+:where(h1, h2, h3, p, dd) { overflow-wrap: anywhere; }
+
+.walk-map-marker { display: block; position: relative; width: 56px; height: 56px; border: 3px solid white; border-radius: 50%; background: white; box-shadow: 0 2px 8px #204d4940; }
+.walk-map-marker img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.walk-map-marker span { position: absolute; top: -6px; left: -6px; min-width: 24px; padding: 2px 5px; border-radius: 50%; background: #204d49; color: white; text-align: center; font-weight: 700; }
+.walk-map-marker[aria-current], .walk-map-record[aria-current] { outline: 3px solid #b9471d; outline-offset: 3px; }
+#selected_walk_step { display: block; scroll-margin-block: 16px; }

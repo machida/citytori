@@ -3,7 +3,7 @@
     <%= render "word_chain_walks/finished/map_card", word_chain_walk_step: @word_chain_walk_step %>
   <% end %>
 <% else %>
-  <% set_meta_tags title: "記録の詳細", description: "Citytoriで記録した「#{@word_chain_walk_step.word}」の写真、メモ、位置情報を確認できます。", noindex: true %>
+  <% set_meta_tags title: "記録の詳細", description: "Citytoriで記録した「#{@word_chain_walk_step.word}」の写真、メモ、位置情報を確認できます。", noindex: true %> <%# herb:disable erb-no-unused-expressions %>
   <div class="walk-step-detail-page">
     <article class="walk-step-detail-sheet">
       <div class="mb-5 sm:mb-6">
@@ -14,19 +14,7 @@
       </div>
 
       <header class="text-center">
-        <div class="relative mx-auto h-40 w-full max-w-[720px] sm:h-52">
-          <%= image_tag "street-line-step.png",
-                        alt: "",
-                        class: "absolute inset-x-0 bottom-0 w-full" %>
-
-          <div class="absolute left-1/2 top-1/2 z-10 grid size-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl border border-[#204D49] bg-[#FCF9EF] sm:size-36">
-            <span class="text-5xl font-black leading-none text-[#204D49] sm:text-6xl">
-              <%= @word_chain_walk_step.word.first %>
-            </span>
-          </div>
-        </div>
-
-        <h1 class="mt-3 text-2xl font-bold tracking-tight text-[#204D49] sm:mt-4 sm:text-3xl">
+        <h1 class="mt-3 break-words text-2xl font-bold tracking-tight text-[#204D49] sm:mt-4 sm:text-3xl">
           <%= @word_chain_walk_step.word %>
         </h1>
 
@@ -53,7 +41,7 @@
           <h2 class="text-lg font-bold text-[#204D49]">メモ</h2>
 
           <% if @word_chain_walk_step.memo.present? %>
-            <p class="mt-3 whitespace-pre-wrap text-[0.9375rem] leading-relaxed text-[#303B3C]">
+            <p class="mt-3 whitespace-pre-wrap break-words text-[0.9375rem] leading-relaxed text-[#303B3C]">
               <%= @word_chain_walk_step.memo %>
             </p>
           <% else %>
