@@ -103,7 +103,7 @@
 
         <div class="completion-photo-grid <%= photo_grid_class %>">
           <% walk_photos.each do |word_chain_walk_step| %>
-            <%= image_tag word_chain_walk_step.image,
+            <%= image_tag word_chain_walk_step.image.variant(resize_to_fill: [ 800, 600 ]),
                           alt: "「#{word_chain_walk_step.word}」の写真",
                           class: "aspect-[4/3] w-full rounded-xl object-cover" %>
           <% end %>
