@@ -12,23 +12,22 @@
         role="img"
         aria-label="写真はありません"
       >
-        No Image
+        写真はまだありません
       </div>
     <% end %>
 
     <div class="home-recent-card-body">
       <p class="home-recent-word">
-        「<%= word_chain_walk.start_char %>」から始まった散歩
+        <%= word_chain_walk.started_at.strftime("%Y年%-m月%-d日 %H:%M") %>の散歩
       </p>
     </div>
 
     <dl class="home-recent-stats">
       <div>
-        <dt class="sr-only">日付</dt>
+        <dt class="sr-only">最初の文字</dt>
 
         <dd>
-          <%= word_chain_walk.finished_at.month %>月
-          <%= word_chain_walk.finished_at.day %>日
+          「<%= word_chain_walk.start_char %>」から
         </dd>
       </div>
 
@@ -36,7 +35,7 @@
         <dt class="sr-only">つないだことばの数</dt>
 
         <dd>
-          つないだことばの数 <%= word_chain_walk.word_chain_walk_steps.size %>個
+          <%= word_chain_walk.word_chain_walk_steps.size %>個のことば
         </dd>
       </div>
 

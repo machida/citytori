@@ -593,10 +593,9 @@ main:has(.walk-index-page) {
 
 .walk-index-card {
   display: grid;
-  grid-template-columns: minmax(122px, 40%) minmax(0, 1fr);
+  grid-template-columns: minmax(80px, 30%) minmax(0, 1fr);
   width: 100%;
-  height: 152px;
-  overflow: hidden;
+  min-height: 152px;
   border: 1px solid #c9dbd7;
   border-radius: 12px;
   background: #fff;
@@ -614,6 +613,9 @@ main:has(.walk-index-page) {
 }
 
 .walk-index-card-image {
+  border-radius: 12px 0 0 12px;
+  min-height: 152px;
+  max-height: 260px;
   display: block;
   width: 100%;
   height: 100%;
@@ -621,6 +623,8 @@ main:has(.walk-index-page) {
 }
 
 .walk-index-no-image {
+  padding: 12px;
+  text-align: center;
   display: grid;
   place-items: center;
   background: #e8f4f5;
@@ -669,15 +673,11 @@ main:has(.walk-index-page) {
   gap: 4px 10px;
   margin-top: 12px;
   color: #52645f;
-  font-size: 0.75rem;
-  line-height: 1.4;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
-.walk-index-card-meta > div:not(:last-child)::after {
-  margin-left: 10px;
-  color: #c9dbd7;
-  content: "・";
-}
+
 
 .walk-index-resume {
   margin: auto 0 0;
@@ -1161,11 +1161,11 @@ main:has(.walk-step-detail-page) {
 
   .walk-index-card {
     grid-template-columns: 260px minmax(0, 1fr);
-    height: 176px;
+    min-height: 176px;
   }
 
   .walk-index-card-image {
-    height: 176px;
+    min-height: 176px;
   }
 
   .walk-index-card-content {
