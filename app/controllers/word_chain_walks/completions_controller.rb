@@ -1,6 +1,4 @@
 class WordChainWalks::CompletionsController < ApplicationController
-  before_action :authenticate
-
   def show
     @word_chain_walk = current_user.word_chain_walks.find(params[:word_chain_walk_id])
 

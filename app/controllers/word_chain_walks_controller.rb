@@ -1,6 +1,4 @@
 class WordChainWalksController < ApplicationController
-  before_action :authenticate
-
   def index
     @word_chain_walks = current_user.word_chain_walks.includes(:word_chain_walk_steps).order(id: :desc)
   end
