@@ -39,7 +39,7 @@ export default class extends Controller {
             <img
               src="${pos.image}"
               alt=""
-              class="h-full w-full rounded-full object-cover"
+              class="block h-full w-full! object-cover"
             >
           </a>
         `,
