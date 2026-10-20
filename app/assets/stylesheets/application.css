@@ -96,7 +96,7 @@ main:has(.landing-page) {
 }
 
 .landing-about {
-  padding: 28px 16px;
+  padding: 20px 16px;
   border: 1px solid #c9e4e5;
   border-radius: 20px;
   background-color: #e8f4f5;
@@ -145,7 +145,7 @@ main:has(.landing-page) {
   }
 
   .landing-about {
-    padding-block: 36px;
+    padding-block: 24px;
   }
 
   .landing-how-to-card {
