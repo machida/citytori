@@ -24,8 +24,8 @@ class WordChainWalkStep < ApplicationRecord
   validate :image_attached
   validate :image_size
   validate :image_content_type
-  validate :must_connect_previous_char
-  validate :word_chain_walk_must_not_be_finished
+  validate :must_connect_previous_char, on: :create
+  validate :word_chain_walk_must_not_be_finished, on: :create
   validate :latitude_and_longitude_must_be_both_present_or_blank
 
   def normalize_first_char
