@@ -44,7 +44,7 @@ main:has(.landing-page) {
 .landing-hero-sheet {
   max-width: 720px;
   margin-inline: auto;
-  padding-top: 28px;
+  padding-top: 16px;
 }
 
 .landing-title,
@@ -141,7 +141,7 @@ main:has(.landing-page) {
 
 @media (min-width: 768px) {
   .landing-hero-sheet {
-    padding-top: 40px;
+    padding-top: 24px;
   }
 
   .landing-about {
