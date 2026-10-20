@@ -1,0 +1,6 @@
+<%= turbo_frame_tag dom_id(@word_chain_walk_step, :memo) do %>
+  <%= form_with model: [@word_chain_walk, @word_chain_walk_step] do |form| %>
+    <%= form.text_area :memo %>
+    <%= form.submit "メモを更新する" %>
+  <% end %>
+<% end %>
