@@ -145,7 +145,7 @@ main:has(.landing-page) {
   }
 
   .landing-about {
-    padding-block: 24px;
+    padding: 1.5rem 1.75rem;
   }
 
   .landing-how-to-card {
