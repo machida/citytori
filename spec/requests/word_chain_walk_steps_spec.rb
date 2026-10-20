@@ -236,4 +236,34 @@ RSpec.describe 'WordChainWalkSteps', type: :request do
       end.not_to change(WordChainWalkStep, :count)
     end
   end
+
+  describe 'PUTS /word_chain_walks/:word_chain_walk_id/word_chain_walk_steps/:id' do
+    it '自分のStep詳細のメモを更新できること' do
+      word_chain_walk_step = create_word_chain_walk_step(word_chain_walk)
+
+      log_in(user)
+
+      expect do
+        patch word_chain_walk_word_chain_walk_step_path(word_chain_walk, word_chain_walk_step), params: { word_chain_walk_step: { memo: "更新したメモ" } }
+      end.to change { word_chain_walk_step.reload.memo }
+          .from("赤いりんご")
+          .to("更新したメモ")
+
+      expect(response).to have_http_status(:see_other)
+
+      expect(response).to redirect_to(word_chain_walk_word_chain_walk_step_path(word_chain_walk, word_chain_walk_step))
+    end
+
+    it '他人のStep詳細をメモを更新できないこと' do
+      other_word_chain_walk_step = create_word_chain_walk_step(other_word_chain_walk)
+
+      log_in(user)
+
+      expect do
+        patch word_chain_walk_word_chain_walk_step_path(other_word_chain_walk, other_word_chain_walk_step), params: { word_chain_walk_step: { memo: "更新したメモ" } }
+      end.not_to change { other_word_chain_walk_step.reload.memo }
+
+      expect(response).to have_http_status(:not_found)
+    end
+  end
 end

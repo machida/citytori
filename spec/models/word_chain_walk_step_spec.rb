@@ -247,6 +247,27 @@ RSpec.describe WordChainWalkStep, type: :model do
     expect(step.errors[:image]).to include("はPNGまたはJPEG形式の画像にしてください")
   end
 
+  it "完了していない散歩のメモを更新できること" do
+    word_chain_walk_step = FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご', memo: 'メモ更新前')
+
+    expect(
+      word_chain_walk_step.update(memo: "メモを更新した")
+    ).to be(true)
+
+    expect(word_chain_walk_step.memo).to eq("メモを更新した")
+  end
+
+  it "完了済みの散歩のメモを更新できること" do
+    word_chain_walk_step = FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご', memo: 'メモ更新前')
+    word_chain_walk.update!(finished_at: Time.current)
+
+    expect(
+      word_chain_walk_step.update(memo: "メモを更新した")
+    ).to be(true)
+
+    expect(word_chain_walk_step.memo).to eq("メモを更新した")
+  end
+
   describe "#normalize_first_char" do
     it "通常のひらがなはそのまま先頭の文字を返すこと" do
       step = FactoryBot.build(:word_chain_walk_step)
