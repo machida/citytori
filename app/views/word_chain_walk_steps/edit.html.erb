@@ -2,5 +2,6 @@
   <%= form_with model: [@word_chain_walk, @word_chain_walk_step] do |form| %>
     <%= form.text_area :memo %>
     <%= form.submit "メモを更新する" %>
+    <%= link_to("キャンセル", word_chain_walk_word_chain_walk_step_path(@word_chain_walk,  @word_chain_walk_step)) %>
   <% end %>
 <% end %>
