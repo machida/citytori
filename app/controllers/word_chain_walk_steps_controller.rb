@@ -1,5 +1,4 @@
 class WordChainWalkStepsController < ApplicationController
-  before_action :authenticate
   before_action :set_word_chain_walk
 
   def show
