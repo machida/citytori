@@ -96,7 +96,7 @@ main:has(.landing-page) {
 }
 
 .landing-about {
-  padding: 28px max(24px, calc((100% - 624px) / 2));
+  padding: 28px 16px;
   border: 1px solid #c9e4e5;
   border-radius: 20px;
   background-color: #e8f4f5;
