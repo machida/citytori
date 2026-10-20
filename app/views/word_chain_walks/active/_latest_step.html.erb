@@ -3,7 +3,7 @@
     <% latest_step = word_chain_walk.latest_step %>
     <div class="active-walk-latest-card">
       <div class="flex items-center gap-3">
-        <%= image_tag latest_step.image,
+        <%= image_tag latest_step.image.variant(resize_to_fill: [ 144, 144 ]),
                       alt: "前回見つけた「#{latest_step.word}」の写真",
                       class: "active-walk-latest-image" %>
 

@@ -1,11 +1,11 @@
-<% latest_step = word_chain_walk.latest_step %>
+<% latest_step = word_chain_walk.word_chain_walk_steps.max_by(&:id) %>
 <% finished = word_chain_walk.finished? %>
 <% display_date = finished ? word_chain_walk.finished_at : word_chain_walk.started_at %>
 
 <article id="<%= dom_id word_chain_walk %>">
   <%= link_to word_chain_walk, class: ["walk-index-card", (finished ? "walk-index-card-finished" : "walk-index-card-active")] do %>
     <% if latest_step&.image&.attached? %>
-      <%= image_tag latest_step.image,
+      <%= image_tag latest_step.image.variant(resize_to_fill: [240, 180]),
                     alt: "「#{word_chain_walk.start_char}」から始まった散歩の写真",
                     class: "walk-index-card-image" %>
     <% else %>
