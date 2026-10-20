@@ -54,6 +54,19 @@ class WordChainWalkStepsController < ApplicationController
                 status: :see_other
   end
 
+  def edit
+    @word_chain_walk_step = @word_chain_walk.word_chain_walk_steps.find(params[:id])
+  end
+
+  def update
+    @word_chain_walk_step = @word_chain_walk.word_chain_walk_steps.find(params[:id])
+    if @word_chain_walk_step.update(memo_params)
+      redirect_to word_chain_walk_word_chain_walk_step_path(@word_chain_walk, @word_chain_walk_step), notice: "メモを更新しました", status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_word_chain_walk
@@ -62,5 +75,9 @@ class WordChainWalkStepsController < ApplicationController
 
   def word_chain_walk_step_params
     params.require(:word_chain_walk_step).permit(:word, :memo, :image, :latitude, :longitude)
+  end
+
+  def memo_params
+    params.require(:word_chain_walk_step).permit(:memo)
   end
 end
