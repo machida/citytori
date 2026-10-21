@@ -112,7 +112,7 @@
 </div>
 
 <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-  <%= form.submit "写真とことばを記録する", class: "min-h-12 flex-1 cursor-pointer rounded-xl bg-[#F16B36] px-4 py-3 text-[19px] font-bold text-white hover:bg-[#CC491C] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49]" %>
+  <%= form.submit "写真とことばを記録する", data: { geolocation_target: "submit" }, class: "min-h-12 flex-1 cursor-pointer rounded-xl bg-[#F16B36] px-4 py-3 text-[19px] font-bold text-white hover:bg-[#CC491C] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49]" %>
 
   <button
     type="button"
