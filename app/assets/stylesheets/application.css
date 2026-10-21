@@ -1220,9 +1220,6 @@ main:has(.walk-step-detail-page) {
 .walk-example-grid { display: grid; gap: 16px; margin-top: 24px; }
 .walk-example-card { overflow: hidden; border: 1px solid #c9dbd7; border-radius: 12px; background: #fff; }
 .walk-example-photo { width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; }
-.walk-example-photo--left { object-position: left; }
-.walk-example-photo--center { object-position: center; }
-.walk-example-photo--right { object-position: right; }
 @media (min-width: 640px) {
   .walk-example-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

@@ -3,12 +3,12 @@
   <p class="mt-3 text-base leading-7">最初の文字が「き」なら、木を撮って「き」と入力。次も「き」からさがします。</p>
   <ol class="walk-example-grid">
     <% [
-      { word: "き", position: "left", time: "14:05", memo: "いつもの道で、大きな木を発見。", next_char: "き" },
-      { word: "きく", position: "center", time: "14:12", memo: "道ばたに黄色い菊が咲いていた。", next_char: "く" },
-      { word: "くるま", position: "right", time: "14:20", memo: "丸いライトがかわいい車。", next_char: "ま" }
+      { word: "き", image: "walk-example-tree.webp", width: 394, time: "14:05", memo: "いつもの道で、大きな木を発見。", next_char: "き" },
+      { word: "きく", image: "walk-example-chrysanthemum.webp", width: 394, time: "14:12", memo: "道ばたに黄色い菊が咲いていた。", next_char: "く" },
+      { word: "くるま", image: "walk-example-car.webp", width: 395, time: "14:20", memo: "丸いライトがかわいい車。", next_char: "ま" }
     ].each do |example| %>
       <li class="walk-example-card">
-        <%= image_tag "walk-example.webp", alt: "#{example[:word]}の記録例", width: 1200, height: 400, loading: "lazy", class: "walk-example-photo walk-example-photo--#{example[:position]}" %>
+        <%= image_tag example[:image], alt: "#{example[:word]}の記録例", width: example[:width], height: 400, loading: "lazy", class: "walk-example-photo" %>
         <div class="p-4">
           <p class="text-sm text-[#52645F]"><%= example[:time] %></p>
           <h3 class="mt-1 text-xl font-bold"><%= example[:word] %></h3>
