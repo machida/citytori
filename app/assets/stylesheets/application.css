@@ -1318,6 +1318,15 @@ main:has(.walk-step-detail-page) {
 .walk-example-card {
   position: relative;
 }
+
+.walk-example-caption {
+  position: relative;
+  margin: 16px 8px 0;
+  padding: 16px 20px;
+  border: 1px solid #dce5dc;
+  border-radius: 12px;
+  background: #fff;
+}
 .walk-example-number {
   position: absolute;
   top: -12px;
@@ -1356,7 +1365,7 @@ main:has(.walk-step-detail-page) {
   left: 50%;
   width: 100px;
   height: 64px;
-  color: #b9471d;
+  color: #88a485;
 }
 .walk-example-stop:nth-child(even) .walk-example-arrow {
   left: auto;
