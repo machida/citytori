@@ -1303,18 +1303,21 @@ main:has(.walk-step-detail-page) {
 /* A small photo trail follows the word chain in reading order. */
 .walk-example-grid {
   display: grid;
-  gap: 64px;
-  margin-top: 32px;
-  padding: 0 4px 12px;
+  gap: 88px;
+  max-width: 640px;
+  margin: 44px auto 24px;
+  padding: 0 12px 12px;
   list-style: none;
 }
 .walk-example-stop {
   position: relative;
-  width: calc(100% - 32px);
+  width: 82%;
   max-width: 320px;
   justify-self: start;
 }
 .walk-example-stop:nth-child(even) { justify-self: end; }
+.walk-example-stop:nth-child(odd) .walk-example-card { transform: rotate(-3deg); }
+.walk-example-stop:nth-child(even) .walk-example-card { transform: rotate(3deg); }
 .walk-example-card {
   position: relative;
   padding: 8px;
@@ -1357,31 +1360,21 @@ main:has(.walk-step-detail-page) {
 }
 .walk-example-arrow {
   position: absolute;
-  top: calc(100% + 4px);
-  left: calc(50% - 8px);
-  width: 40px;
-  height: 56px;
+  top: calc(100% + 14px);
+  left: 50%;
+  width: 100px;
+  height: 64px;
   color: #b9471d;
 }
-.walk-example-stop:nth-child(even) .walk-example-arrow { transform: scaleX(-1); }
+.walk-example-stop:nth-child(even) .walk-example-arrow {
+  left: auto;
+  right: 50%;
+  transform: scaleX(-1);
+}
 @media (min-width: 640px) {
-  .walk-example-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: start;
-    gap: 32px;
-  }
-  .walk-example-stop { width: 100%; max-width: none; }
-  .walk-example-stop:nth-child(even) { margin-top: 56px; }
-  .walk-example-arrow {
-    top: 80px;
-    left: calc(100% + 2px);
-    width: 28px;
-    height: 64px;
-  }
-  .walk-example-stop:nth-child(even) .walk-example-arrow {
-    top: 24px;
-    transform: scaleY(-1);
-  }
+  .walk-example-grid { gap: 100px; padding-inline: 20px; }
+  .walk-example-stop { width: 62%; }
+  .walk-example-arrow { width: 180px; height: 80px; }
 }
 
 :where(a, button, input, textarea):focus-visible {
