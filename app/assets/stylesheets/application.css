@@ -633,10 +633,15 @@ main:has(.walk-index-page) {
   text-align: center;
   display: grid;
   place-items: center;
-  background: #e8f4f5;
-  color: #567169;
-  font-size: 0.8125rem;
-  font-weight: 700;
+  background: #f2f5f3;
+}
+
+.walk-index-placeholder-logo {
+  width: 80%;
+  max-width: 144px;
+  height: auto;
+  opacity: 0.22;
+  filter: grayscale(1);
 }
 
 .walk-index-card-content {
