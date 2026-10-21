@@ -1308,3 +1308,9 @@ main:has(.walk-step-detail-page) {
 .walk-map-marker span { position: absolute; top: -6px; left: -6px; min-width: 24px; padding: 2px 5px; border-radius: 50%; background: #204d49; color: white; text-align: center; font-weight: 700; }
 .walk-map-marker[aria-current], .walk-map-record[aria-current] { outline: 3px solid #b9471d; outline-offset: 3px; }
 #selected_walk_step { display: block; scroll-margin-block: 16px; }
+
+.landing-cta.walk-start-cta,
+.home-primary-cta.walk-start-cta {
+  max-width: 320px;
+  margin-inline: auto;
+}
