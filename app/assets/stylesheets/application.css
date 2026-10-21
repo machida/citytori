@@ -89,6 +89,17 @@ main:has(.landing-page) {
   background-color: #cc491c;
 }
 
+.landing-cta--secondary {
+  border: 1px solid #c9dbd7;
+  background-color: transparent;
+  color: #204d49;
+  font-weight: 500;
+}
+
+.landing-cta--secondary:hover {
+  background-color: #f2f5f3;
+}
+
 .landing-details {
   max-width: 1008px;
   margin-inline: auto;
