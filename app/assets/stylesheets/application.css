@@ -1313,19 +1313,19 @@ main:has(.walk-step-detail-page) {
   justify-self: start;
 }
 .walk-example-stop:nth-child(even) { justify-self: end; }
-.walk-example-stop:nth-child(odd) .walk-example-photo { transform: rotate(-3deg); }
-.walk-example-stop:nth-child(even) .walk-example-photo { transform: rotate(3deg); }
+.walk-example-stop:nth-child(odd) .walk-example-card { transform: rotate(-3deg); }
+.walk-example-stop:nth-child(even) .walk-example-card { transform: rotate(3deg); }
 .walk-example-card {
   position: relative;
+  padding: 8px;
+  border: 1px solid #dce5dc;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 3px 5px 0 #e8efdf;
 }
 
 .walk-example-caption {
-  position: relative;
-  margin: 16px 8px 0;
   padding: 16px 20px;
-  border: 1px solid #dce5dc;
-  border-radius: 12px;
-  background: #fff;
 }
 .walk-example-number {
   position: absolute;
