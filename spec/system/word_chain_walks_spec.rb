@@ -36,6 +36,62 @@ RSpec.describe 'WordChainWalks', type: :system do
     visit '/auth/google_oauth2/callback'
   end
 
+  scenario '位置情報を取得できた場合は記録できること' do
+    log_in(user)
+    visit word_chain_walk_path(word_chain_walk)
+
+    begin
+      set_browser_geolocation(35.6586, 139.7454)
+
+      attach_file(
+        'word_chain_walk_step_image',
+        Rails.root.join('spec/fixtures/files/480x320.png'),
+        make_visible: true
+      )
+
+      within 'dialog[data-modal-target="modal"][open]' do
+        expect(page).to have_content('位置情報を取得できました')
+        fill_in '見つけたことば', with: 'りんご'
+        click_button '写真とことばを記録する'
+      end
+
+      expect(page).to have_no_css('dialog[data-modal-target="modal"][open]')
+      expect(word_chain_walk.word_chain_walk_steps.count).to eq(1)
+      latest_step = word_chain_walk.word_chain_walk_steps.reload.last
+      expect(latest_step).to have_attributes(latitude: 35.6586, longitude: 139.7454)
+    ensure
+      page.driver.browser.execute_cdp('Emulation.clearGeolocationOverride')
+    end
+  end
+
+  scenario '位置情報を取得できなかった場合でも記録できること' do
+    log_in(user)
+    visit word_chain_walk_path(word_chain_walk)
+
+    begin
+      set_failure_browser_geolocation
+
+      attach_file(
+        'word_chain_walk_step_image',
+        Rails.root.join('spec/fixtures/files/480x320.png'),
+        make_visible: true
+      )
+
+      within 'dialog[data-modal-target="modal"][open]' do
+        expect(page).to have_content('位置情報を取得できませんでした')
+        fill_in '見つけたことば', with: 'りんご'
+        click_button '写真とことばを記録する'
+      end
+
+      expect(page).to have_no_css('dialog[data-modal-target="modal"][open]')
+      expect(word_chain_walk.word_chain_walk_steps.count).to eq(1)
+      latest_step = word_chain_walk.word_chain_walk_steps.reload.last
+      expect(latest_step).to have_attributes(latitude: nil, longitude: nil)
+    ensure
+      page.driver.browser.execute_cdp('Emulation.clearGeolocationOverride')
+    end
+  end
+
   scenario 'モーダルからステップを登録できること' do
     log_in(user)
 
@@ -282,5 +338,9 @@ RSpec.describe 'WordChainWalks', type: :system do
       longitude:,
       accuracy:
     )
+  end
+
+  def set_failure_browser_geolocation
+    page.driver.browser.execute_cdp('Emulation.setGeolocationOverride')
   end
 end
