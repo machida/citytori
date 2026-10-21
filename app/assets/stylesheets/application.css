@@ -127,10 +127,7 @@ main:has(.landing-page) {
 
 .landing-how-to-card {
   margin-top: 36px;
-  padding: 28px 20px;
-  border: 1px solid rgb(32 77 73 / 0.08);
-  border-radius: 20px;
-  background: #fff;
+  padding-block: 28px;
 }
 
 .landing-section-title {
@@ -173,7 +170,7 @@ main:has(.landing-page) {
 
   .landing-how-to-card {
     margin-top: 48px;
-    padding: 40px;
+    padding-block: 40px;
   }
 
 }
@@ -1316,15 +1313,10 @@ main:has(.walk-step-detail-page) {
   justify-self: start;
 }
 .walk-example-stop:nth-child(even) { justify-self: end; }
-.walk-example-stop:nth-child(odd) .walk-example-card { transform: rotate(-3deg); }
-.walk-example-stop:nth-child(even) .walk-example-card { transform: rotate(3deg); }
+.walk-example-stop:nth-child(odd) .walk-example-photo { transform: rotate(-3deg); }
+.walk-example-stop:nth-child(even) .walk-example-photo { transform: rotate(3deg); }
 .walk-example-card {
   position: relative;
-  padding: 8px;
-  border: 1px solid #c9dbd7;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 3px 5px 0 #e8efdf;
 }
 .walk-example-number {
   position: absolute;
