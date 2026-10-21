@@ -1329,16 +1329,18 @@ main:has(.walk-step-detail-page) {
 }
 .walk-example-number {
   position: absolute;
-  top: -12px;
+  top: -20px;
   left: 16px;
   z-index: 1;
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: #f7bc4a;
   color: #204d49;
+  font-size: 26px;
+  line-height: 1;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
