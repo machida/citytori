@@ -20,8 +20,11 @@
         </article>
         <% unless index == 2 %>
           <svg class="walk-example-arrow" viewBox="0 0 160 90" fill="none" aria-hidden="true" focusable="false">
-            <path d="M12 8 C12 54 140 26 140 76 M131 67 L140 76 L149 67" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M12 8 L140 76 M126 78 L140 76 L134 63" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+          <% if index.zero? %>
+            <%= image_tag "walk-photo-woman.png", alt: "", width: 1274, height: 1235, loading: "lazy", class: "walk-example-walker" %>
+          <% end %>
         <% end %>
       </li>
     <% end %>
