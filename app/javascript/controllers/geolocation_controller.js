@@ -8,6 +8,7 @@ export default class extends Controller {
     "loadingStatus",
     "successStatus",
     "failedStatus",
+    "submit",
   ];
 
   connect() {
@@ -46,18 +47,21 @@ export default class extends Controller {
   }
 
   showLoading() {
+    this.submitTarget.disabled = true;
     this.loadingStatusTarget.hidden = false;
     this.successStatusTarget.hidden = true;
     this.failedStatusTarget.hidden = true;
   }
 
   showSuccess() {
+    this.submitTarget.disabled = false;
     this.loadingStatusTarget.hidden = true;
     this.successStatusTarget.hidden = false;
     this.failedStatusTarget.hidden = true;
   }
 
   showFailed() {
+    this.submitTarget.disabled = false;
     this.loadingStatusTarget.hidden = true;
     this.successStatusTarget.hidden = true;
     this.failedStatusTarget.hidden = false;
