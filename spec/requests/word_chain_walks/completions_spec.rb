@@ -120,7 +120,7 @@ RSpec.describe 'WordChainWalks::Completions', type: :request do
 
       patch word_chain_walk_completion_path(finished_word_chain_walk)
 
-      expect(flash[:notice]).to eq('すでに散歩は完了しています')
+      expect(flash[:notice]).to eq('すでに散歩は完了しています。')
     end
   end
 end

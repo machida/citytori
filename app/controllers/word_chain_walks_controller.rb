@@ -17,7 +17,7 @@ class WordChainWalksController < ApplicationController
     @word_chain_walk_steps = @word_chain_walk.word_chain_walk_steps.order(id: :desc)
 
     if @word_chain_walk_steps.none? { |step| step.latitude.present? && step.longitude.present? }
-      redirect_to @word_chain_walk, alert: "位置情報が記録されていないため、地図を表示できません"
+      redirect_to @word_chain_walk, alert: "位置情報が記録されていないため、地図を表示できません。"
       return
     end
 
@@ -46,7 +46,7 @@ class WordChainWalksController < ApplicationController
     @word_chain_walk = current_user.word_chain_walks.build
 
     if @word_chain_walk.save
-      redirect_to @word_chain_walk, notice: "しりとり散歩を始めました"
+      redirect_to @word_chain_walk, notice: "しりとり散歩を始めました。"
     else
       @active_word_chain_walks = current_user.word_chain_walks.active.includes(:word_chain_walk_steps).order(id: :desc)
       @finished_word_chain_walks = current_user.word_chain_walks.finished.includes(:word_chain_walk_steps).order(id: :desc)
@@ -60,6 +60,6 @@ class WordChainWalksController < ApplicationController
     @word_chain_walk = current_user.word_chain_walks.find(params[:id])
     @word_chain_walk.destroy!
 
-    redirect_to root_path, notice: "しりとり散歩を削除しました", status: :see_other
+    redirect_to root_path, notice: "しりとり散歩を削除しました。", status: :see_other
   end
 end

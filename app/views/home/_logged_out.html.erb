@@ -11,10 +11,10 @@
       </p>
       <div class="mx-auto mt-5 max-w-md px-5">
         <%= button_to "しりとり散歩をはじめる", "/auth/google_oauth2", method: :post, data: { turbo: false }, class: "landing-cta" %>
-        <p class="mt-3 text-sm leading-6">Googleアカウントでログインして利用します</p>
+        <p class="mt-3 text-sm leading-6">Googleアカウントでログインして利用します。</p>
         <p class="mt-2 text-sm leading-6">
           <%= link_to "利用規約", terms_path, class: "underline underline-offset-4" %>・<%= link_to "プライバシーポリシー", privacy_path, class: "underline underline-offset-4" %><br>
-          に同意した上でログインしてください
+          に同意した上でログインしてください。
         </p>
       </div>
       <%= image_tag "top-image-transparent.png", alt: "街の看板にとまる鳥を、スマートフォン越しに見つけるイラスト", width: 1672, height: 941, class: "landing-hero-image" %>
