@@ -97,38 +97,41 @@ RSpec.describe 'WordChainWalks', type: :system do
 
     visit word_chain_walk_path(word_chain_walk)
 
-    attach_file(
-      'word_chain_walk_step_image',
-      Rails.root.join('spec/fixtures/files/480x320.png'),
-      make_visible: true
-    )
+    begin
+      set_browser_geolocation(35.6586, 139.7454)
 
-    expect(page).to have_css(
-      'dialog[data-modal-target="modal"][open]'
-    )
+      attach_file(
+        'word_chain_walk_step_image',
+        Rails.root.join('spec/fixtures/files/480x320.png'),
+        make_visible: true
+      )
 
-    fill_in '見つけたことば', with: 'りんご'
-    fill_in 'メモ', with: 'メモ'
+      expect(page).to have_css('dialog[data-modal-target="modal"][open]')
 
-    click_button '記録する'
+      fill_in '見つけたことば', with: 'りんご'
+      fill_in 'メモ', with: 'メモ'
 
-    within '#latest_step' do
-      expect(page).to have_content('りんご')
+      expect(page).to have_content('位置情報を取得できました')
+      click_button '写真とことばを記録する'
+
+      within '#latest_step' do
+        expect(page).to have_content('りんご')
+      end
+
+      expect(page).to have_css(
+        '#word_chain_walk_target',
+        text: 'こ'
+      )
+
+      expect(page).to have_css(
+        '#steps_count',
+        text: 'つないだことばの数 1個'
+      )
+
+      expect(page).to have_no_css('dialog[data-modal-target="modal"][open]')
+    ensure
+      page.driver.browser.execute_cdp('Emulation.clearGeolocationOverride')
     end
-
-    expect(page).to have_css(
-      '#word_chain_walk_target',
-      text: 'こ'
-    )
-
-    expect(page).to have_css(
-      '#steps_count',
-      text: 'つないだことばの数 1個'
-    )
-
-    expect(page).to have_no_css(
-      'dialog[data-modal-target="modal"][open]'
-    )
   end
 
   scenario '登録失敗時、エラーの表示がモーダル内で確認できること' do
@@ -136,16 +139,24 @@ RSpec.describe 'WordChainWalks', type: :system do
 
     visit word_chain_walk_path(word_chain_walk)
 
-    attach_file(
-      'word_chain_walk_step_image',
-      Rails.root.join('spec/fixtures/files/480x320.png'),
-      make_visible: true
-    )
+    begin
+      set_browser_geolocation(35.6586, 139.7454)
 
-    click_button '記録する'
+      attach_file(
+        'word_chain_walk_step_image',
+        Rails.root.join('spec/fixtures/files/480x320.png'),
+        make_visible: true
+      )
 
-    within 'dialog[data-modal-target="modal"][open]' do
-      expect(page).to have_content("見つけたことばを入力してください")
+      expect(page).to have_content('位置情報を取得できました')
+
+      click_button '写真とことばを記録する'
+
+      within 'dialog[data-modal-target="modal"][open]' do
+        expect(page).to have_content("見つけたことばを入力してください")
+      end
+    ensure
+      page.driver.browser.execute_cdp('Emulation.clearGeolocationOverride')
     end
   end
 
@@ -180,28 +191,36 @@ RSpec.describe 'WordChainWalks', type: :system do
     log_in(user)
     visit word_chain_walk_path(word_chain_walk)
 
-    attach_file(
-      'word_chain_walk_step_image',
-      Rails.root.join('spec/fixtures/files/480x320.png'),
-      make_visible: true
-    )
+    begin
+      set_browser_geolocation(35.6586, 139.7454)
 
-    click_button '記録する'
+      attach_file(
+        'word_chain_walk_step_image',
+        Rails.root.join('spec/fixtures/files/480x320.png'),
+        make_visible: true
+      )
 
-    within 'dialog[data-modal-target="modal"][open]' do
-      expect(page).to have_css('#error_explanation')
-    end
+      expect(page).to have_content('位置情報を取得できました')
 
-    click_button 'キャンセル'
+      click_button '写真とことばを記録する'
 
-    attach_file(
-      'word_chain_walk_step_image',
-      Rails.root.join('spec/fixtures/files/480x320.png'),
-      make_visible: true
-    )
+      within 'dialog[data-modal-target="modal"][open]' do
+        expect(page).to have_css('#error_explanation')
+      end
 
-    within 'dialog[data-modal-target="modal"][open]' do
-      expect(page).to have_no_css('#error_explanation')
+      click_button 'キャンセル'
+
+      attach_file(
+        'word_chain_walk_step_image',
+        Rails.root.join('spec/fixtures/files/480x320.png'),
+        make_visible: true
+      )
+
+      within 'dialog[data-modal-target="modal"][open]' do
+        expect(page).to have_no_css('#error_explanation')
+      end
+    ensure
+      page.driver.browser.execute_cdp('Emulation.clearGeolocationOverride')
     end
   end
 
@@ -281,25 +300,33 @@ RSpec.describe 'WordChainWalks', type: :system do
 
     visit word_chain_walk_path(word_chain_walk)
 
-    attach_file(
-      'word_chain_walk_step_image',
-      Rails.root.join('spec/fixtures/files/480x320.png'),
-      make_visible: true
-    )
+    begin
+      set_browser_geolocation(35.6586, 139.7454)
 
-    expect(page).to have_css(
-      'dialog[data-modal-target="modal"][open]'
-    )
+      attach_file(
+        'word_chain_walk_step_image',
+        Rails.root.join('spec/fixtures/files/480x320.png'),
+        make_visible: true
+      )
 
-    fill_in '見つけたことば', with: 'りんーー'
+      expect(page).to have_content('位置情報を取得できました')
 
-    accept_confirm('しりとり散歩をおしまいにしますか？') do
-      click_button '記録する'
+      expect(page).to have_css(
+        'dialog[data-modal-target="modal"][open]'
+      )
+
+      fill_in '見つけたことば', with: 'りんーー'
+
+      accept_confirm('しりとり散歩をおしまいにしますか？') do
+        click_button '写真とことばを記録する'
+      end
+
+      expect(page).to have_content('しりとり散歩が完了しました')
+      expect(word_chain_walk.reload.finished?).to be true
+      expect(word_chain_walk.word_chain_walk_steps.count).to eq(1)
+    ensure
+      page.driver.browser.execute_cdp('Emulation.clearGeolocationOverride')
     end
-
-    expect(page).to have_content('しりとり散歩が完了しました')
-    expect(word_chain_walk.reload.finished?).to be true
-    expect(word_chain_walk.word_chain_walk_steps.count).to eq(1)
   end
 
   scenario 'んで終わる単語を登録した場合、confirmにnoと答えると散歩が終了しないこと' do
@@ -307,28 +334,36 @@ RSpec.describe 'WordChainWalks', type: :system do
 
     visit word_chain_walk_path(word_chain_walk)
 
-    attach_file(
-      'word_chain_walk_step_image',
-      Rails.root.join('spec/fixtures/files/480x320.png'),
-      make_visible: true
-    )
+    begin
+      set_browser_geolocation(35.6586, 139.7454)
 
-    expect(page).to have_css(
-      'dialog[data-modal-target="modal"][open]'
-    )
+      attach_file(
+        'word_chain_walk_step_image',
+        Rails.root.join('spec/fixtures/files/480x320.png'),
+        make_visible: true
+      )
 
-    fill_in '見つけたことば', with: 'りんーー'
+      expect(page).to have_content('位置情報を取得できました')
 
-    dismiss_confirm('しりとり散歩をおしまいにしますか？') do
-      click_button '記録する'
+      expect(page).to have_css(
+        'dialog[data-modal-target="modal"][open]'
+      )
+
+      fill_in '見つけたことば', with: 'りんーー'
+
+      dismiss_confirm('しりとり散歩をおしまいにしますか？') do
+        click_button '写真とことばを記録する'
+      end
+
+      within 'dialog[data-modal-target="modal"][open]' do
+        expect(page).to have_content('から始まることば')
+      end
+
+      expect(word_chain_walk.reload.finished?).to be false
+      expect(word_chain_walk.word_chain_walk_steps.count).to eq(0)
+    ensure
+      page.driver.browser.execute_cdp('Emulation.clearGeolocationOverride')
     end
-
-    within 'dialog[data-modal-target="modal"][open]' do
-      expect(page).to have_content('から始まることば')
-    end
-
-    expect(word_chain_walk.reload.finished?).to be false
-    expect(word_chain_walk.word_chain_walk_steps.count).to eq(0)
   end
 
   def set_browser_geolocation(latitude, longitude, accuracy: 100)
