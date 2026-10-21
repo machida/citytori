@@ -1374,9 +1374,11 @@ main:has(.walk-step-detail-page) {
 }
 .walk-example-walker {
   position: absolute;
-  top: calc(100% + 20px);
+  top: calc(100% - 48px);
   left: 0;
-  width: 112px;
+  z-index: 2;
+  width: 220px;
+  max-width: none;
   height: auto;
   pointer-events: none;
 }
@@ -1384,7 +1386,7 @@ main:has(.walk-step-detail-page) {
   .walk-example-grid { gap: 180px; padding-inline: 20px; }
   .walk-example-stop { width: 62%; }
   .walk-example-arrow { width: 180px; height: 80px; }
-  .walk-example-walker { width: 144px; }
+  .walk-example-walker { top: calc(100% - 88px); width: 320px; }
 }
 
 :where(a, button, input, textarea):focus-visible {
