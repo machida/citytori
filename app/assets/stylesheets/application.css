@@ -1300,12 +1300,88 @@ main:has(.walk-step-detail-page) {
   }
 }
 
-/* Examples use the same photo, word and memo hierarchy as a saved record. */
-.walk-example-grid { display: grid; gap: 16px; margin-top: 24px; }
-.walk-example-card { overflow: hidden; border: 1px solid #c9dbd7; border-radius: 12px; background: #fff; }
-.walk-example-photo { width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; }
+/* A small photo trail follows the word chain in reading order. */
+.walk-example-grid {
+  display: grid;
+  gap: 64px;
+  margin-top: 32px;
+  padding: 0 4px 12px;
+  list-style: none;
+}
+.walk-example-stop {
+  position: relative;
+  width: calc(100% - 32px);
+  max-width: 320px;
+  justify-self: start;
+}
+.walk-example-stop:nth-child(even) { justify-self: end; }
+.walk-example-card {
+  position: relative;
+  padding: 8px;
+  border: 1px solid #c9dbd7;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 3px 5px 0 #e8efdf;
+}
+.walk-example-number {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f7bc4a;
+  color: #204d49;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.walk-example-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.walk-example-next {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e8efdf;
+  color: #204d49;
+  font-size: 14px;
+  font-weight: 700;
+}
+.walk-example-arrow {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: calc(50% - 8px);
+  width: 40px;
+  height: 56px;
+  color: #b9471d;
+}
+.walk-example-stop:nth-child(even) .walk-example-arrow { transform: scaleX(-1); }
 @media (min-width: 640px) {
-  .walk-example-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .walk-example-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 32px;
+  }
+  .walk-example-stop { width: 100%; max-width: none; }
+  .walk-example-stop:nth-child(even) { margin-top: 56px; }
+  .walk-example-arrow {
+    top: 80px;
+    left: calc(100% + 2px);
+    width: 28px;
+    height: 64px;
+  }
+  .walk-example-stop:nth-child(even) .walk-example-arrow {
+    top: 24px;
+    transform: scaleY(-1);
+  }
 }
 
 :where(a, button, input, textarea):focus-visible {

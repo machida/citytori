@@ -6,15 +6,23 @@
       { word: "き", image: "walk-example-tree.webp", width: 394, time: "14:05", memo: "いつもの道で、大きな木を発見。", next_char: "き" },
       { word: "きく", image: "walk-example-chrysanthemum.webp", width: 394, time: "14:12", memo: "道ばたに黄色い菊が咲いていた。", next_char: "く" },
       { word: "くるま", image: "walk-example-car.webp", width: 395, time: "14:20", memo: "丸いライトがかわいい車。", next_char: "ま" }
-    ].each do |example| %>
-      <li class="walk-example-card">
+    ].each_with_index do |example, index| %>
+      <li class="walk-example-stop">
+        <article class="walk-example-card">
+          <span class="walk-example-number" aria-hidden="true"><%= format("%02d", index + 1) %></span>
         <%= image_tag example[:image], alt: "#{example[:word]}の記録例", width: example[:width], height: 400, loading: "lazy", class: "walk-example-photo" %>
         <div class="p-4">
           <p class="text-sm text-[#52645F]"><%= example[:time] %></p>
           <h3 class="mt-1 text-xl font-bold"><%= example[:word] %></h3>
           <p class="mt-2 text-sm leading-6"><%= example[:memo] %></p>
-          <p class="mt-3 text-sm font-bold">次は「<%= example[:next_char] %>」</p>
+          <p class="walk-example-next">次は「<%= example[:next_char] %>」</p>
         </div>
+        </article>
+        <% unless index == 2 %>
+          <svg class="walk-example-arrow" viewBox="0 0 48 80" fill="none" aria-hidden="true" focusable="false">
+            <path d="M8 6 C42 14 4 49 34 68 M22 63 L34 68 L38 55" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        <% end %>
       </li>
     <% end %>
   </ol>
