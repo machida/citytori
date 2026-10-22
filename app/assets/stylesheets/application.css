@@ -1114,6 +1114,10 @@ main:has(.how-to-play-page) {
   background: #fff;
 }
 
+.how-to-play-examples {
+  margin-top: 32px;
+}
+
 body:has(.legal-page) {
   background: #fcf9ef;
 }
