@@ -135,7 +135,7 @@ main:has(.landing-page) {
 }
 
 .landing-section-title.landing-about-heading {
-  font-size: clamp(21px, 3vw, 28px);
+  font-size: clamp(20px, 2.8vw, 26px);
 }
 
 .location-information-heading {
