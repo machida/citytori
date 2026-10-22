@@ -1528,6 +1528,10 @@ main:has(.walk-step-detail-page) {
   margin-inline: auto;
 }
 
+.walk-summary-header {
+  margin-bottom: 24px;
+}
+
 .walk-summary-overview {
   display: flex;
   flex-wrap: wrap;
