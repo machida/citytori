@@ -120,9 +120,9 @@ main:has(.landing-page) {
 
 .landing-about {
   padding: 20px 16px;
-  border: 1px solid #c9e4e5;
+  border: 1px solid #c7d5bb;
   border-radius: 20px;
-  background-color: #e8f4f5;
+  background-color: #edf2e6;
 }
 
 .landing-about-heading {
