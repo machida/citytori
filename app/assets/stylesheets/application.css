@@ -1018,14 +1018,13 @@ main:has(.active-walk-page) {
 .active-walk-latest-actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 8px;
 }
 
 .active-walk-latest-cancel {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  padding: 8px;
+  min-height: 24px;
+  padding: 2px 4px;
   color: #667773;
   font-size: 0.75rem;
   text-decoration: underline;
