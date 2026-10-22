@@ -1522,3 +1522,30 @@ main:has(.walk-step-detail-page) {
   max-width: 320px;
   margin-inline: auto;
 }
+
+/* Shared feedback for buttons and links styled as buttons. */
+:is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta) {
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 150ms ease, color 150ms ease;
+}
+
+@media (hover: hover) {
+  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgb(32 77 73 / 0.18);
+  }
+}
+
+:is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta) {
+    transition: none;
+  }
+
+  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):is(:hover, :active) {
+    transform: none;
+  }
+}
