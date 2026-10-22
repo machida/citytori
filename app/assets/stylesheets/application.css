@@ -1384,6 +1384,10 @@ main:has(.walk-step-detail-page) {
   height: auto;
   pointer-events: none;
 }
+.walk-example-stop:nth-child(even) .walk-example-walker {
+  left: auto;
+  right: 0;
+}
 @media (min-width: 640px) {
   .walk-example-grid { gap: 180px; padding-inline: 20px; }
   .walk-example-stop { width: 62%; }
