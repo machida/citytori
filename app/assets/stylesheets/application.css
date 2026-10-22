@@ -1325,7 +1325,7 @@ main:has(.walk-step-detail-page) {
 }
 
 .walk-example-caption {
-  padding: 16px 20px;
+  padding: 8px;
 }
 .walk-example-time {
   position: absolute;
