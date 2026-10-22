@@ -854,6 +854,17 @@ main:has(.walk-index-page) {
   line-height: 1.65;
 }
 
+.active-walk-target-copy::before {
+  content: "";
+  display: block;
+  width: 10em;
+  max-width: 100%;
+  height: 4px;
+  margin: 0 auto -4px;
+  background: #fff;
+  transform: translateY(-18px);
+}
+
 /* Active walk */
 body:has(.active-walk-page) {
   background: #fcf9ef;
