@@ -36,6 +36,32 @@ RSpec.describe 'WordChainWalks::Completions', type: :request do
     get '/auth/google_oauth2/callback'
   end
 
+  describe 'GET /word_chain_walks/:word_chain_walk_id/completion' do
+    [ 0, 1, 2, 4 ].each do |count|
+      it "#{count}件の記録を件数に合った説明と記録順の写真で表示する" do
+        log_in(user)
+        words = %w[りんご ごま まつ つき].first(count)
+        words.each do |word|
+          FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: word)
+        end
+        word_chain_walk.finish
+        get word_chain_walk_completion_path(word_chain_walk)
+        expect(response).to have_http_status(:ok)
+        document = Nokogiri::HTML(response.body)
+        if count.zero?
+          expect(document.text).to include('今回は記録がありません')
+        else
+          expect(document.text).to include("#{count}個のことばを記録しました")
+        end
+        expect(document.css('.completion-photo-grid img').map { |image| image['alt'] }).to eq(
+          words.first(3).map { |word| "「#{word}」の写真" }
+        )
+        expect(document.text).not_to include('たくさん')
+        expect(document.text).not_to include('まで、ことばがつながりました') if count < 2
+      end
+    end
+  end
+
   describe 'PATCH /word_chain_walks/:word_chain_walk_id/completion' do
     it '進行中の散歩を任意完了できること' do
       log_in(user)
@@ -94,7 +120,7 @@ RSpec.describe 'WordChainWalks::Completions', type: :request do
 
       patch word_chain_walk_completion_path(finished_word_chain_walk)
 
-      expect(flash[:notice]).to eq('すでに散歩は完了しています')
+      expect(flash[:notice]).to eq('すでに散歩は完了しています。')
     end
   end
 end

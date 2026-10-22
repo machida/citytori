@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="ja">
   <head>
     <%= display_meta_tags(default_meta_tags) %>
 
@@ -25,6 +25,7 @@
 
     <script
       src="https://kit.fontawesome.com/e8b67ce65a.js"
+      nonce="<%= request.content_security_policy_nonce %>"
       crossorigin="anonymous"
     ></script>
   </head>

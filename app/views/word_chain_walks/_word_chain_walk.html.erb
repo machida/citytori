@@ -1,6 +1,5 @@
 <% latest_step = word_chain_walk.latest_step %>
 <% finished = word_chain_walk.finished? %>
-<% display_date = finished ? word_chain_walk.finished_at : word_chain_walk.started_at %>
 
 <article id="<%= dom_id word_chain_walk %>">
   <%= link_to word_chain_walk, class: ["walk-index-card", (finished ? "walk-index-card-finished" : "walk-index-card-active")] do %>
@@ -12,9 +11,9 @@
       <div
         class="walk-index-card-image walk-index-no-image"
         role="img"
-        aria-label="写真はありません"
+        aria-label="写真はありません。"
       >
-        No Image
+        <%= image_tag "top-logo.png", alt: "", class: "walk-index-placeholder-logo" %>
       </div>
     <% end %>
 
@@ -24,18 +23,18 @@
       </span>
 
       <p class="walk-index-card-title">
-        「<%= word_chain_walk.start_char %>」から始まった散歩
+        <%= word_chain_walk.started_at.strftime("%Y年%-m月%-d日 %H:%M") %>の散歩
       </p>
 
       <dl class="walk-index-card-meta">
         <div>
-          <dt class="sr-only">日付</dt>
-          <dd><%= display_date.month %>月<%= display_date.day %>日</dd>
+          <dt class="sr-only">最初の文字</dt>
+          <dd>「<%= word_chain_walk.start_char %>」から</dd>
         </div>
 
         <div>
           <dt class="sr-only">つないだことばの数</dt>
-          <dd>つないだことばの数 <%= word_chain_walk.word_chain_walk_steps.size %>個</dd>
+          <dd><%= word_chain_walk.word_chain_walk_steps.size %>個のことば</dd>
         </div>
 
         <div>
@@ -46,6 +45,15 @@
           </dd>
         </div>
       </dl>
+
+      <% photo_steps = word_chain_walk.word_chain_walk_steps.sort_by(&:id).select { |step| step.image.attached? } %>
+      <% if photo_steps.any? %>
+        <div class="walk-index-thumbnails" role="group" aria-label="散歩で撮った写真">
+          <% photo_steps.each do |step| %>
+            <%= image_tag step.image.variant(resize_to_fill: [112, 112]), alt: "#{step.word}の写真", width: 56, height: 56, loading: "lazy", class: "walk-index-thumbnail" %>
+          <% end %>
+        </div>
+      <% end %>
 
       <% unless finished %>
         <p class="walk-index-resume">

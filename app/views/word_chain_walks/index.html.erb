@@ -1,10 +1,10 @@
-<% set_meta_tags title: "散歩一覧", description: "Citytoriで記録したしりとり散歩の一覧です。進行中の散歩と完了した散歩を確認できます。", noindex: true %>
+<% set_meta_tags title: "散歩の記録", description: "Citytoriで記録したしりとり散歩の一覧です。進行中の散歩と完了した散歩を確認できます。", noindex: true %> <%# herb:disable erb-no-unused-expressions %>
 
 <% finished_word_chain_walks, active_word_chain_walks = @word_chain_walks.partition(&:finished?) %>
 
 <main class="walk-index-page">
   <div class="walk-index-content">
-    <h1 class="walk-index-title">散歩一覧</h1>
+    <h1 class="walk-index-title">散歩の記録</h1>
 
     <% if active_word_chain_walks.any? %>
       <section
@@ -68,7 +68,7 @@
           これまでの散歩
         </h2>
 
-        <p>まだ散歩の記録はありません</p>
+        <p>まだ散歩の記録はありません。</p>
 
         <%= button_to "散歩を始める",
                       word_chain_walks_path,

@@ -2,34 +2,38 @@
   <% if word_chain_walk.latest_step.present? %>
     <% latest_step = word_chain_walk.latest_step %>
     <div class="active-walk-latest-card">
-      <div class="flex items-center gap-3">
-        <%= image_tag latest_step.image,
-                      alt: "前回見つけた「#{latest_step.word}」の写真",
-                      class: "active-walk-latest-image" %>
-
-        <div class="flex-1">
-          <%= link_to word_chain_walk_word_chain_walk_step_path(word_chain_walk, latest_step),
-                      class: "active-walk-latest-word" do %>
+      <div class="active-walk-latest-content">
+        <%= link_to word_chain_walk_word_chain_walk_step_path(word_chain_walk, latest_step),
+                    class: "active-walk-latest-pair",
+                    aria: { label: "「#{latest_step.word}」の記録を見る" } do %>
+          <%= image_tag latest_step.image,
+                        alt: "前回見つけた「#{latest_step.word}」の写真",
+                        class: "active-walk-latest-image" %>
+          <span class="active-walk-latest-word">
             <%= latest_step.word %>
-          <% end %>
+          </span>
+        <% end %>
 
+        <div class="active-walk-latest-body">
           <% if latest_step.memo.present? %>
             <p class="active-walk-latest-memo">
               <%= latest_step.memo %>
             </p>
           <% end %>
-        </div>
 
-        <%= button_to "取り消す",
-                      latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk),
-                      method: :delete,
-                      class: "active-walk-latest-cancel",
-                      data: { turbo_confirm: "記録したことばを取り消しますか？" } %>
+          <div class="active-walk-latest-actions">
+            <%= button_to "取り消す",
+                          latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk),
+                          method: :delete,
+                          class: "active-walk-latest-cancel",
+                          data: { turbo_confirm: "記録したことばを取り消しますか？" } %>
+          </div>
+        </div>
       </div>
     </div>
   <% else %>
     <p class="active-walk-latest-empty">
-      まだことばを見つけていません。
+      まだ記録はありません。
     </p>
   <% end %>
 </div>
