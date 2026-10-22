@@ -997,6 +997,13 @@ main:has(.active-walk-page) {
 .active-walk-latest-pair {
   display: flex;
   flex: 0 0 auto;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.active-walk-latest-pair:focus-visible {
+  outline: 3px solid #204d49;
+  outline-offset: 4px;
 }
 
 .active-walk-latest-image,
@@ -1008,6 +1015,8 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-latest-image {
+  border: 1px solid #204d49;
+  border-right: 0;
   border-radius: 8px 0 0 8px;
   object-fit: cover;
 }
@@ -1029,7 +1038,7 @@ main:has(.active-walk-page) {
   text-decoration: none;
 }
 
-.active-walk-latest-word:hover {
+.active-walk-latest-pair:hover .active-walk-latest-word {
   color: #315d55;
 }
 
