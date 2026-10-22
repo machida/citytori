@@ -15,16 +15,15 @@
         <div class="walk-example-caption">
           <h3 class="mt-1 text-xl font-bold"><%= example[:word] %></h3>
           <p class="mt-2 text-sm leading-6"><%= example[:memo] %></p>
-          <% if index == 2 %>
-            <p class="walk-example-next">次は「<%= example[:next_char] %>」</p>
-          <% end %>
         </div>
         </article>
         <% unless index == 2 %>
+          <div class="walk-example-connector">
           <p class="walk-example-next walk-example-arrow-label">次は「<%= example[:next_char] %>」</p>
           <svg class="walk-example-arrow" viewBox="0 0 160 90" fill="none" aria-hidden="true" focusable="false">
             <path d="M12 8 L140 76 M126 78 L140 76 L134 63" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+          </div>
           <% if index.zero? %>
             <%= image_tag "walk-photo-woman.png", alt: "", width: 1274, height: 1235, loading: "lazy", class: "walk-example-walker" %>
           <% else %>

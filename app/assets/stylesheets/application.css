@@ -1374,30 +1374,36 @@ main:has(.walk-step-detail-page) {
   font-size: 14px;
   font-weight: 700;
 }
-.walk-example-arrow {
+.walk-example-connector {
   position: absolute;
   top: calc(100% + 46px);
   left: 50%;
   width: 100px;
-  height: 64px;
+  aspect-ratio: 16 / 9;
+}
+.walk-example-arrow {
+  display: block;
+  width: 100%;
+  height: 100%;
   color: #88a485;
 }
-.walk-example-stop:nth-child(even) .walk-example-arrow {
+.walk-example-stop:nth-child(even) .walk-example-connector {
   left: auto;
   right: 50%;
-  transform: scaleX(-1);
 }
+.walk-example-stop:nth-child(even) .walk-example-arrow { transform: scaleX(-1); }
 .walk-example-arrow-label {
   position: absolute;
-  top: calc(100% + 20px);
-  left: calc(50% + 8px);
+  top: 46.6667%;
+  left: 47.5%;
   z-index: 3;
   margin: 0;
   white-space: nowrap;
+  transform: translate(-50%, -50%) rotate(27.98deg) translateY(-22px);
 }
 .walk-example-stop:nth-child(even) .walk-example-arrow-label {
-  left: auto;
-  right: calc(50% + 8px);
+  left: 52.5%;
+  transform: translate(-50%, -50%) rotate(-27.98deg) translateY(-22px);
 }
 .walk-example-walker {
   position: absolute;
@@ -1416,7 +1422,7 @@ main:has(.walk-step-detail-page) {
 @media (min-width: 640px) {
   .walk-example-grid { gap: 180px; padding-inline: 20px; }
   .walk-example-stop { width: 62%; }
-  .walk-example-arrow { width: 180px; height: 80px; }
+  .walk-example-connector { width: 180px; }
   .walk-example-walker { top: calc(100% - 40px); width: 240px; }
 }
 
