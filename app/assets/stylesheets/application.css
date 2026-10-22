@@ -134,6 +134,10 @@ main:has(.landing-page) {
   gap: 10px;
 }
 
+.landing-section-title.landing-about-heading {
+  font-size: clamp(21px, 3vw, 28px);
+}
+
 .location-information-heading {
   display: flex;
   align-items: center;
