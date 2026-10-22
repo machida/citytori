@@ -848,6 +848,7 @@ main:has(.walk-index-page) {
 }
 
 .active-walk-target-copy {
+  isolation: isolate;
   margin: -0.5rem 0 0;
   color: #303b3c;
   font-size: 1rem;
@@ -856,6 +857,8 @@ main:has(.walk-index-page) {
 
 .active-walk-target-copy::before {
   content: "";
+  position: relative;
+  z-index: -1;
   display: block;
   width: 10em;
   max-width: 100%;
