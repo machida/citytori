@@ -1293,7 +1293,7 @@ main:has(.walk-step-detail-page) {
 /* A small photo trail follows the word chain in reading order. */
 .walk-example-grid {
   display: grid;
-  gap: 216px;
+  gap: 184px;
   max-width: 640px;
   margin: 44px auto 24px;
   padding: 0 12px 12px;
@@ -1413,7 +1413,7 @@ main:has(.walk-step-detail-page) {
   right: 0;
 }
 @media (min-width: 640px) {
-  .walk-example-grid { gap: 272px; padding-inline: 20px; }
+  .walk-example-grid { gap: 224px; padding-inline: 20px; }
   .walk-example-stop { width: 62%; }
   .walk-example-connector { width: 180px; }
   .walk-example-walker { width: 240px; }
