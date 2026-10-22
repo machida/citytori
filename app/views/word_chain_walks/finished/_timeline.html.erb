@@ -9,8 +9,10 @@
 
       <div class="min-w-0 pt-1">
         <p class="text-xs font-bold tracking-[0.08em] text-[#204D49]">START</p>
-        <p class="mt-1 text-sm text-[#303B3C]"><%= word_chain_walk.started_at.strftime("%Y/%m/%d %H:%M") %></p>
-        <p class="mt-1 text-sm font-medium text-[#204D49]">「<%= word_chain_walk.start_char %>」からスタート</p>
+        <p class="walk-timeline-start">
+          <time datetime="<%= word_chain_walk.started_at.iso8601 %>"><%= word_chain_walk.started_at.strftime("%Y/%m/%d %H:%M") %></time>
+          <span>「<%= word_chain_walk.start_char %>」からスタート</span>
+        </p>
       </div>
     </div>
 

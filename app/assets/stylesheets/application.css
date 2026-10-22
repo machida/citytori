@@ -1523,6 +1523,21 @@ main:has(.walk-step-detail-page) {
   margin-inline: auto;
 }
 
+.walk-timeline-start {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 4px 0 0;
+  color: #303b3c;
+  font-size: clamp(0.6875rem, 3vw, 0.875rem);
+  white-space: nowrap;
+}
+
+.walk-timeline-start span {
+  color: #204d49;
+  font-weight: 500;
+}
+
 /* Shared feedback for buttons and links styled as buttons. */
 :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta) {
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 150ms ease, color 150ms ease;
