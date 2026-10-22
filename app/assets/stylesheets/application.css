@@ -800,7 +800,7 @@ main:has(.walk-index-page) {
 
 /* Active walk target */
 .active-walk-target-section {
-  margin-top: 32px;
+  margin-top: 24px;
   color: #204d49;
   text-align: center;
 }
@@ -813,21 +813,18 @@ main:has(.walk-index-page) {
 }
 
 .active-walk-target-visual {
-  position: relative;
+  display: grid;
+  place-items: center;
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
-  aspect-ratio: 2172 / 518;
+  padding-block: 16px 24px;
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .active-walk-target-char-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1;
   display: grid;
   width: 132px;
   aspect-ratio: 1;
@@ -835,7 +832,6 @@ main:has(.walk-index-page) {
   border: 1px solid #204d49;
   border-radius: 16px;
   background: #fcf9ef;
-  transform: translate(-50%, -50%);
 }
 
 .active-walk-target-char {
@@ -847,7 +843,7 @@ main:has(.walk-index-page) {
 }
 
 .active-walk-target-copy {
-  margin: 6px 0 0;
+  margin: 16px 0 0;
   color: #303b3c;
   font-size: 1rem;
   line-height: 1.65;
@@ -879,7 +875,7 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-title {
-  margin: 20px 0 0;
+  margin: 0;
   color: #204d49;
   font-family: var(--font-japanese-sans);
   font-size: clamp(2rem, 8vw, 2.75rem);
@@ -929,7 +925,7 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-photo-section {
-  margin-top: 28px;
+  margin-top: 24px;
   text-align: center;
 }
 
