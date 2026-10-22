@@ -73,4 +73,5 @@ RSpec.configure do |config|
 
   config.include GoogleLoginHelper::Request, type: :request
   config.include GoogleLoginHelper::System, type: :system
+  config.include GeolocationHelper, type: :system
 end
