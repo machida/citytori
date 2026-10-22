@@ -1111,10 +1111,6 @@ main:has(.how-to-play-page) {
   }
 }
 
-.how-to-play-sheet {
-  padding: 36px 20px 48px;
-}
-
 .how-to-play-examples {
   margin-top: 32px;
 }
@@ -1221,10 +1217,6 @@ main:has(.walk-step-detail-page) {
 
   .how-to-play-page {
     margin-bottom: 56px;
-  }
-
-  .how-to-play-sheet {
-    padding: 48px 64px 64px;
   }
 
   .legal-page {
