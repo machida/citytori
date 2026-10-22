@@ -1387,6 +1387,18 @@ main:has(.walk-step-detail-page) {
   right: 50%;
   transform: scaleX(-1);
 }
+.walk-example-arrow-label {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: calc(50% + 8px);
+  z-index: 3;
+  margin: 0;
+  white-space: nowrap;
+}
+.walk-example-stop:nth-child(even) .walk-example-arrow-label {
+  left: auto;
+  right: calc(50% + 8px);
+}
 .walk-example-walker {
   position: absolute;
   top: calc(100% - 24px);
