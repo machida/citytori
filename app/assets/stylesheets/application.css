@@ -1535,7 +1535,7 @@ main:has(.walk-step-detail-page) {
   gap: 12px 20px;
 }
 
-.walk-summary-overview > p {
+.walk-summary-heading {
   flex: 1 1 240px;
   margin: 0;
 }
