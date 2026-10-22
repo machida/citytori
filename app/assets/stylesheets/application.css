@@ -1528,16 +1528,28 @@ main:has(.walk-step-detail-page) {
   margin-inline: auto;
 }
 
+.walk-summary-overview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.walk-summary-overview > p {
+  flex: 1 1 240px;
+  margin: 0;
+}
+
 .walk-summary-stats {
   display: grid;
-  width: 50%;
+  flex: 0 0 auto;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin: 12px 0 0;
+  gap: 8px;
+  margin: 0;
 }
 
 .walk-summary-stat {
-  padding: 12px;
+  padding: 6px 10px;
   border: 1px solid #c9dbd7;
   border-radius: 10px;
   background: #fff;
@@ -1546,13 +1558,13 @@ main:has(.walk-step-detail-page) {
 
 .walk-summary-stat dt {
   color: #52645f;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
 }
 
 .walk-summary-stat dd {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: #204d49;
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.4;
   font-variant-numeric: tabular-nums;

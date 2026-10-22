@@ -1,6 +1,6 @@
 <header class="text-[#204D49]">
   <h1 class="text-2xl font-bold leading-snug sm:text-3xl">散歩の記録</h1>
-  <div class="mt-4 rounded-xl bg-[#E8F4F5] px-4 py-3">
+  <div class="walk-summary-overview mt-4 rounded-xl bg-[#E8F4F5] px-4 py-3">
     <p class="text-base">
       <time datetime="<%= word_chain_walk.started_at.iso8601 %>"><%= word_chain_walk.started_at.strftime("%Y年%-m月%-d日 %H:%M") %></time>
       <span class="inline-block">「<%= word_chain_walk.start_char %>」から</span>
