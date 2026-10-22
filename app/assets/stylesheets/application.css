@@ -148,6 +148,10 @@ main:has(.landing-page) {
   flex-shrink: 0;
 }
 
+.walk-example-heading-icon {
+  transform: translateY(2px);
+}
+
 .landing-how-to-card {
   margin-top: 36px;
   padding-block: 28px;
