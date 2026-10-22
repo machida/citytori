@@ -21,21 +21,6 @@ RSpec.describe 'WordChainWalkSteps', type: :system do
     )
   end
 
-  def log_in(user)
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google_oauth2] =
-      OmniAuth::AuthHash.new(
-        provider: user.provider,
-        uid: user.uid,
-        info: {
-          email: user.email,
-          name: user.name
-        }
-      )
-
-    visit '/auth/google_oauth2/callback'
-  end
-
   scenario 'ステップ詳細画面からメモが編集できること' do
     log_in(user)
 

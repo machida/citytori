@@ -72,4 +72,5 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
 
   config.include GoogleLoginHelper::Request, type: :request
+  config.include GoogleLoginHelper::System, type: :system
 end
