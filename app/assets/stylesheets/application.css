@@ -133,7 +133,14 @@ main:has(.landing-page) {
   gap: 10px;
 }
 
-.landing-about-icon {
+.location-information-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.landing-about-icon,
+.location-information-icon {
   width: 1em;
   height: 1em;
   flex-shrink: 0;
