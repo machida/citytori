@@ -806,6 +806,10 @@ main:has(.walk-index-page) {
 }
 
 .active-walk-target-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
   margin: 0;
   font-family: var(--font-japanese-sans);
   font-size: 1.25rem;
@@ -884,25 +888,11 @@ main:has(.active-walk-page) {
   text-align: center;
 }
 
-.active-walk-count {
-  text-align: center;
-}
-
-.active-walk-count-label {
-  display: inline-block;
-  margin: 0;
-  padding: 7px 16px;
-  border: 1px solid #c9dbd7;
-  border-radius: 999px;
+.active-walk-target-number {
   color: #52645f;
   font-size: 0.875rem;
-}
-
-.active-walk-count-label span {
-  margin-inline: 2px;
-  color: #204d49;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .active-walk-allowed-chars {

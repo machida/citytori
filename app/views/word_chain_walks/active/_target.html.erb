@@ -1,6 +1,7 @@
 <section id="word_chain_walk_target" class="active-walk-target-section">
   <h2 class="active-walk-target-heading">
     次にさがす文字
+    <%= render "word_chain_walks/active/count", word_chain_walk_steps: word_chain_walk.word_chain_walk_steps %>
   </h2>
 
   <div class="active-walk-target-visual" style="background-image: url('<%= asset_path "street-line-step.png" %>');">

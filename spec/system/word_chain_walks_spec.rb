@@ -67,7 +67,7 @@ RSpec.describe 'WordChainWalks', type: :system do
 
     expect(page).to have_css(
       '#steps_count',
-      text: 'つないだことばの数 1個'
+      text: '2個目'
     )
 
     expect(page).to have_no_css(
