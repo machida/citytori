@@ -131,6 +131,7 @@ main:has(.landing-page) {
 }
 
 .landing-section-title {
+  color: #204d49;
   font-size: clamp(23px, 3.5vw, 32px);
   line-height: 1.5;
 }
