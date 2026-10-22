@@ -128,6 +128,8 @@ main:has(.landing-page) {
 .landing-about-heading {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 10px;
 }
 
