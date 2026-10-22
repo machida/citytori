@@ -149,7 +149,7 @@ main:has(.landing-page) {
 }
 
 .walk-example-heading-icon {
-  transform: translateY(2px);
+  transform: translateY(3px);
 }
 
 .landing-how-to-card {
