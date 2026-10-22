@@ -125,6 +125,18 @@ main:has(.landing-page) {
   background-color: #e8f4f5;
 }
 
+.landing-about-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.landing-about-icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
 .landing-how-to-card {
   margin-top: 36px;
   padding-block: 28px;
