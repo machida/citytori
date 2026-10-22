@@ -1006,6 +1006,31 @@ main:has(.active-walk-page) {
   align-self: start;
   border-radius: 8px;
   text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+@media (hover: hover) {
+  .active-walk-latest-pair:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgb(32 77 73 / 0.18);
+  }
+}
+
+.active-walk-latest-pair:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .active-walk-latest-pair {
+    transition: none;
+  }
+
+  .active-walk-latest-pair:hover,
+  .active-walk-latest-pair:active {
+    transform: none;
+  }
 }
 
 .active-walk-latest-pair:focus-visible {
