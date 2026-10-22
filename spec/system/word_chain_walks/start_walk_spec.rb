@@ -7,21 +7,6 @@ RSpec.describe 'StartWalk', type: :system do
 
   let(:user) { FactoryBot.create(:user) }
 
-  def log_in(user)
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google_oauth2] =
-      OmniAuth::AuthHash.new(
-        provider: user.provider,
-        uid: user.uid,
-        info: {
-          email: user.email,
-          name: user.name
-        }
-      )
-
-    visit '/auth/google_oauth2/callback'
-  end
-
   scenario '位置情報を取得できた場合は散歩を開始できる' do
     log_in(user)
 

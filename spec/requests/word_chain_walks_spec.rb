@@ -1,20 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'WordChainWalks', type: :request do
-  def log_in(user)
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google_oauth2] =
-      OmniAuth::AuthHash.new(
-        provider: user.provider,
-        uid: user.uid,
-        info: {
-          email: user.email,
-          name: user.name
-        }
-      )
-    get '/auth/google_oauth2/callback'
-  end
-
   describe 'GET /word_chain_walks' do
     context 'ログインしている場合' do
       it '一覧を表示できること' do
