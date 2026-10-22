@@ -21,21 +21,6 @@ RSpec.describe 'WordChainWalks::Completions', type: :request do
     )
   end
 
-  def log_in(user)
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google_oauth2] =
-      OmniAuth::AuthHash.new(
-        provider: user.provider,
-        uid: user.uid,
-        info: {
-          email: user.email,
-          name: user.name
-        }
-      )
-
-    get '/auth/google_oauth2/callback'
-  end
-
   describe 'PATCH /word_chain_walks/:word_chain_walk_id/completion' do
     it '進行中の散歩を任意完了できること' do
       log_in(user)

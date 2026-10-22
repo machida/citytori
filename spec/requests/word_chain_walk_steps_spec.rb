@@ -12,21 +12,6 @@ RSpec.describe 'WordChainWalkSteps', type: :request do
     FactoryBot.create(:word_chain_walk, user: other_user, start_char: 'り')
   end
 
-  def log_in(user)
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google_oauth2] =
-      OmniAuth::AuthHash.new(
-        provider: user.provider,
-        uid: user.uid,
-        info: {
-          email: user.email,
-          name: user.name
-        }
-      )
-
-    get '/auth/google_oauth2/callback'
-  end
-
   def attached_image
     fixture_file_upload(
       Rails.root.join('spec/fixtures/files/480x320.png'),

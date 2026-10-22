@@ -11,4 +11,13 @@ module GoogleLoginHelper
         }
       )
   end
+
+  module Request
+    include GoogleLoginHelper
+
+    def log_in(user)
+      mock_google_auth(user)
+      get '/auth/google_oauth2/callback'
+    end
+  end
 end
