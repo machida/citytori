@@ -817,12 +817,10 @@ main:has(.walk-index-page) {
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
-}
-
-.active-walk-target-street-image {
-  display: block;
-  width: 100%;
-  height: auto;
+  aspect-ratio: 2172 / 518;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .active-walk-target-char-card {

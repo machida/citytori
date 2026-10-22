@@ -3,11 +3,7 @@
     次にさがす文字
   </h2>
 
-  <div class="active-walk-target-visual">
-    <%= image_tag "street-line-step.png",
-                  class: "active-walk-target-street-image",
-                  alt: "街灯や木、建物が並ぶ街並み" %>
-
+  <div class="active-walk-target-visual" style="background-image: url('<%= asset_path "street-line-step.png" %>');">
     <div class="active-walk-target-char-card">
       <span class="active-walk-target-char"><%= word_chain_walk.target_char %></span>
     </div>
