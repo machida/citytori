@@ -1327,6 +1327,19 @@ main:has(.walk-step-detail-page) {
 .walk-example-caption {
   padding: 16px 20px;
 }
+.walk-example-time {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.95);
+  color: #204d49;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
 .walk-example-number {
   position: absolute;
   top: -20px;

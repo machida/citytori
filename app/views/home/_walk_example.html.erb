@@ -11,8 +11,8 @@
         <article class="walk-example-card">
           <span class="walk-example-number" aria-hidden="true"><%= format("%02d", index + 1) %></span>
         <%= image_tag example[:image], alt: "#{example[:word]}の記録例", width: example[:width], height: 400, loading: "lazy", class: "walk-example-photo" %>
+        <time class="walk-example-time" datetime="<%= example[:time] %>"><%= example[:time] %></time>
         <div class="walk-example-caption">
-          <p class="text-sm text-[#52645F]"><%= example[:time] %></p>
           <h3 class="mt-1 text-xl font-bold"><%= example[:word] %></h3>
           <p class="mt-2 text-sm leading-6"><%= example[:memo] %></p>
           <p class="walk-example-next">次は「<%= example[:next_char] %>」</p>
