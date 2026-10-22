@@ -848,7 +848,7 @@ main:has(.walk-index-page) {
 }
 
 .active-walk-target-copy {
-  margin: 16px 0 0;
+  margin: 0;
   color: #303b3c;
   font-size: 1rem;
   line-height: 1.65;
@@ -862,7 +862,7 @@ main:has(.walk-index-page) {
   height: 4px;
   margin: 0 auto -4px;
   background: #fff;
-  transform: translateY(-18px);
+  transform: translateY(-2px);
 }
 
 /* Active walk */
