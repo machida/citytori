@@ -159,6 +159,7 @@ main:has(.landing-page) {
 
 .landing-rule-title {
   display: flex;
+  font-size: clamp(28px, 4vw, 40px);
   align-items: center;
   justify-content: center;
   gap: 16px;
