@@ -862,7 +862,7 @@ main:has(.walk-index-page) {
   height: 4px;
   margin: 0 auto -4px;
   background: #fff;
-  transform: translateY(-2px);
+  transform: translateY(calc(0.5rem - 2px));
 }
 
 /* Active walk */
