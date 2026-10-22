@@ -1293,7 +1293,7 @@ main:has(.walk-step-detail-page) {
 /* A small photo trail follows the word chain in reading order. */
 .walk-example-grid {
   display: grid;
-  gap: 160px;
+  gap: 216px;
   max-width: 640px;
   margin: 44px auto 24px;
   padding: 0 12px 12px;
@@ -1369,7 +1369,7 @@ main:has(.walk-step-detail-page) {
 }
 .walk-example-connector {
   position: absolute;
-  top: calc(100% + 46px);
+  top: calc(100% + 70px);
   left: 50%;
   width: 100px;
   aspect-ratio: 16 / 9;
@@ -1400,7 +1400,7 @@ main:has(.walk-step-detail-page) {
 }
 .walk-example-walker {
   position: absolute;
-  top: calc(100% - 24px);
+  top: calc(100% + 16px);
   left: 0;
   z-index: 2;
   width: 180px;
@@ -1413,10 +1413,10 @@ main:has(.walk-step-detail-page) {
   right: 0;
 }
 @media (min-width: 640px) {
-  .walk-example-grid { gap: 180px; padding-inline: 20px; }
+  .walk-example-grid { gap: 272px; padding-inline: 20px; }
   .walk-example-stop { width: 62%; }
   .walk-example-connector { width: 180px; }
-  .walk-example-walker { top: calc(100% - 40px); width: 240px; }
+  .walk-example-walker { width: 240px; }
 }
 
 :where(a, button, input, textarea):focus-visible {
