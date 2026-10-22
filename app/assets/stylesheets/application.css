@@ -1015,6 +1015,12 @@ main:has(.active-walk-page) {
   font-size: 0.875rem;
 }
 
+.active-walk-latest-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
 .active-walk-latest-cancel {
   display: inline-flex;
   align-items: center;
