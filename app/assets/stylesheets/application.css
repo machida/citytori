@@ -1574,6 +1574,14 @@ main:has(.walk-step-detail-page) {
   font-variant-numeric: tabular-nums;
 }
 
+.walk-timeline-dot {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #d39a62;
+  border-radius: 50%;
+  background: #f8d7a5;
+}
+
 .walk-timeline-event {
   display: flex;
   align-items: baseline;
