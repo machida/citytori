@@ -2,23 +2,22 @@
   <% if word_chain_walk.latest_step.present? %>
     <% latest_step = word_chain_walk.latest_step %>
     <div class="active-walk-latest-card">
-      <div class="flex items-center gap-3">
-        <%= image_tag latest_step.image,
-                      alt: "前回見つけた「#{latest_step.word}」の写真",
-                      class: "active-walk-latest-image" %>
-
-        <div class="flex-1">
+      <div class="active-walk-latest-content">
+        <div class="active-walk-latest-pair">
+          <%= image_tag latest_step.image,
+                        alt: "前回見つけた「#{latest_step.word}」の写真",
+                        class: "active-walk-latest-image" %>
           <%= link_to word_chain_walk_word_chain_walk_step_path(word_chain_walk, latest_step),
                       class: "active-walk-latest-word" do %>
             <%= latest_step.word %>
           <% end %>
-
-          <% if latest_step.memo.present? %>
-            <p class="active-walk-latest-memo">
-              <%= latest_step.memo %>
-            </p>
-          <% end %>
         </div>
+
+        <% if latest_step.memo.present? %>
+          <p class="active-walk-latest-memo">
+            <%= latest_step.memo %>
+          </p>
+        <% end %>
       </div>
 
       <div class="active-walk-latest-actions">
