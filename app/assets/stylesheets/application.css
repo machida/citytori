@@ -823,6 +823,7 @@ main:has(.walk-index-page) {
   max-width: 720px;
   margin: 0 auto;
   padding-block: 16px 24px;
+  border-bottom: dashed 1px #054643;
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: contain;
