@@ -113,32 +113,48 @@ RSpec.describe 'Images', type: :system do
     log_in(user)
     visit word_chain_walk_path(word_chain_walk)
 
-    expect(page).to have_css(
-      '[data-previews-target="preview"].hidden',
-      visible: :all
+    begin
+      set_browser_geolocation(35.6586, 139.7454)
+
+      expect(page).to have_css(
+        '[data-previews-target="preview"].hidden',
+        visible: :all
+      )
+
+      image_path = Rails.root.join('spec/fixtures/files/10MB.png')
+      original_size = File.size(image_path)
+
+      attach_file(
+        'word_chain_walk_step_image',
+        image_path,
+        make_visible: true
+      )
+
+      expect(page).to have_css(
+        'dialog[data-modal-target="modal"][open]'
+      )
+
+      fill_in '見つけたことば', with: 'りんご'
+      fill_in 'メモ', with: 'メモ'
+
+      expect(page).to have_content('位置情報を取得できました')
+      click_button '写真とことばを記録する'
+      expect(page).to have_content('りんご')
+
+      saved_size = word_chain_walk.reload.latest_step.image.blob.byte_size
+
+      expect(saved_size).to be < original_size
+    ensure
+      page.driver.browser.execute_cdp('Emulation.clearGeolocationOverride')
+    end
+  end
+
+  def set_browser_geolocation(latitude, longitude, accuracy: 100)
+    page.driver.browser.execute_cdp(
+      'Emulation.setGeolocationOverride',
+      latitude:,
+      longitude:,
+      accuracy:
     )
-
-    image_path = Rails.root.join('spec/fixtures/files/10MB.png')
-    original_size = File.size(image_path)
-
-    attach_file(
-      'word_chain_walk_step_image',
-      image_path,
-      make_visible: true
-    )
-
-    expect(page).to have_css(
-      'dialog[data-modal-target="modal"][open]'
-    )
-
-    fill_in '見つけたことば', with: 'りんご'
-    fill_in 'メモ', with: 'メモ'
-
-    click_button '記録する'
-    expect(page).to have_content('りんご')
-
-    saved_size = word_chain_walk.reload.latest_step.image.blob.byte_size
-
-    expect(saved_size).to be < original_size
   end
 end
