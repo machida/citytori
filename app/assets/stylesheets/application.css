@@ -1528,6 +1528,35 @@ main:has(.walk-step-detail-page) {
   margin-inline: auto;
 }
 
+.walk-summary-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0 0;
+}
+
+.walk-summary-stat {
+  padding: 12px;
+  border: 1px solid #c9dbd7;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+}
+
+.walk-summary-stat dt {
+  color: #52645f;
+  font-size: 0.8125rem;
+}
+
+.walk-summary-stat dd {
+  margin: 4px 0 0;
+  color: #204d49;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
 .walk-timeline-event {
   display: flex;
   align-items: baseline;
