@@ -988,15 +988,22 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-latest-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 12px;
+}
+
+.active-walk-latest-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .active-walk-latest-pair {
   display: flex;
   flex: 0 0 auto;
+  align-self: start;
   border-radius: 8px;
   text-decoration: none;
 }
@@ -1043,7 +1050,7 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-latest-memo {
-  flex: 1 1 180px;
+  flex: 1;
   min-width: 0;
   margin: 0;
   color: #52645f;

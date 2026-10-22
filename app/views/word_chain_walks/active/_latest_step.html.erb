@@ -14,19 +14,21 @@
           </span>
         <% end %>
 
-        <% if latest_step.memo.present? %>
-          <p class="active-walk-latest-memo">
-            <%= latest_step.memo %>
-          </p>
-        <% end %>
-      </div>
+        <div class="active-walk-latest-body">
+          <% if latest_step.memo.present? %>
+            <p class="active-walk-latest-memo">
+              <%= latest_step.memo %>
+            </p>
+          <% end %>
 
-      <div class="active-walk-latest-actions">
-        <%= button_to "取り消す",
-                      latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk),
-                      method: :delete,
-                      class: "active-walk-latest-cancel",
-                      data: { turbo_confirm: "記録したことばを取り消しますか？" } %>
+          <div class="active-walk-latest-actions">
+            <%= button_to "取り消す",
+                          latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk),
+                          method: :delete,
+                          class: "active-walk-latest-cancel",
+                          data: { turbo_confirm: "記録したことばを取り消しますか？" } %>
+          </div>
+        </div>
       </div>
     </div>
   <% else %>
