@@ -607,7 +607,7 @@ main:has(.home-page) {
 .home-recent-stats dd {
   margin-top: 4px;
   color: #204d49;
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
