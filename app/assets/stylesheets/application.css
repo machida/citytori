@@ -561,7 +561,6 @@ main:has(.home-page) {
 }
 
 .home-recent-card-body {
-  min-height: 76px;
   padding: 12px 16px 0;
 }
 
@@ -573,7 +572,7 @@ main:has(.home-page) {
   min-height: 52px;
   align-items: center;
   margin-top: auto;
-  padding: 16px;
+  padding: 8px 16px 16px;
   color: #52645f;
   font-size: 0.8125rem;
   line-height: 1.4;
