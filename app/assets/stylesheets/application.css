@@ -1039,7 +1039,7 @@ main:has(.active-walk-page) {
 
 .active-walk-allowed-chars p {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.55;
 }
 
