@@ -833,8 +833,10 @@ main:has(.walk-index-page) {
 .walk-index-card-meta {
   grid-column: 1 / -1;
   align-self: start;
+  justify-self: start;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(72px, max-content));
+  max-width: 100%;
   gap: 8px;
   margin-top: 12px;
   color: #52645f;
