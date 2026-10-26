@@ -1327,8 +1327,15 @@ main:has(.walk-step-detail-page) {
   }
 
   .walk-step-detail-heading {
-    grid-template-columns: 100px minmax(0, 1fr) 100px;
+    grid-template-columns: 68px minmax(0, 1fr) 68px;
     align-items: start;
+  }
+
+  .walk-step-detail-back {
+    position: relative;
+    left: -2rem;
+    top: -1rem;
+    width: max-content;
   }
 
   .how-to-play-page {
