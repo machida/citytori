@@ -1074,6 +1074,13 @@ main:has(.active-walk-page) {
   color: #315d55;
 }
 
+.active-walk-latest-name {
+  margin: 0 0 4px;
+  color: #204d49;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
 .active-walk-latest-memo {
   flex: 1;
   min-width: 0;

@@ -10,11 +10,12 @@
                         alt: "前回見つけた「#{latest_step.word}」の写真",
                         class: "active-walk-latest-image" %>
           <span class="active-walk-latest-word">
-            <%= latest_step.word %>
+            <%= latest_step.word.first %>
           </span>
         <% end %>
 
         <div class="active-walk-latest-body">
+          <p class="active-walk-latest-name"><%= latest_step.word %></p>
           <% if latest_step.memo.present? %>
             <p class="active-walk-latest-memo">
               <%= latest_step.memo %>
