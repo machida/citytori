@@ -563,7 +563,7 @@ main:has(.home-page) {
 
 .home-recent-card-body {
   min-height: 76px;
-  padding: 16px 16px 0;
+  padding: 12px 16px 0;
 }
 
 .home-recent-word {
