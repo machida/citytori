@@ -1294,6 +1294,17 @@ main:has(.walk-step-detail-page) {
   gap: 8px;
 }
 
+.walk-step-detail-back a {
+  border-color: #d9e4e1;
+  color: #667773;
+  font-weight: 400;
+}
+
+.walk-step-detail-back a:hover {
+  background: #f4f7f6;
+  color: #204d49;
+}
+
 @media (min-width: 640px) {
   main:has(.active-walk-page) {
     padding: 24px;
