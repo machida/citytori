@@ -970,7 +970,7 @@ main:has(.walk-index-page) {
   isolation: isolate;
   margin: -0.5rem 0 0;
   color: #303b3c;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.65;
 }
 
