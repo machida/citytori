@@ -698,6 +698,11 @@ main:has(.walk-index-page) {
   line-height: 1;
 }
 
+.walk-record-char {
+  top: -8px;
+  left: -8px;
+}
+
 .walk-index-card:hover {
   border-color: #88a485;
 }
