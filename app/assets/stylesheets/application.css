@@ -240,6 +240,13 @@ main:has(.completion-page) {
   background: #fff;
 }
 
+.completion-illustration {
+  display: block;
+  width: min(100%, 480px);
+  height: auto;
+  margin-inline: auto;
+}
+
 .completion-primary-cta {
   display: inline-flex;
   width: min(100%, 360px);
