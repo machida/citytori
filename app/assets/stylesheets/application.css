@@ -30,6 +30,11 @@ body > footer {
   margin-top: auto;
 }
 
+#header-menu {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 body:has(.landing-page) {
   background-color: #fcf9ef;
 }
