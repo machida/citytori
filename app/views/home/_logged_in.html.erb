@@ -1,25 +1,25 @@
 <% first_walk = active_word_chain_walk.blank? && finished_word_chain_walks.empty? %>
 <div class="home-page" data-controller="<%= "walk-start" if first_walk %>">
-  <section id="active_word_chain_walk">
+  <div id="active_word_chain_walk">
     <% if active_word_chain_walk.present? %>
       <%= render "word_chain_walks/active_word_chain_walk", word_chain_walk: active_word_chain_walk %>
     <% else %>
       <%= render "word_chain_walks/start_word_chain_walk", shared_start_controller: first_walk %>
     <% end %>
-  </section>
+  </div>
 
-  <section id="finished_word_chain_walks" class="home-recent">
+  <div id="finished_word_chain_walks" class="home-recent">
     <div class="home-content">
       <% if finished_word_chain_walks.any? %>
         <h2 class="home-recent-title">
           最近の散歩
         </h2>
-        <div id="word_chain_walks" class="home-recent-grid">
+        <ul id="word_chain_walks" class="home-recent-grid" role="list" aria-label="最近の散歩">
           <% finished_word_chain_walks.each do |finished_word_chain_walk| %>
-            <%= render "word_chain_walks/finished_word_chain_walk",
-                      word_chain_walk: finished_word_chain_walk %>
+            <li><%= render "word_chain_walks/finished_word_chain_walk",
+                           word_chain_walk: finished_word_chain_walk %></li>
           <% end %>
-        </div>
+        </ul>
         <% if current_user.word_chain_walks.finished.size > 3 %>
           <div class="mt-6 text-center">
             <%= link_to "もっと見る", word_chain_walks_path, class: "home-more-link" %>
@@ -36,5 +36,5 @@
         </div>
       <% end %>
     </div>
-  </section>
+  </div>
 </div>

@@ -18,12 +18,12 @@
     <% end %>
 
     <div class="min-w-0 flex-1 pt-0.5">
-      <p class="break-words text-lg font-bold leading-tight text-[#204D49] sm:text-xl">
+      <h2 class="break-words text-lg font-bold leading-tight text-[#204D49] sm:text-xl">
         <%= word_chain_walk_step.word %>
-      </p>
+      </h2>
 
       <p class="mt-2 text-xs text-[#303B3C]">
-        <%= word_chain_walk_step.created_at.strftime("%H:%M") %>
+        <time datetime="<%= word_chain_walk_step.created_at.iso8601 %>"><%= word_chain_walk_step.created_at.strftime("%H:%M") %></time>
       </p>
 
       <% if word_chain_walk_step.memo.present? %>

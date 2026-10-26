@@ -402,7 +402,7 @@ main:has(.home-page) {
   text-align: center;
 }
 
-.home-target p:first-child {
+.home-target > h2 {
   font-size: 0.875rem;
   font-weight: 700;
 }
@@ -621,7 +621,8 @@ main:has(.home-page) {
   font-weight: 700;
 }
 
-.home-recent-grid > div {
+.home-recent-grid > li,
+.home-recent-grid > li > article {
   display: flex;
 }
 
@@ -1837,13 +1838,13 @@ main:has(.walk-step-detail-page) {
 }
 
 @media (hover: hover) {
-  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(.active-walk-end-button):not(:disabled):not([aria-disabled="true"]):hover {
+  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(.active-walk-end-button):not(.walk-delete-button):not(:disabled):not([aria-disabled="true"]):hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgb(32 77 73 / 0.18);
   }
 }
 
-:is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):active {
+:is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):not(.walk-delete-button):active {
   transform: translateY(0) scale(0.98);
   box-shadow: none;
 }
@@ -1856,4 +1857,11 @@ main:has(.walk-step-detail-page) {
   :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):is(:hover, :active) {
     transform: none;
   }
+}
+
+.walk-delete-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }

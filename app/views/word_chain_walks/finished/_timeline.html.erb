@@ -16,10 +16,11 @@
       </div>
     </div>
 
-    <div id="word_chain_walk_steps" class="space-y-4">
+    <div id="word_chain_walk_steps">
       <% if word_chain_walk_steps.any? %>
+        <ol class="space-y-4" role="list" aria-label="散歩で記録したことば">
         <% word_chain_walk_steps.each do |word_chain_walk_step| %>
-          <div class="relative flex items-center gap-2 sm:gap-4">
+          <li class="relative flex items-center gap-2 sm:gap-4">
             <div class="relative z-10 flex h-4 w-4 sm:h-8 sm:w-8 shrink-0 items-center justify-center">
               <span class="walk-timeline-dot"></span>
             </div>
@@ -40,12 +41,12 @@
                   ) %>
 
               <div class="min-w-0 flex-1 pt-0.5">
-                <p class="break-words text-lg font-bold leading-tight text-[#204D49] sm:text-xl">
+                <h2 class="break-words text-lg font-bold leading-tight text-[#204D49] sm:text-xl">
                   <%= word_chain_walk_step.word %>
-                </p>
+                </h2>
 
                 <p class="mt-2 text-xs text-[#303B3C]">
-                  <%= word_chain_walk_step.created_at.strftime("%H:%M") %>
+                  <time datetime="<%= word_chain_walk_step.created_at.iso8601 %>"><%= word_chain_walk_step.created_at.strftime("%H:%M") %></time>
                 </p>
 
                 <% if word_chain_walk_step.memo.present? %>
@@ -55,8 +56,9 @@
                 <% end %>
               </div>
             <% end %>
-          </div>
+          </li>
         <% end %>
+        </ol>
       <% else %>
         <div class="relative flex items-center gap-2 sm:gap-4 py-2">
           <div class="relative z-10 flex h-4 w-4 sm:h-8 sm:w-8 shrink-0 items-center justify-center">

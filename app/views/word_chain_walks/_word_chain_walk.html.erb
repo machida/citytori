@@ -1,7 +1,7 @@
 <% latest_step = word_chain_walk.latest_step %>
 <% finished = word_chain_walk.finished? %>
 
-<article id="<%= dom_id word_chain_walk %>">
+<article id="<%= dom_id word_chain_walk %>" aria-labelledby="<%= dom_id(word_chain_walk, :title) %>">
   <%= link_to word_chain_walk, class: ["walk-index-card", (finished ? "walk-index-card-finished" : "walk-index-card-active")] do %>
     <span class="walk-index-start-char">「<%= word_chain_walk.start_char %>」から</span>
     <% if latest_step&.image&.attached? %>
@@ -23,9 +23,9 @@
         <%= finished ? "完了" : "進行中" %>
       </span>
 
-      <p class="walk-index-card-title">
-        <%= word_chain_walk.started_at.strftime("%Y年%-m月%-d日 %H:%M") %>の散歩
-      </p>
+      <h3 id="<%= dom_id(word_chain_walk, :title) %>" class="walk-index-card-title">
+        <time datetime="<%= word_chain_walk.started_at.iso8601 %>"><%= word_chain_walk.started_at.strftime("%Y年%-m月%-d日 %H:%M") %></time>の散歩
+      </h3>
 
       <dl class="walk-index-card-meta">
         <div>

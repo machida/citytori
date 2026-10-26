@@ -2,7 +2,7 @@
 
 <% finished_word_chain_walks, active_word_chain_walks = @word_chain_walks.partition(&:finished?) %>
 
-<main class="walk-index-page">
+<div class="walk-index-page">
   <div class="walk-index-content">
     <h1 class="walk-index-title">散歩の記録</h1>
 
@@ -22,11 +22,11 @@
           進行中の散歩
         </h2>
 
-        <div class="walk-index-list">
+        <ul class="walk-index-list" role="list">
           <% active_word_chain_walks.each do |word_chain_walk| %>
-            <%= render "word_chain_walks/word_chain_walk", word_chain_walk: %>
+            <li><%= render "word_chain_walks/word_chain_walk", word_chain_walk: %></li>
           <% end %>
-        </div>
+        </ul>
       </section>
     <% end %>
 
@@ -40,11 +40,11 @@
           これまでの散歩
         </h2>
 
-        <div class="walk-index-list">
+        <ul class="walk-index-list" role="list">
           <% finished_word_chain_walks.each do |word_chain_walk| %>
-            <%= render "word_chain_walks/word_chain_walk", word_chain_walk: %>
+            <li><%= render "word_chain_walks/word_chain_walk", word_chain_walk: %></li>
           <% end %>
-        </div>
+        </ul>
       </section>
     <% elsif active_word_chain_walks.empty? %>
       <section
@@ -68,4 +68,4 @@
       <%= render "word_chain_walks/start_modal" %>
     </div>
   </div>
-</main>
+</div>
