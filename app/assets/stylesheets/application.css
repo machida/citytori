@@ -1552,7 +1552,7 @@ main:has(.walk-step-detail-page) {
 :where(h1, h2, h3, p, dd) { overflow-wrap: anywhere; }
 
 .walk-map-marker { display: block; position: relative; width: 56px; height: 56px; border: 3px solid white; border-radius: 50%; background: white; box-shadow: 0 2px 8px #204d4940; }
-.walk-map-marker img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.walk-map-marker img { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; }
 .walk-map-marker span { position: absolute; top: -6px; left: -6px; min-width: 24px; padding: 2px 5px; border-radius: 50%; background: #204d49; color: white; text-align: center; font-weight: 700; }
 .walk-map-marker[aria-current], .walk-map-record[aria-current] { outline: 3px solid #b9471d; outline-offset: 3px; }
 #selected_walk_step { display: block; scroll-margin-block: 16px; }
