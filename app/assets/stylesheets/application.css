@@ -240,6 +240,32 @@ main:has(.completion-page) {
   background: #fff;
 }
 
+.completion-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 24px 0 0;
+  color: #204d49;
+}
+
+.completion-stats > div {
+  min-width: 0;
+  padding: 12px 8px;
+  border: 1px solid #c9dbd7;
+  border-radius: 12px;
+  background: #e8f4f5;
+  text-align: center;
+}
+
+.completion-stats dt {
+  font-size: clamp(0.6875rem, 2.8vw, 0.875rem);
+}
+
+.completion-stats dd {
+  font-size: clamp(1rem, 3.5vw, 1.125rem);
+  font-variant-numeric: tabular-nums;
+}
+
 .completion-illustration {
   display: block;
   width: min(100%, 480px);

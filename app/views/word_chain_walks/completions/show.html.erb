@@ -41,7 +41,7 @@
       </section>
     <% end %>
 
-    <dl class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-3 rounded-xl bg-[#E8F4F5] p-4 text-[#204D49]">
+    <dl class="completion-stats">
       <div><dt class="text-sm">最初の文字</dt><dd class="mt-1 text-lg font-bold"><%= @word_chain_walk.start_char %></dd></div>
       <div><dt class="text-sm">つないだことば</dt><dd class="mt-1 text-lg font-bold"><%= @word_chain_walk_steps.size %>個</dd></div>
       <div><dt class="text-sm">かかった時間</dt><dd class="mt-1 text-lg font-bold"><%= formatted_elapsed_time(@word_chain_walk.elapsed_seconds) %></dd></div>
