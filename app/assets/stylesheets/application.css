@@ -1595,7 +1595,7 @@ main:has(.walk-step-detail-page) {
   gap: 8px;
   margin: 4px 0 0;
   color: #303b3c;
-  font-size: clamp(0.6875rem, 3vw, 0.875rem);
+  font-size: clamp(0.8125rem, 3.5vw, 1rem);
   white-space: nowrap;
 }
 
