@@ -547,8 +547,8 @@ main:has(.home-page) {
 
 .home-recent-start-char {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 6px;
+  left: 6px;
   padding: 4px 10px;
   border: 1px solid #c9dbd7;
   border-radius: 999px;
