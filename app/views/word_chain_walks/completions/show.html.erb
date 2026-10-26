@@ -20,7 +20,10 @@
     <% photos = @word_chain_walk_steps.select { |step| step.image.attached? }.first(3) %>
     <% if photos.any? %>
       <section class="mt-6" aria-labelledby="walk-photos-heading">
-        <h2 id="walk-photos-heading" class="text-xl font-bold text-[#204D49]">今日の発見</h2>
+        <h2 id="walk-photos-heading" class="flex items-center gap-2 text-xl font-bold text-[#204D49]">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          今日の発見
+        </h2>
         <div class="completion-photo-grid <%= { 1 => "completion-photo-grid--one", 2 => "completion-photo-grid--two", 3 => "completion-photo-grid--three" }.fetch(photos.size) %>">
           <% photos.each do |step| %>
             <%= link_to word_chain_walk_word_chain_walk_step_path(@word_chain_walk, step), class: "min-w-0 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#204D49]" do %>
