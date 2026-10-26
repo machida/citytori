@@ -1613,6 +1613,52 @@ main:has(.walk-step-detail-page) {
   font-weight: 500;
 }
 
+.notice-toast {
+  position: fixed;
+  inset: auto 16px calc(24px + env(safe-area-inset-bottom));
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: min(440px, calc(100% - 32px));
+  margin-inline: auto;
+  padding: 12px 12px 12px 20px;
+  border: 1px solid #c9dbd7;
+  border-radius: 14px;
+  background: #204d49;
+  color: #fff;
+  box-shadow: 0 6px 24px rgb(32 77 73 / 0.2);
+}
+
+.notice-toast p {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.notice-toast-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.notice-toast-close:hover {
+  background: rgb(255 255 255 / 0.15);
+}
+
+.notice-toast-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 /* Shared feedback for buttons and links styled as buttons. */
 :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta) {
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 150ms ease, color 150ms ease;
