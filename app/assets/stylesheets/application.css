@@ -665,6 +665,7 @@ main:has(.walk-index-page) {
 }
 
 .walk-index-card {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(80px, 30%) minmax(0, 1fr);
   width: 100%;
@@ -674,6 +675,23 @@ main:has(.walk-index-page) {
   background: #fff;
   color: #303b3c;
   text-decoration: none;
+}
+
+.walk-index-start-char {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid #204d49;
+  border-radius: 50%;
+  background: #fcf9ef;
+  color: #204d49;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .walk-index-card:hover {
