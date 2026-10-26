@@ -30,8 +30,9 @@
                     word_chain_walk_step
                   ),
                   data: { turbo_frame: "_top" },
-                  class: "flex min-w-0 flex-1 items-start gap-3 rounded-xl border border-[#C9DBD7] bg-white p-3 transition-colors hover:border-[#204D49]/35 hover:bg-[#FCF9EF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49] sm:gap-2 sm:gap-4 sm:p-4"
+                  class: "walk-record-card flex min-w-0 flex-1 items-start gap-3 rounded-xl border border-[#C9DBD7] bg-white p-3 transition-colors hover:border-[#204D49]/35 hover:bg-[#FCF9EF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#204D49] sm:gap-2 sm:gap-4 sm:p-4"
                 ) do %>
+              <span class="walk-record-char" aria-hidden="true"><%= word_chain_walk_step.word.first %></span>
               <%= image_tag(
                     word_chain_walk_step.image.variant(resize_to_fill: [240, 180]),
                     alt: "「#{word_chain_walk_step.word}」の写真",

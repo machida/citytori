@@ -676,7 +676,12 @@ main:has(.walk-index-page) {
   text-decoration: none;
 }
 
-.walk-index-start-char {
+.walk-record-card {
+  position: relative;
+}
+
+.walk-index-start-char,
+.walk-record-char {
   position: absolute;
   top: 6px;
   left: 6px;
