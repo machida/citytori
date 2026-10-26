@@ -1535,6 +1535,15 @@ main:has(.walk-step-detail-page) {
   margin-inline: auto;
 }
 
+.walk-view-tabs .walk-view-tab-active {
+  background: #204d49;
+  color: #fff;
+}
+
+.walk-view-tabs .walk-view-tab-active:focus-visible {
+  outline-color: #fff;
+}
+
 .walk-summary-header {
   margin-bottom: 32px;
 }
