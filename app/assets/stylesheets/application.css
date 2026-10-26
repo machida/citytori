@@ -677,7 +677,8 @@ main:has(.walk-index-page) {
   text-decoration: none;
 }
 
-.walk-index-start-char {
+.walk-index-start-char,
+.walk-summary-start-char {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -1635,8 +1636,15 @@ main:has(.walk-step-detail-page) {
 }
 
 .walk-summary-heading {
+  position: relative;
   flex: 1 1 240px;
   margin: 0;
+  padding-left: 60px;
+}
+
+.walk-summary-start-char {
+  top: 0;
+  left: 0;
 }
 
 .walk-summary-stats {
