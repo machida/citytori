@@ -1283,10 +1283,15 @@ main:has(.walk-step-detail-page) {
 }
 
 .walk-step-detail-sheet {
-  padding: 16px 16px 48px;
+  padding: 24px 16px 48px;
   border: 1px solid rgb(32 77 73 / 0.08);
   border-radius: 12px;
   background: #fff;
+}
+
+.walk-step-detail-heading {
+  display: grid;
+  gap: 8px;
 }
 
 @media (min-width: 640px) {
@@ -1301,7 +1306,7 @@ main:has(.walk-step-detail-page) {
   }
 
   main:has(.walk-step-detail-page) {
-    padding: 12px 24px 24px;
+    padding: 24px;
   }
 
   main:has(.how-to-play-page) {
@@ -1317,8 +1322,13 @@ main:has(.walk-step-detail-page) {
   }
 
   .walk-step-detail-sheet {
-    padding: 24px 48px 56px;
+    padding: 32px 48px 56px;
     border-radius: 20px;
+  }
+
+  .walk-step-detail-heading {
+    grid-template-columns: 100px minmax(0, 1fr) 100px;
+    align-items: start;
   }
 
   .how-to-play-page {
