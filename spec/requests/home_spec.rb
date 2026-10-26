@@ -45,6 +45,27 @@ RSpec.describe "Home", type: :request do
         expect(response.body).to include("ホームに戻って始める")
       end
 
+      it "初回ホームでは遊び方と上下の開始ボタンを表示する" do
+        get root_path
+        page = Nokogiri::HTML(response.body)
+        expect(page.at_css(".home-how-to-play").text).to include("Citytoriの遊び方", "写真とことばを記録する")
+        expect(page.css("button[data-action='walk-start#open']").size).to eq(2)
+        expect(page.css("dialog[data-walk-start-target='modal']").size).to eq(1)
+        expect(page.css("[data-controller='walk-start']").size).to eq(1)
+        expect(response.body).not_to include("まだ散歩の記録はありません。")
+      end
+
+      it "進行中または完了した散歩があるホームでは初回の遊び方を表示しない" do
+        walk = FactoryBot.create(:word_chain_walk, user: user)
+        get root_path
+        expect(response.body).not_to include('class="home-how-to-play"')
+
+        walk.update!(finished_at: Time.current)
+        get root_path
+        expect(response.body).not_to include('class="home-how-to-play"')
+        expect(response.body).to include("最近の散歩")
+      end
+
       it "完了した散歩や他人の進行中の散歩では再開を案内しない" do
         FactoryBot.create(:word_chain_walk, user: user, finished_at: Time.current)
         FactoryBot.create(:word_chain_walk)

@@ -30,6 +30,12 @@ body > footer {
   margin-top: auto;
 }
 
+@media (min-width: 640px) {
+  .home-location-mobile-break {
+    display: none;
+  }
+}
+
 #header-menu {
   border-radius: 12px;
   overflow: hidden;
