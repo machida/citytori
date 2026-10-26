@@ -436,7 +436,6 @@ main:has(.home-page) {
 
 .home-latest-word,
 .home-recent-word {
-  margin-top: 4px;
   color: #204d49;
   font-family: var(--font-japanese-sans);
   font-weight: 700;
