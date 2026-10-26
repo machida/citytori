@@ -3,7 +3,7 @@
 
 <article id="<%= dom_id word_chain_walk %>">
   <%= link_to word_chain_walk, class: ["walk-index-card", (finished ? "walk-index-card-finished" : "walk-index-card-active")] do %>
-    <span class="walk-index-start-char" aria-hidden="true"><%= word_chain_walk.start_char %></span>
+    <span class="walk-index-start-char" aria-hidden="true"><%= latest_step ? latest_step.normalize_last_char : word_chain_walk.start_char %></span>
     <% if latest_step&.image&.attached? %>
       <%= image_tag latest_step.image,
                     alt: "「#{word_chain_walk.start_char}」から始まった散歩の写真",
