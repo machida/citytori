@@ -31,7 +31,7 @@ body > footer {
 }
 
 @media (min-width: 640px) {
-  .home-location-mobile-break {
+  .mobile-copy-break {
     display: none;
   }
 }
