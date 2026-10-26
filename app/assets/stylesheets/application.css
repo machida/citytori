@@ -593,7 +593,8 @@ main:has(.home-page) {
   line-height: 1.4;
 }
 
-.home-recent-stats > div {
+.home-recent-stats > div,
+.walk-index-card-meta > div {
   padding: 8px;
   border: 1px solid #c9dbd7;
   border-radius: 8px;
@@ -601,11 +602,13 @@ main:has(.home-page) {
   text-align: center;
 }
 
-.home-recent-stats dt {
+.home-recent-stats dt,
+.walk-index-card-meta dt {
   font-size: 0.75rem;
 }
 
-.home-recent-stats dd {
+.home-recent-stats dd,
+.walk-index-card-meta dd {
   margin-top: 2px;
   color: #204d49;
   font-size: 0.75rem;
@@ -830,9 +833,9 @@ main:has(.walk-index-page) {
 .walk-index-card-meta {
   grid-column: 1 / -1;
   align-self: start;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
   margin-top: 12px;
   color: #52645f;
   font-size: 0.875rem;
