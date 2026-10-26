@@ -50,7 +50,7 @@
       <% photo_steps = word_chain_walk.word_chain_walk_steps.sort_by(&:id).select { |step| step.image.attached? } %>
       <% if photo_steps.any? %>
         <div class="walk-index-thumbnails" role="group" aria-label="散歩で撮った写真">
-          <% photo_steps.each do |step| %>
+          <% photo_steps.first(6).each do |step| %>
             <%= image_tag step.image.variant(resize_to_fill: [112, 112]), alt: "#{step.word}の写真", width: 56, height: 56, loading: "lazy", class: "walk-index-thumbnail" %>
           <% end %>
         </div>
