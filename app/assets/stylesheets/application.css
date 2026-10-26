@@ -1257,6 +1257,7 @@ main:has(.active-walk-page) {
 
 .active-walk-end-button:hover {
   color: #204d49;
+  text-decoration: none;
 }
 
 body:has(.walk-step-detail-page) {
@@ -1836,7 +1837,7 @@ main:has(.walk-step-detail-page) {
 }
 
 @media (hover: hover) {
-  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):hover {
+  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(.active-walk-end-button):not(:disabled):not([aria-disabled="true"]):hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgb(32 77 73 / 0.18);
   }
