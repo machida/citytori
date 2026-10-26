@@ -31,15 +31,18 @@ RSpec.describe "Home", type: :request do
       end
 
       it "自分の進行中の散歩があれば再開を案内する" do
-        FactoryBot.create(:word_chain_walk, user: user)
+        walk = FactoryBot.create(:word_chain_walk, user: user)
         get how_to_play_path
-        expect(response.body).to include("進行中の散歩があります。ホームから続きを再開できます。")
+        expect(response.body).to include("進行中の散歩があります。続きから再開できます。")
+        link = Nokogiri::HTML(response.body).at_css("a[href='#{word_chain_walk_path(walk)}'].landing-cta")
+        expect(link.text).to eq("散歩を再開する")
         expect(response.body).not_to include("ホームから新しい散歩を始められます。")
       end
 
       it "散歩がなければ新しい散歩を案内する" do
         get how_to_play_path
         expect(response.body).to include("ホームから新しい散歩を始められます。")
+        expect(response.body).to include("ホームに戻って始める")
       end
 
       it "完了した散歩や他人の進行中の散歩では再開を案内しない" do
