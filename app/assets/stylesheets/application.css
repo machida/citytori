@@ -1163,7 +1163,6 @@ main:has(.active-walk-page) {
   width: clamp(96px, 28vw, 144px);
   aspect-ratio: 1;
   flex: 0 0 auto;
-  border: 1px solid #204d49;
   border-radius: 8px;
   object-fit: cover;
 }
