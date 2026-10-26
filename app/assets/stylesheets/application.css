@@ -645,9 +645,8 @@ main:has(.walk-index-page) {
 }
 
 .walk-index-heading-icon {
-  margin-right: 0.35em;
-  font-size: 0.8em;
-  vertical-align: 0.04em;
+  font-size: 1.25em;
+  transform: translateY(0.225em);
 }
 
 .walk-index-heading-icon-active {
