@@ -58,11 +58,14 @@
 
         <p>まだ散歩の記録はありません。</p>
 
-        <%= button_to "散歩を始める",
-                      word_chain_walks_path,
-                      method: :post,
-                      class: "walk-index-start-button" %>
       </section>
     <% end %>
+
+    <div class="walk-index-start-action" data-controller="walk-start">
+      <%= button_tag "しりとり散歩をはじめる", type: "button",
+                     class: "home-primary-cta walk-start-cta",
+                     data: { action: "walk-start#open" } %>
+      <%= render "word_chain_walks/start_modal" %>
+    </div>
   </div>
 </main>

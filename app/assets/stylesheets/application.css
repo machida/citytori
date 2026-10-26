@@ -668,6 +668,11 @@ main:has(.walk-index-page) {
   margin-top: 14px;
 }
 
+.walk-index-start-action {
+  margin-top: 32px;
+  text-align: center;
+}
+
 .walk-index-card {
   position: relative;
   display: grid;
