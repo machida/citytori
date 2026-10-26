@@ -453,9 +453,9 @@ main:has(.home-page) {
 }
 
 .home-recent-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
 }
 
 .home-primary-cta {
@@ -584,12 +584,31 @@ main:has(.home-page) {
 
 .home-recent-stats {
   min-height: 52px;
-  align-items: center;
+  align-items: stretch;
   margin-top: auto;
   padding: 8px 16px 16px;
   color: #52645f;
   font-size: 0.8125rem;
   line-height: 1.4;
+}
+
+.home-recent-stats > div {
+  padding: 8px;
+  border: 1px solid #c9dbd7;
+  border-radius: 8px;
+  background: #f2f5f3;
+  text-align: center;
+}
+
+.home-recent-stats dt {
+  font-size: 0.75rem;
+}
+
+.home-recent-stats dd {
+  margin-top: 4px;
+  color: #204d49;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .home-recent-grid > div {

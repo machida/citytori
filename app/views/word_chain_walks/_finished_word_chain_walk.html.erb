@@ -25,15 +25,15 @@
 
     <dl class="home-recent-stats">
       <div>
-        <dt class="sr-only">つないだことばの数</dt>
+        <dt>ことば</dt>
 
         <dd>
-          <%= word_chain_walk.word_chain_walk_steps.size %>個のことば
+          <%= word_chain_walk.word_chain_walk_steps.size %>個
         </dd>
       </div>
 
       <div>
-        <dt class="sr-only">かかった時間</dt>
+        <dt>時間</dt>
 
         <dd>
           <%= formatted_elapsed_time(word_chain_walk.elapsed_seconds) %>
