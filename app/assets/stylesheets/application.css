@@ -694,6 +694,11 @@ main:has(.walk-index-page) {
   line-height: 1;
 }
 
+.walk-index-start-char {
+  top: 6px;
+  left: 6px;
+}
+
 .walk-index-card:hover {
   border-color: #88a485;
 }
