@@ -11,7 +11,7 @@
 
 /* Keep the landing page palette scoped to the logged-out home. */
 :root {
-  --font-japanese-sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-japanese-sans: "YakuHanJPs", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
 }
 
 body {
