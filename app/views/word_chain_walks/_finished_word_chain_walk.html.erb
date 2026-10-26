@@ -2,6 +2,7 @@
 
 <div id="<%= dom_id word_chain_walk %>">
   <%= link_to word_chain_walk, class: "home-recent-card" do %>
+    <span class="home-recent-start-char">「<%= word_chain_walk.start_char %>」から</span>
     <% if latest_step %>
       <%= image_tag latest_step.image,
                     alt: "「#{word_chain_walk.start_char}」から始まった散歩の写真",
@@ -23,14 +24,6 @@
     </div>
 
     <dl class="home-recent-stats">
-      <div>
-        <dt class="sr-only">最初の文字</dt>
-
-        <dd>
-          「<%= word_chain_walk.start_char %>」から
-        </dd>
-      </div>
-
       <div>
         <dt class="sr-only">つないだことばの数</dt>
 

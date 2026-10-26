@@ -528,6 +528,7 @@ main:has(.home-page) {
 }
 
 .home-recent-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -542,6 +543,19 @@ main:has(.home-page) {
 
 .home-recent-card:hover {
   border-color: #88a485;
+}
+
+.home-recent-start-char {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border: 1px solid #c9dbd7;
+  border-radius: 999px;
+  background: #fcf9ef;
+  color: #204d49;
+  font-size: 0.8125rem;
+  font-weight: 700;
 }
 
 .home-recent-image {
