@@ -1125,112 +1125,25 @@ main:has(.active-walk-page) {
   color: #204d49;
 }
 
-.active-walk-latest-card {
-  margin-top: 12px;
-  padding: 16px;
-  border: 1px solid #c9dbd7;
-  border-radius: 14px;
-  background: #fff;
-}
-
-.active-walk-latest-content {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 12px;
-}
-
-.active-walk-latest-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-width: 0;
-}
-
-.active-walk-latest-pair {
-  position: relative;
-  display: flex;
-  flex: 0 0 auto;
-  align-self: start;
-  border-radius: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease;
-}
-
-@media (hover: hover) {
-  .active-walk-latest-pair:hover .active-walk-latest-image {
-    opacity: 0.8;
-  }
-}
-
-.active-walk-latest-pair:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .active-walk-latest-pair,
-  .active-walk-latest-image {
-    transition: none;
-  }
-
-  .active-walk-latest-pair:hover,
-  .active-walk-latest-pair:active {
-    transform: none;
-  }
-}
-
-.active-walk-latest-pair:focus-visible {
-  outline: 3px solid #204d49;
-  outline-offset: 4px;
-}
-
-.active-walk-latest-image {
-  display: block;
-  width: clamp(96px, 28vw, 144px);
-  aspect-ratio: 1;
-  flex: 0 0 auto;
-  border-radius: 8px;
-  object-fit: cover;
-  transition: opacity 160ms ease;
-}
-
-.active-walk-latest-word {
+.active-walk-latest-link::after {
   position: absolute;
-  top: -24px;
-  left: -24px;
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 2px solid #204d49;
-  border-radius: 50%;
-  background: #fcf9ef;
-  color: #204d49;
-  font-family: var(--font-japanese-sans);
-  font-size: 1.375rem;
-  font-weight: 700;
-  line-height: 1;
-  text-decoration: none;
+  inset: 0;
+  border-radius: 12px;
+  content: "";
 }
 
-.active-walk-latest-pair:hover .active-walk-latest-word {
-  color: #315d55;
+.active-walk-latest-link:focus-visible {
+  outline: none;
 }
 
-.active-walk-latest-name {
-  margin: 0 0 4px;
-  color: #204d49;
-  font-size: 1.25rem;
-  font-weight: 700;
+.active-walk-latest-link:focus-visible::after {
+  outline: 2px solid #204d49;
+  outline-offset: 2px;
 }
 
-.active-walk-latest-memo {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-  color: #52645f;
-  font-size: 0.875rem;
+.active-walk-latest-card .active-walk-latest-cancel {
+  position: relative;
+  z-index: 1;
 }
 
 .active-walk-latest-actions {

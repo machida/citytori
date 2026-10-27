@@ -53,7 +53,7 @@ RSpec.describe "Semantic page structure", type: :request do
                              latitude: 35.68, longitude: 139.76)
     get word_chain_walk_path(walk)
     expect_page_landmarks
-    expect(document.at_css(".active-walk-latest-body h3").text).to eq(step.word)
+    expect(document.at_css(".active-walk-latest-body h3").text.strip).to eq(step.word)
     walk.update!(finished_at: Time.current)
 
     get word_chain_walk_path(walk)
