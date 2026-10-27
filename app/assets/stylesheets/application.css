@@ -1123,6 +1123,10 @@ main:has(.active-walk-page) {
   color: #204d49;
 }
 
+#latest_step {
+  padding-left: 0.5rem;
+}
+
 .active-walk-latest-link::after {
   position: absolute;
   inset: 0;
