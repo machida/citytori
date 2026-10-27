@@ -1113,7 +1113,7 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-latest-heading {
-  margin: 0;
+  margin: 0 0 16px;
   color: #204d49;
   font-family: var(--font-japanese-sans);
   font-size: 1.25rem;
@@ -1130,10 +1130,6 @@ main:has(.active-walk-page) {
   inset: 0;
   border-radius: 12px;
   content: "";
-}
-
-.active-walk-latest-card {
-  margin-top: 16px;
 }
 
 .active-walk-latest-card:hover {
