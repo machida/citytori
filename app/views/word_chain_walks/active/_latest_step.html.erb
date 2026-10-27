@@ -1,7 +1,7 @@
 <div id="latest_step">
   <% if word_chain_walk.latest_step.present? %>
     <% latest_step = word_chain_walk.latest_step %>
-    <article class="active-walk-latest-card walk-record-card mt-3 flex min-w-0 items-start gap-3 rounded-xl border border-[#C9DBD7] bg-white p-3 transition-colors hover:border-[#204D49]/35 sm:gap-4 sm:p-4">
+    <article class="active-walk-latest-card walk-record-card flex min-w-0 items-start gap-3 rounded-xl border border-[#C9DBD7] bg-white p-3 transition-colors hover:border-[#204D49]/35 sm:gap-4 sm:p-4">
       <span class="walk-record-char" aria-hidden="true"><%= latest_step.word.first %></span>
       <%= image_tag latest_step.image.variant(resize_to_fill: [240, 180]),
                     alt: "「#{latest_step.word}」の写真",
