@@ -722,6 +722,10 @@ main:has(.walk-index-page) {
   margin-top: 14px;
 }
 
+#active-walks-heading + .walk-index-list {
+  margin-top: 20px;
+}
+
 #finished-walks-heading + .walk-index-list {
   margin-top: 24px;
 }
