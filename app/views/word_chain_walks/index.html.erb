@@ -61,11 +61,18 @@
       </section>
     <% end %>
 
-    <div class="walk-index-start-action" data-controller="walk-start">
-      <%= button_tag "しりとり散歩をはじめる", type: "button",
-                     class: "home-primary-cta walk-start-cta",
-                     data: { action: "walk-start#open" } %>
-      <%= render "word_chain_walks/start_modal" %>
-    </div>
+    <% if active_word_chain_walks.any? %>
+      <div class="walk-index-start-action">
+        <%= link_to "散歩を再開する", word_chain_walk_path(active_word_chain_walks.first),
+                    class: "home-primary-cta walk-start-cta" %>
+      </div>
+    <% else %>
+      <div class="walk-index-start-action" data-controller="walk-start">
+        <%= button_tag "しりとり散歩をはじめる", type: "button",
+                       class: "home-primary-cta walk-start-cta",
+                       data: { action: "walk-start#open" } %>
+        <%= render "word_chain_walks/start_modal" %>
+      </div>
+    <% end %>
   </div>
 </div>

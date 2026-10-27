@@ -617,7 +617,7 @@ main:has(.home-page) {
 .walk-index-card-meta dd {
   margin-top: 2px;
   color: #204d49;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -778,6 +778,20 @@ main:has(.walk-index-page) {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (max-width: 639px) {
+  .walk-index-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .walk-index-card-image {
+    aspect-ratio: 4 / 3;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    border-radius: 12px 12px 0 0;
+  }
 }
 
 .walk-index-no-image {
