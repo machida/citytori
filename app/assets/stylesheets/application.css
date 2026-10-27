@@ -1118,6 +1118,11 @@ main:has(.active-walk-page) {
   margin: 0 0 16px;
 }
 
+.active-walk-latest-heading i {
+  margin-right: 0.3em;
+  color: #204d49;
+}
+
 .active-walk-latest-link::after {
   position: absolute;
   inset: 0;
