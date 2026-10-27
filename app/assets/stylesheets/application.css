@@ -1229,8 +1229,9 @@ main:has(.active-walk-page) {
 .active-walk-latest-cancel {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
-  padding: 2px 4px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 12px;
   color: #667773;
   font-size: 0.75rem;
   text-decoration: underline;
@@ -1259,6 +1260,8 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-end-button {
+  min-height: 44px;
+  padding: 8px 12px;
   border: 0;
   background: transparent;
   color: #52645f;
@@ -1288,7 +1291,7 @@ main:has(.how-to-play-page) {
   width: 100%;
   max-width: none;
   margin-top: 0;
-  padding: 8px;
+  padding: 8px 16px;
   background: #fcf9ef;
 }
 

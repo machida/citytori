@@ -33,6 +33,9 @@ class WordChainWalksController < ApplicationController
         url: word_chain_walk_word_chain_walk_step_path(@word_chain_walk, step)
       }
     end
+    @selected_step = @word_chain_walk_steps.find do |step|
+      step.id.to_s == params[:selected_step] && step.latitude.present? && step.longitude.present?
+    end
   end
 
   def create

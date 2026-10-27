@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import L from "leaflet";
 
 export default class extends Controller {
-  static values = { positions: Array };
+  static values = { positions: Array, selectedId: String };
   static targets = ["placeholder", "selection"];
 
   connect() {
@@ -42,10 +42,15 @@ export default class extends Controller {
       }).addTo(this.map);
     }
     this.map.fitBounds(bounds, { maxZoom: 18 });
+    this.highlightSelection(this.selectedIdValue);
   }
 
   select(event) {
-    const selectedId = event.currentTarget.dataset.stepId;
+    this.selectedIdValue = event.currentTarget.dataset.stepId;
+    this.highlightSelection(this.selectedIdValue);
+  }
+
+  highlightSelection(selectedId) {
     for (const link of this.element.querySelectorAll("a[data-step-id]")) {
       if (link.dataset.stepId === selectedId) {
         link.setAttribute("aria-current", "true");

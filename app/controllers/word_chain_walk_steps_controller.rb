@@ -4,6 +4,12 @@ class WordChainWalkStepsController < ApplicationController
 
   def show
     @word_chain_walk_step = @word_chain_walk.word_chain_walk_steps.find(params[:id])
+    @back_path = if params[:from] == "map" && @word_chain_walk.finished? &&
+                    @word_chain_walk_step.latitude.present? && @word_chain_walk_step.longitude.present?
+      map_word_chain_walk_path(@word_chain_walk, selected_step: @word_chain_walk_step.id)
+    else
+      word_chain_walk_path(@word_chain_walk)
+    end
   end
 
   def create
