@@ -1151,6 +1151,7 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-latest-cancel {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
