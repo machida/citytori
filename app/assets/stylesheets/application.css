@@ -41,6 +41,16 @@ body > footer {
   overflow: hidden;
 }
 
+#header-menu :is(a, button) {
+  transition: background-color 150ms ease;
+}
+
+#header-menu :is(a, button):is(:hover, :active) {
+  background-color: #e8f4f5;
+  transform: none;
+  box-shadow: none;
+}
+
 body:has(.landing-page) {
   background-color: #fcf9ef;
 }
