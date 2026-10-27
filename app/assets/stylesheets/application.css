@@ -1030,6 +1030,10 @@ main:has(.active-walk-page) {
   width: 100%;
   max-width: 768px;
   margin: 0 auto 24px;
+  color: #303b3c;
+}
+
+.active-walk-card {
   padding: 24px 16px 48px;
   border: 1px solid rgb(32 77 73 / 0.08);
   border-radius: 12px;
@@ -1105,9 +1109,7 @@ main:has(.active-walk-page) {
 }
 
 .active-walk-latest-section {
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid #d9e4e1;
+  margin-top: 24px;
 }
 
 .active-walk-latest-heading {
@@ -1425,6 +1427,9 @@ main:has(.walk-step-detail-page) {
 
   .active-walk-page {
     margin-bottom: 56px;
+  }
+
+  .active-walk-card {
     padding: 32px 48px 56px;
     border-radius: 20px;
   }
