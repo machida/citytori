@@ -25,15 +25,15 @@
           </p>
         <% end %>
 
-        <div class="active-walk-latest-actions">
-          <%= button_to "取り消す",
-                        latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk),
-                        method: :delete,
-                        class: "active-walk-latest-cancel",
-                        data: { turbo_confirm: "記録したことばを取り消しますか？" } %>
-        </div>
       </div>
     </article>
+    <div class="active-walk-latest-actions">
+      <%= button_to "取り消す",
+                    latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk),
+                    method: :delete,
+                    class: "active-walk-latest-cancel",
+                    data: { turbo_confirm: "記録したことばを取り消しますか？" } %>
+    </div>
   <% else %>
     <p class="active-walk-latest-empty">
       まだ記録はありません。

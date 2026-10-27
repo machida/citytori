@@ -1141,11 +1141,6 @@ main:has(.active-walk-page) {
   outline-offset: 2px;
 }
 
-.active-walk-latest-card .active-walk-latest-cancel {
-  position: relative;
-  z-index: 1;
-}
-
 .active-walk-latest-actions {
   display: flex;
   justify-content: flex-end;
