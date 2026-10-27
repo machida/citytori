@@ -1782,13 +1782,13 @@ main:has(.walk-step-detail-page) {
 }
 
 @media (hover: hover) {
-  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(.active-walk-end-button):not(.walk-delete-button):not(:disabled):not([aria-disabled="true"]):hover {
+  :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(.active-walk-end-button):not(.active-walk-latest-cancel):not(.walk-delete-button):not(:disabled):not([aria-disabled="true"]):hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgb(32 77 73 / 0.18);
   }
 }
 
-:is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):not(.walk-delete-button):active {
+:is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta):not(:disabled):not([aria-disabled="true"]):not(.walk-delete-button):not(.active-walk-latest-cancel):not(.active-walk-end-button):active {
   transform: translateY(0) scale(0.98);
   box-shadow: none;
 }
@@ -1808,4 +1808,20 @@ main:has(.walk-step-detail-page) {
   border: 0;
   background: transparent;
   cursor: pointer;
+}
+
+/* Text actions stay in place and use color and underline feedback. */
+:is(a.underline, .home-more-link, .legal-sheet a, footer a, .active-walk-latest-cancel, .active-walk-end-button):not(.walk-map-record) {
+  transition: color 150ms ease;
+}
+
+:is(a.underline, .home-more-link, .legal-sheet a, footer a, .active-walk-latest-cancel, .active-walk-end-button):not(.walk-map-record):hover {
+  color: #315d55;
+  text-decoration: none;
+  transform: none;
+  box-shadow: none;
+}
+
+.walk-delete-button:hover .underline {
+  text-decoration: none;
 }
