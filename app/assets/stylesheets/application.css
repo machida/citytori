@@ -42,7 +42,7 @@ body > footer {
 }
 
 #header-menu :is(a, button) {
-  transition: background-color 150ms ease;
+  transition: background-color 250ms ease;
 }
 
 #header-menu :is(a, button):is(:hover, :active) {
@@ -115,7 +115,7 @@ main:has(.landing-page) {
   font-weight: 700;
   letter-spacing: 0.035em;
   cursor: pointer;
-  transition: background-color 150ms;
+  transition: background-color 250ms;
 }
 
 .landing-cta:hover {
@@ -306,7 +306,7 @@ main:has(.completion-page) {
   color: #fff;
   font-size: 19px;
   font-weight: 700;
-  transition: background-color 150ms;
+  transition: background-color 250ms;
 }
 
 .completion-primary-cta:hover {
@@ -1652,7 +1652,7 @@ main:has(.walk-step-detail-page) {
   color: #52645f;
   font-size: 0.875rem;
   text-decoration: none;
-  transition: background-color 150ms, border-color 150ms;
+  transition: background-color 250ms, border-color 150ms;
 }
 
 .walk-history-button:hover {
@@ -1778,7 +1778,7 @@ main:has(.walk-step-detail-page) {
 
 /* Shared feedback for buttons and links styled as buttons. */
 :is(button, input[type="submit"], input[type="button"], .landing-cta, .home-primary-cta, .completion-primary-cta) {
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 150ms ease, color 150ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 250ms ease, color 150ms ease;
 }
 
 @media (hover: hover) {
@@ -1824,4 +1824,19 @@ main:has(.walk-step-detail-page) {
 
 .walk-delete-button:hover .underline {
   text-decoration: none;
+}
+
+/* Fade background feedback in and out without moving cards or links. */
+.walk-record-card,
+a.transition-colors {
+  transition: background-color 250ms ease, border-color 250ms ease, color 150ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #header-menu :is(a, button),
+  .walk-record-card,
+  .walk-history-button,
+  a.transition-colors {
+    transition: none;
+  }
 }
