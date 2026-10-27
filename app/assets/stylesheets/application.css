@@ -530,7 +530,8 @@ main:has(.home-page) {
   padding-block: 48px 56px;
 }
 
-.home-recent-title {
+.home-recent-title,
+.active-walk-latest-heading {
   color: #204d49;
   font-family: var(--font-japanese-sans);
   font-size: 1.5rem;
@@ -1115,15 +1116,6 @@ main:has(.active-walk-page) {
 
 .active-walk-latest-heading {
   margin: 0 0 16px;
-  color: #204d49;
-  font-family: var(--font-japanese-sans);
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.active-walk-latest-heading i {
-  margin-right: 0.3em;
-  color: #204d49;
 }
 
 .active-walk-latest-link::after {
