@@ -708,6 +708,7 @@ main:has(.walk-index-page) {
 
 .walk-index-heading-icon-active {
   color: #b9471d;
+  transform: translateY(0.125em);
 }
 
 .walk-index-heading-icon-finished {
