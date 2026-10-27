@@ -1132,6 +1132,10 @@ main:has(.active-walk-page) {
   content: "";
 }
 
+.active-walk-latest-card {
+  border: 1px solid rgb(201 219 215);
+}
+
 .active-walk-latest-card:hover {
   background-color: #f2f7f3;
 }
