@@ -66,18 +66,6 @@ export default class extends Controller {
       new Compressor(file, {
         quality: 0.6,
         success(result) {
-          console.log("圧縮前", {
-            name: file.name,
-            type: file.type,
-            size: file.size,
-          });
-
-          console.log("圧縮後", {
-            name: result.name,
-            type: result.type,
-            size: result.size,
-          });
-
           resolve(result);
         },
         error(error) {
