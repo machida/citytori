@@ -49,7 +49,6 @@ class WordChainWalksController < ApplicationController
     end
   end
 
-  # DELETE /word_chain_walks/1 or /word_chain_walks/1.json
   def destroy
     @word_chain_walk = current_user.word_chain_walks.find(params[:id])
     @word_chain_walk.destroy!

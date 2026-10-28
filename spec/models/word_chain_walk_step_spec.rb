@@ -273,7 +273,6 @@ RSpec.describe WordChainWalkStep, type: :model do
       step = FactoryBot.build(:word_chain_walk_step)
 
       step.word = "いるか"
-      # debugger
       expect(step.normalize_first_char).to eq("い")
     end
 
