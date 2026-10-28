@@ -44,8 +44,6 @@ class WordChainWalksController < ApplicationController
     if @word_chain_walk.save
       redirect_to @word_chain_walk, notice: "しりとり散歩を始めました"
     else
-      @active_word_chain_walks = current_user.word_chain_walks.active.includes(word_chain_walk_steps: { image_attachment: :blob }).order(id: :desc)
-      @finished_word_chain_walks = current_user.word_chain_walks.finished.includes(word_chain_walk_steps: { image_attachment: :blob }).order(id: :desc)
       @word_chain_walks = current_user.word_chain_walks.includes(word_chain_walk_steps: { image_attachment: :blob }).order(id: :desc)
       render :index, status: :unprocessable_entity
     end
