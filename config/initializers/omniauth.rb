@@ -1,5 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  google_credentials = Rails.application.credentials.google
+  google_credentials = Rails.env.test? ? { client_id: "dummy", client_secret: "dummy" } : Rails.application.credentials.google
+
   if google_credentials.nil?
     raise "Google OAuth credentials not configured. Run `bin/rails credentials:edit --environment #{Rails.env}` and add a `google` section with `client_id` and `client_secret`."
   end
