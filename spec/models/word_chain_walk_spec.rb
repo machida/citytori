@@ -65,7 +65,7 @@ RSpec.describe WordChainWalk, type: :model do
     expect(word_chain_walk.start_char).to match(/\A[あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわを]\z/)
   end
 
-  describe "finished?" do
+  describe "#finished?" do
     context "終了日がある場合" do
       it '終了済みだと判定されること' do
         word_chain_walk = FactoryBot.build(:word_chain_walk, started_at: Time.zone.local(2026, 6, 2, 10, 0, 0),
@@ -83,7 +83,7 @@ RSpec.describe WordChainWalk, type: :model do
     end
   end
 
-  describe "latest_step" do
+  describe "#latest_step" do
     context "記録がある場合" do
       it '最新の記録が取得できること' do
         word_chain_walk = FactoryBot.create(:word_chain_walk, start_char: 'り')
@@ -103,7 +103,7 @@ RSpec.describe WordChainWalk, type: :model do
     end
   end
 
-  describe "target_char" do
+  describe "#target_char" do
     context "記録がある場合" do
       it '登録済みの最新ステップのwordの最後の1文字現在探している文字を取得できること' do
         word_chain_walk = FactoryBot.create(:word_chain_walk, start_char: 'り')
@@ -122,7 +122,7 @@ RSpec.describe WordChainWalk, type: :model do
     end
   end
 
-  describe "elapsed_seconds" do
+  describe "#elapsed_seconds" do
     context "進行中の場合" do
       it 'まだ終了していない場合は現在時間から開始時間を引いた時間が帰ってくること' do
         word_chain_walk = FactoryBot.build(:word_chain_walk, started_at: Time.zone.local(2026, 6, 2, 10, 0, 0))
@@ -205,7 +205,7 @@ RSpec.describe WordChainWalk, type: :model do
     end
   end
 
-  describe "allowed_start_chars" do
+  describe "#allowed_start_chars" do
     context "ひらがな1文字のみに紐づく場合" do
       it '空の配列が返ってくること' do
         user = FactoryBot.create(:user)
