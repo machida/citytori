@@ -60,26 +60,32 @@ RSpec.describe WordChainWalkStep, type: :model do
     expect(word_chain_walk_step.errors[:word]).to include('はひらがなとのばし棒(ー)で入力してください')
   end
 
-  it '1件目のwordが散歩の開始文字から始まる場合は有効であること' do
-    next_step = FactoryBot.build(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
-    expect(next_step).to be_valid
-  end
+  describe "しりとりがつながるかどうか" do
+    context "1つ目の見つけたことば" do
+      it '散歩の開始文字から始まる場合は有効であること' do
+        next_step = FactoryBot.build(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
+        expect(next_step).to be_valid
+      end
 
-  it '1件目のwordが散歩の開始文字から始まらない場合は無効であること' do
-    next_step = FactoryBot.build(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'ごりら')
-    expect(next_step).to be_invalid
-  end
+      it '散歩の開始文字から始まらない場合は無効であること' do
+        next_step = FactoryBot.build(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'ごりら')
+        expect(next_step).to be_invalid
+      end
+    end
 
-  it '2件目以降のwordが直前のwordの最後の文字から始まる場合は有効であること' do
-    FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
-    second_step = FactoryBot.build(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'ごりら')
-    expect(second_step).to be_valid
-  end
+    context "2つ目以降の見つけたことば" do
+      it '直前の見つけた言葉の最後の文字から始まる場合は有効であること' do
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
+        second_step = FactoryBot.build(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'ごりら')
+        expect(second_step).to be_valid
+      end
 
-  it '2件目以降のwordが直前のwordの最後の文字から始まらない場合は無効であること' do
-    FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
-    second_step = FactoryBot.build(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'らっぱ')
-    expect(second_step).to be_invalid
+      it '直前の見つけた言葉の最後の文字から始まらない場合は無効であること' do
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
+        second_step = FactoryBot.build(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'らっぱ')
+        expect(second_step).to be_invalid
+      end
+    end
   end
 
   it 'しりとり散歩が終了済みなら新規ステップの追加はできない' do
@@ -117,88 +123,96 @@ RSpec.describe WordChainWalkStep, type: :model do
     )
   end
 
-  it "正常な緯度と経度の場合は有効であること" do
-    word_chain_walk_step =
-      FactoryBot.build(
-        :word_chain_walk_step,
-        :with_image,
-        word_chain_walk: word_chain_walk,
-        word: "りんご",
-        latitude: 35.681236,
-        longitude: 139.767125
-      )
+  describe "座標(緯度と経度)" do
+    context "両方ある場合" do
+      it "正常な緯度と経度の場合は有効であること" do
+          word_chain_walk_step =
+            FactoryBot.build(
+              :word_chain_walk_step,
+              :with_image,
+              word_chain_walk: word_chain_walk,
+              word: "りんご",
+              latitude: 35.681236,
+              longitude: 139.767125
+            )
 
-    expect(word_chain_walk_step).to be_valid
-  end
+          expect(word_chain_walk_step).to be_valid
+      end
 
-  it "緯度が範囲外の場合は無効であること" do
-    word_chain_walk_step =
-      FactoryBot.build(
-        :word_chain_walk_step,
-        :with_image,
-        word_chain_walk: word_chain_walk,
-        word: "りんご",
-        latitude: 91,
-        longitude: 139.767125
-      )
+        it "緯度が範囲外の場合は無効であること" do
+          word_chain_walk_step =
+            FactoryBot.build(
+              :word_chain_walk_step,
+              :with_image,
+              word_chain_walk: word_chain_walk,
+              word: "りんご",
+              latitude: 91,
+              longitude: 139.767125
+            )
 
-    expect(word_chain_walk_step).to be_invalid
-  end
+          expect(word_chain_walk_step).to be_invalid
+        end
 
-  it "経度が範囲外の場合は無効であること" do
-    word_chain_walk_step =
-      FactoryBot.build(
-        :word_chain_walk_step,
-        :with_image,
-        word_chain_walk: word_chain_walk,
-        word: "りんご",
-        latitude: 35.681236,
-        longitude: 181
-      )
+        it "経度が範囲外の場合は無効であること" do
+          word_chain_walk_step =
+            FactoryBot.build(
+              :word_chain_walk_step,
+              :with_image,
+              word_chain_walk: word_chain_walk,
+              word: "りんご",
+              latitude: 35.681236,
+              longitude: 181
+            )
 
-    expect(word_chain_walk_step).to be_invalid
-  end
+          expect(word_chain_walk_step).to be_invalid
+        end
+    end
 
-  it "緯度と経度が両方nilの場合は有効であること" do
-    word_chain_walk_step =
-      FactoryBot.build(
-        :word_chain_walk_step,
-        :with_image,
-        word_chain_walk: word_chain_walk,
-        word: "りんご",
-        latitude: nil,
-        longitude: nil
-      )
+    context "両方ない場合" do
+      it "有効であること" do
+        word_chain_walk_step =
+          FactoryBot.build(
+            :word_chain_walk_step,
+            :with_image,
+            word_chain_walk: word_chain_walk,
+            word: "りんご",
+            latitude: nil,
+            longitude: nil
+          )
 
-    expect(word_chain_walk_step).to be_valid
-  end
+        expect(word_chain_walk_step).to be_valid
+      end
+    end
 
-  it "緯度だけある場合は無効であること" do
-    word_chain_walk_step =
-      FactoryBot.build(
-        :word_chain_walk_step,
-        :with_image,
-        word_chain_walk: word_chain_walk,
-        word: "りんご",
-        latitude: 35.681236,
-        longitude: nil
-      )
+    context "片方だけの場合" do
+      it "緯度だけある場合は無効であること" do
+        word_chain_walk_step =
+          FactoryBot.build(
+            :word_chain_walk_step,
+            :with_image,
+            word_chain_walk: word_chain_walk,
+            word: "りんご",
+            latitude: 35.681236,
+            longitude: nil
+          )
 
-    expect(word_chain_walk_step).to be_invalid
-  end
+        expect(word_chain_walk_step).to be_invalid
+      end
 
-  it "経度だけある場合は無効であること" do
-    word_chain_walk_step =
-      FactoryBot.build(
-        :word_chain_walk_step,
-        :with_image,
-        word_chain_walk: word_chain_walk,
-        word: "りんご",
-        latitude: nil,
-        longitude: 139.767125
-      )
+      it "経度だけある場合は無効であること" do
+        word_chain_walk_step =
+          FactoryBot.build(
+            :word_chain_walk_step,
+            :with_image,
+            word_chain_walk: word_chain_walk,
+            word: "りんご",
+            latitude: nil,
+            longitude: 139.767125
+          )
 
-    expect(word_chain_walk_step).to be_invalid
+        expect(word_chain_walk_step).to be_invalid
+      end
+    end
   end
 
   it '10MBの画像は有効である' do
