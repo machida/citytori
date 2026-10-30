@@ -58,10 +58,10 @@ RSpec.describe "Semantic page structure", type: :request do
 
     get word_chain_walk_path(walk)
     expect_page_landmarks
-    expect(document.css("#word_chain_walk_steps ol > li h2").map(&:text).map(&:strip)).to eq([step.word])
+    expect(document.css("#word_chain_walk_steps ol > li h2").map(&:text).map(&:strip)).to eq([ step.word ])
     expect(document.at_css(".walk-record-card time")["datetime"]).to eq(step.created_at.iso8601)
 
-    [word_chain_walk_path(walk), map_word_chain_walk_path(walk)].each do |path|
+    [ word_chain_walk_path(walk), map_word_chain_walk_path(walk) ].each do |path|
       get path
       form = document.at_css("form[action='#{word_chain_walk_path(walk)}']")
       expect(form["method"]).to eq("post")

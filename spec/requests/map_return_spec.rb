@@ -33,7 +33,7 @@ RSpec.describe "Map return navigation", type: :request do
   end
 
   it "keeps the usual return destination for non-map visits and invalid origins" do
-    [nil, "https://example.com"].each do |origin|
+    [ nil, "https://example.com" ].each do |origin|
       get word_chain_walk_word_chain_walk_step_path(walk, step), params: { from: origin }
       expect(back_href).to eq(word_chain_walk_path(walk))
     end
@@ -41,7 +41,7 @@ RSpec.describe "Map return navigation", type: :request do
 
   it "does not display another walk's record or an invalid selection" do
     other = FactoryBot.create(:word_chain_walk_step, :with_image)
-    [other.id.to_s, "missing"].each do |id|
+    [ other.id.to_s, "missing" ].each do |id|
       get map_word_chain_walk_path(walk), params: { selected_step: id }
       expect(response).to have_http_status(:ok)
       expect(Nokogiri::HTML(response.body).css("#selected_walk_step .walk-record-card")).to be_empty
