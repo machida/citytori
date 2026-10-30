@@ -65,57 +65,80 @@ RSpec.describe WordChainWalk, type: :model do
     expect(word_chain_walk.start_char).to match(/\A[あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわを]\z/)
   end
 
-  it '終了日が埋まっていたら終了済みだと判定されること' do
-    word_chain_walk = FactoryBot.build(:word_chain_walk, started_at: Time.zone.local(2026, 6, 2, 10, 0, 0),
-                                                         finished_at: Time.zone.local(2026, 6, 3, 10, 0, 0))
+  describe "finished?" do
+    context "終了日がある場合" do
+      it '終了済みだと判定されること' do
+        word_chain_walk = FactoryBot.build(:word_chain_walk, started_at: Time.zone.local(2026, 6, 2, 10, 0, 0),
+                                                            finished_at: Time.zone.local(2026, 6, 3, 10, 0, 0))
+        expect(word_chain_walk.finished?).to be true
+      end
+    end
 
-    expect(word_chain_walk.finished?).to be true
-  end
+    context "終了日がない場合" do
+      it '終了済みではないと判定されること' do
+        word_chain_walk = FactoryBot.build(:word_chain_walk, finished_at: nil)
 
-  it '終了日が空なら終了済みではないと判定されること' do
-    word_chain_walk = FactoryBot.build(:word_chain_walk, finished_at: nil)
-
-    expect(word_chain_walk.finished?).to be false
-  end
-
-  it '最新のステップが取得できること' do
-    word_chain_walk = FactoryBot.create(:word_chain_walk, start_char: 'り')
-    FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
-    new_step = FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'ごりら')
-
-    expect(word_chain_walk.latest_step).to eq(new_step)
-  end
-
-  it 'ステップがない場合はnilが帰ってくること' do
-    word_chain_walk = FactoryBot.build(:word_chain_walk, start_char: 'り')
-
-    expect(word_chain_walk.latest_step).to be_nil
-  end
-
-  it 'ステップがある場合は、登録済みの最新ステップのwordの最後の1文字現在探している文字を取得できること' do
-    word_chain_walk = FactoryBot.create(:word_chain_walk, start_char: 'り')
-    FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
-
-    expect(word_chain_walk.target_char).to eq('こ')
-  end
-
-  it 'ステップがない場合は、start_charが現在探している文字として表示できること' do
-    word_chain_walk = FactoryBot.build(:word_chain_walk, start_char: 'り')
-
-    expect(word_chain_walk.target_char).to eq('り')
-  end
-
-  it 'まだ終了していない場合は現在時間から開始時間を引いた時間が帰ってくること' do
-    word_chain_walk = FactoryBot.build(:word_chain_walk, started_at: Time.zone.local(2026, 6, 2, 10, 0, 0))
-    travel_to Time.zone.local(2026, 6, 2, 11, 30, 0) do
-      expect(word_chain_walk.elapsed_seconds).to eq 5400
+        expect(word_chain_walk.finished?).to be false
+      end
     end
   end
 
-  it '終了済み場合は終了時間から開始時間を引いた時間が帰ってくること' do
-    word_chain_walk = FactoryBot.build(:word_chain_walk, started_at: Time.zone.local(2026, 6, 2, 10, 0, 0),
-                                                         finished_at: Time.zone.local(2026, 6, 2, 11, 20, 21))
-    expect(word_chain_walk.elapsed_seconds).to eq 4821
+  describe "latest_step" do
+    context "記録がある場合" do
+      it '最新の記録が取得できること' do
+        word_chain_walk = FactoryBot.create(:word_chain_walk, start_char: 'り')
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
+        new_step = FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'ごりら')
+
+        expect(word_chain_walk.latest_step).to eq(new_step)
+      end
+    end
+
+    context "記録がない場合" do
+      it 'nilが帰ってくること' do
+        word_chain_walk = FactoryBot.build(:word_chain_walk, start_char: 'り')
+
+        expect(word_chain_walk.latest_step).to be_nil
+      end
+    end
+  end
+
+  describe "target_char" do
+    context "記録がある場合" do
+      it '登録済みの最新ステップのwordの最後の1文字現在探している文字を取得できること' do
+        word_chain_walk = FactoryBot.create(:word_chain_walk, start_char: 'り')
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: 'りんご')
+
+        expect(word_chain_walk.target_char).to eq('こ')
+      end
+    end
+
+    context "記録がない場合" do
+      it 'start_charが現在探している文字として表示できること' do
+        word_chain_walk = FactoryBot.build(:word_chain_walk, start_char: 'り')
+
+        expect(word_chain_walk.target_char).to eq('り')
+      end
+    end
+  end
+
+  describe "elapsed_seconds" do
+    context "進行中の場合" do
+      it 'まだ終了していない場合は現在時間から開始時間を引いた時間が帰ってくること' do
+        word_chain_walk = FactoryBot.build(:word_chain_walk, started_at: Time.zone.local(2026, 6, 2, 10, 0, 0))
+        travel_to Time.zone.local(2026, 6, 2, 11, 30, 0) do
+          expect(word_chain_walk.elapsed_seconds).to eq 5400
+        end
+      end
+    end
+
+    context "完了済みの場合" do
+      it '終了済み場合は終了時間から開始時間を引いた時間が帰ってくること' do
+        word_chain_walk = FactoryBot.build(:word_chain_walk, started_at: Time.zone.local(2026, 6, 2, 10, 0, 0),
+                                                            finished_at: Time.zone.local(2026, 6, 2, 11, 20, 21))
+        expect(word_chain_walk.elapsed_seconds).to eq 4821
+      end
+    end
   end
 
   it 'activeはfinished_atがnilの散歩を返すこと' do
@@ -139,48 +162,66 @@ RSpec.describe WordChainWalk, type: :model do
     expect(described_class.finished).to contain_exactly(finished_walk)
   end
 
-  it 'finishを実行すると終了状態になること' do
-    word_chain_walk = FactoryBot.create(:word_chain_walk, finished_at: nil)
-    word_chain_walk.finish
-    expect(word_chain_walk).to be_finished
+  describe "#finish" do
+    context "進行中の場合" do
+      it 'finishを実行すると終了状態になること' do
+        word_chain_walk = FactoryBot.create(:word_chain_walk, finished_at: nil)
+        word_chain_walk.finish
+        expect(word_chain_walk).to be_finished
+      end
+    end
+
+    context "完了済みの場合" do
+      it '完了済みの場合はfinished_atを上書きしないこと' do
+        word_chain_walk = FactoryBot.create(:word_chain_walk, finished_at: 1.day.ago)
+
+        expect do
+          word_chain_walk.finish
+        end.not_to change { word_chain_walk.reload.finished_at }
+      end
+    end
   end
 
-  it '完了済みの場合はfinished_atを上書きしないこと' do
-    word_chain_walk = FactoryBot.create(:word_chain_walk, finished_at: 1.day.ago)
+  describe "進行中の散歩は1つのみ作成可能" do
+    context "既存の進行中の散歩がない場合" do
+      it '進行中の散歩を作成できる' do
+        user = FactoryBot.create(:user)
+        FactoryBot.create(:word_chain_walk, user: user, finished_at: 1.day.ago)
+        word_chain_walk = FactoryBot.build(:word_chain_walk, user: user)
 
-    expect do
-      word_chain_walk.finish
-    end.not_to change { word_chain_walk.reload.finished_at }
+        expect(word_chain_walk).to be_valid
+      end
+    end
+
+    context "既存の進行中の散歩がある場合" do
+      it '進行中の散歩を作成できない' do
+        user = FactoryBot.create(:user)
+        FactoryBot.create(:word_chain_walk, user: user)
+        word_chain_walk = FactoryBot.build(:word_chain_walk, user: user)
+
+        expect(word_chain_walk).to be_invalid
+        expect(word_chain_walk.errors[:base]).to include('進行中の散歩があるため新しい散歩を作成できません')
+      end
+    end
   end
 
-  it '進行中の散歩がない場合は進行中の散歩を作成できる' do
-    user = FactoryBot.create(:user)
-    FactoryBot.create(:word_chain_walk, user: user, finished_at: 1.day.ago)
-    word_chain_walk = FactoryBot.build(:word_chain_walk, user: user)
+  describe "allowed_start_chars" do
+    context "ひらがな1文字のみに紐づく場合" do
+      it '空の配列が返ってくること' do
+        user = FactoryBot.create(:user)
+        word_chain_walk = FactoryBot.create(:word_chain_walk, user: user, start_char: "ま")
 
-    expect(word_chain_walk).to be_valid
-  end
+        expect(word_chain_walk.allowed_start_chars).to eq []
+      end
+    end
 
-  it '進行中の散歩がある場合は進行中の散歩を作成できない' do
-    user = FactoryBot.create(:user)
-    FactoryBot.create(:word_chain_walk, user: user)
-    word_chain_walk = FactoryBot.build(:word_chain_walk, user: user)
+    context "複数の文字に紐づく文字の場合は" do
+      it '複数の要素の配列が返ってくること' do
+        user = FactoryBot.create(:user)
+        word_chain_walk = FactoryBot.create(:word_chain_walk, user: user, start_char: "は")
 
-    expect(word_chain_walk).to be_invalid
-    expect(word_chain_walk.errors[:base]).to include('進行中の散歩があるため新しい散歩を作成できません')
-  end
-
-  it '通常のひらがな1文字の場合は空の配列が返ってくること' do
-    user = FactoryBot.create(:user)
-    word_chain_walk = FactoryBot.create(:word_chain_walk, user: user, start_char: "ま")
-
-    expect(word_chain_walk.allowed_start_chars).to eq []
-  end
-
-  it '複数の文字に紐づく文字の場合は複数の要素の配列が返ってくること' do
-    user = FactoryBot.create(:user)
-    word_chain_walk = FactoryBot.create(:word_chain_walk, user: user, start_char: "は")
-
-    expect(word_chain_walk.allowed_start_chars).to eq [ "ば", "ぱ" ]
+        expect(word_chain_walk.allowed_start_chars).to eq [ "ば", "ぱ" ]
+      end
+    end
   end
 end
