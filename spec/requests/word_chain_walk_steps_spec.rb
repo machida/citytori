@@ -50,7 +50,7 @@ RSpec.describe 'WordChainWalkSteps', type: :request do
   end
 
   describe 'POST /word_chain_walks/:word_chain_walk_id/word_chain_walk_steps' do
-    context 'ステップを登録する場合' do
+    context '有効な記録を登録する場合' do
       it '自分の散歩にStepを追加できること' do
         log_in(user)
 
@@ -68,8 +68,10 @@ RSpec.describe 'WordChainWalkSteps', type: :request do
 
         expect(response).to redirect_to(word_chain_walk_path(word_chain_walk))
       end
+    end
 
-      it 'バリデーションエラー時はStepを追加しないこと' do
+    context "無効な記録を登録する場合" do
+      it '記録が追加されないこと' do
         log_in(user)
 
         expect do
@@ -78,7 +80,7 @@ RSpec.describe 'WordChainWalkSteps', type: :request do
         end.not_to change(WordChainWalkStep, :count)
       end
 
-      it 'バリデーションエラー時は422で再表示されること' do
+      it 'バリデーションエラー時はステータス422が返却されること' do
         log_in(user)
 
         post word_chain_walk_word_chain_walk_steps_path(word_chain_walk),
@@ -86,21 +88,23 @@ RSpec.describe 'WordChainWalkSteps', type: :request do
 
         expect(response).to have_http_status(:unprocessable_content)
       end
+    end
 
-      it '他人の散歩にはStepを追加できないこと' do
+    context "他人の散歩の場合" do
+      it '記録を追加できないこと' do
         log_in(user)
 
         expect do
           post word_chain_walk_word_chain_walk_steps_path(other_word_chain_walk),
-               params: valid_step_params
+              params: valid_step_params
         end.not_to change(WordChainWalkStep, :count)
       end
 
-      it '他人の散歩にStep追加しようとした場合は404になること' do
+      it '記録を追加しようとした場合は404になること' do
         log_in(user)
 
         post word_chain_walk_word_chain_walk_steps_path(other_word_chain_walk),
-             params: valid_step_params
+            params: valid_step_params
 
         expect(response).to have_http_status(:not_found)
       end
@@ -158,67 +162,75 @@ RSpec.describe 'WordChainWalkSteps', type: :request do
   end
 
   describe "DELETE /word_chain_walks/:word_chain_walk_id/word_chain_walk_steps/latest" do
-    it "最新Stepを削除できること" do
-      log_in(user)
+    context "進行中の散歩に記録がある場合" do
+      it "直前の記録を削除できること" do
+        log_in(user)
 
-      FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "りんご")
-      FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "ごりら")
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "りんご")
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "ごりら")
 
-      expect do
+        expect do
+          delete latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk)
+        end.to change(WordChainWalkStep, :count).by(-1)
+      end
+
+      it "直前の記録だけが削除されること" do
+        log_in(user)
+
+        old_step = FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "りんご")
+        latest_step = FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "ごりら")
+
         delete latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk)
-      end.to change(WordChainWalkStep, :count).by(-1)
-    end
 
-    it "最新Stepだけが削除されること" do
-      log_in(user)
+        expect(WordChainWalkStep.exists?(old_step.id)).to be true
+        expect(WordChainWalkStep.exists?(latest_step.id)).to be false
+      end
 
-      old_step = FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "りんご")
-      latest_step = FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "ごりら")
+      it "削除後に散歩詳細画面へリダイレクトされること" do
+        log_in(user)
 
-      delete latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk)
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "りんご")
 
-      expect(WordChainWalkStep.exists?(old_step.id)).to be true
-      expect(WordChainWalkStep.exists?(latest_step.id)).to be false
-    end
-
-    it "削除後に散歩詳細画面へリダイレクトされること" do
-      log_in(user)
-
-      FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "りんご")
-
-      delete latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk)
-
-      expect(response).to redirect_to(word_chain_walk_path(word_chain_walk))
-    end
-
-    it "Stepがない場合でもエラーにならないこと" do
-      log_in(user)
-
-      expect do
         delete latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk)
-      end.not_to change(WordChainWalkStep, :count)
+
+        expect(response).to redirect_to(word_chain_walk_path(word_chain_walk))
+      end
     end
 
-    it "他人の散歩のStepを削除できないこと" do
-      log_in(user)
+    context "記録がない場合" do
+      it "エラーにならずに削除がされないこと" do
+        log_in(user)
 
-      FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: other_word_chain_walk, word: "りんご")
-
-      expect do
-        delete latest_word_chain_walk_word_chain_walk_steps_path(other_word_chain_walk)
-      end.not_to change(WordChainWalkStep, :count)
+        expect do
+          delete latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk)
+        end.not_to change(WordChainWalkStep, :count)
+      end
     end
 
-    it "完了済みの散歩ではStepを削除できないこと" do
-      log_in(user)
+    context "他人の散歩の場合" do
+      it "記録が削除できないこと" do
+        log_in(user)
 
-      FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "りんご")
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: other_word_chain_walk, word: "りんご")
 
-      word_chain_walk.update!(finished_at: Time.current)
+        expect do
+          delete latest_word_chain_walk_word_chain_walk_steps_path(other_word_chain_walk)
+        end.not_to change(WordChainWalkStep, :count)
+      end
+    end
 
-      expect do
-        delete latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk)
-      end.not_to change(WordChainWalkStep, :count)
+    context "完了済みの散歩の場合" do
+      it "完了済みの散歩ではStepを削除できないこと" do
+        log_in(user)
+
+        FactoryBot.create(:word_chain_walk_step, :with_image, word_chain_walk: word_chain_walk, word: "りんご")
+
+        word_chain_walk.update!(finished_at: Time.current)
+
+        expect do
+          delete latest_word_chain_walk_word_chain_walk_steps_path(word_chain_walk)
+        end.not_to change(WordChainWalkStep, :count)
+      end
     end
   end
 
